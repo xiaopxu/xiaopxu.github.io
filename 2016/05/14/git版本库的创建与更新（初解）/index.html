@@ -1,0 +1,666 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="open source," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="##思维导图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git版本库初解 MacOS系统，其他系统仅作参考">
+<meta property="og:url" content="http://yoursite.com/2016/05/14/git版本库的创建与更新（初解）/index.html">
+<meta property="og:site_name" content="前端主基地">
+<meta property="og:description" content="##思维导图">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3v6ipusu5j30rr0bx75v.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6iqcbghj30cq06iaa8.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3snj9kOSpj30gc0amgot.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3snj973yxj30yd0pltcz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3snjaab7uj30s40iqgpf.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3snj6gs48j30t50j20wk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3snj6xqwfj30s70aqmzc.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6pwtotaj30s30fj41y.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6tyhqn6j30s30fj780.jpg">
+<meta property="og:updated_time" content="2016-05-14T12:31:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git版本库初解 MacOS系统，其他系统仅作参考">
+<meta name="twitter:description" content="##思维导图">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3v6ipusu5j30rr0bx75v.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6283807259835237000,
+      author: '本尊'
+    }
+  };
+</script>
+
+  <title> git版本库初解 MacOS系统，其他系统仅作参考 | 前端主基地 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">前端主基地</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git版本库初解 MacOS系统，其他系统仅作参考
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-14T16:15:29+08:00" content="2016-05-14">
+              2016-05-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/14/git版本库的创建与更新（初解）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/14/git版本库的创建与更新（初解）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##思维导图<br><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3v6ipusu5j30rr0bx75v.jpg" alt="思维导图"><br><a id="more"></a></p>
+<h2 id="一、安装git"><a href="#一、安装git" class="headerlink" title="一、安装git"></a>一、安装git</h2><h4 id="1-OS系统上直接安装x-code即可，其自带git"><a href="#1-OS系统上直接安装x-code即可，其自带git" class="headerlink" title="1. OS系统上直接安装x-code即可，其自带git"></a>1. OS系统上直接安装x-code即可，其自带git</h4><h4 id="2-其余系统请参考廖雪峰官方网站"><a href="#2-其余系统请参考廖雪峰官方网站" class="headerlink" title="2. 其余系统请参考廖雪峰官方网站"></a>2. 其余系统请参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000" target="_blank" rel="external">廖雪峰官方网站</a></h4><hr>
+<h2 id="二、本地创建版本库"><a href="#二、本地创建版本库" class="headerlink" title="二、本地创建版本库"></a>二、本地创建版本库</h2><h4 id="1-本地新建版本库"><a href="#1-本地新建版本库" class="headerlink" title="1. 本地新建版本库"></a>1. 本地新建版本库</h4><h6 id="1）新建版本库文件夹（名字随意）"><a href="#1）新建版本库文件夹（名字随意）" class="headerlink" title="1）新建版本库文件夹（名字随意）"></a>1）新建版本库文件夹（名字随意）</h6><h6 id="2）初始化版本库"><a href="#2）初始化版本库" class="headerlink" title="2）初始化版本库"></a>2）初始化版本库</h6><ul>
+<li><p>初始化</p>
+<pre><code>$ git init
+</code></pre></li>
+<li><p>查看是否生成.git文件（即版本管理文件）；它是隐藏文件，用以下命令可查看</p>
+<pre><code>$ ls -ah
+</code></pre></li>
+</ul>
+<h4 id="2-版本库的使用"><a href="#2-版本库的使用" class="headerlink" title="2. 版本库的使用"></a>2. 版本库的使用</h4><h6 id="1）工作区与暂存区"><a href="#1）工作区与暂存区" class="headerlink" title="1）工作区与暂存区"></a>1）工作区与暂存区</h6><ul>
+<li>工作区即你在本地的版本库文件夹</li>
+<li>暂存区（stage）即存在于.git文件之中，用来中转需要提交的文件</li>
+<li>运行机制：工作区(add)→暂存区(commit)→git(push)→github(到这成功)</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6iqcbghj30cq06iaa8.jpg" alt="工作区与暂存区"></p>
+<h6 id="2）管理修改工作"><a href="#2）管理修改工作" class="headerlink" title="2）管理修改工作"></a>2）管理修改工作</h6><ul>
+<li><p>工作区修改提交至暂存区</p>
+<pre><code>$ git add &apos;filename&apos;   //注意有多个文件需要提交的话重复该命令即可
+$ git add &apos;filename2&apos;  //类似于这种就是第二份文件
+$ git add .  //提交所有变动，简单粗暴
+&lt;!--注意：空文件夹无法提交，提交文件夹实质实在提交文件--&gt;
+</code></pre></li>
+<li><p>暂存区文件提交至git</p>
+<pre><code>$ git commit -m &apos;describtion&apos;  //-m 是每次修改的备注
+</code></pre></li>
+</ul>
+<hr>
+<h2 id="三、利用github远程托管版本库"><a href="#三、利用github远程托管版本库" class="headerlink" title="三、利用github远程托管版本库"></a>三、利用github远程托管版本库</h2><h4 id="1-注册github账号并登陆"><a href="#1-注册github账号并登陆" class="headerlink" title="1. 注册github账号并登陆"></a>1. 注册github账号并登陆</h4><h4 id="2-获取本机的SSH公钥"><a href="#2-获取本机的SSH公钥" class="headerlink" title="2. 获取本机的SSH公钥"></a>2. 获取本机的SSH公钥</h4><h6 id="1）输入获取代码，回车直到出现图片所示图形为止"><a href="#1）输入获取代码，回车直到出现图片所示图形为止" class="headerlink" title="1）输入获取代码，回车直到出现图片所示图形为止"></a>1）输入获取代码，回车直到出现图片所示图形为止</h6><pre><code>$ ssh-keygen
+</code></pre><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3snj9kOSpj30gc0amgot.jpg" alt="获取公钥"></p>
+<h6 id="2）输入编译代码"><a href="#2）输入编译代码" class="headerlink" title="2）输入编译代码"></a>2）输入编译代码</h6><pre><code>$ vim ~/.ssh/id_rsa.pub
+</code></pre><h6 id="3）出现SSH公钥后，将红框部分复制，并在下方输入-q，随后按下回车可以退出该窗口"><a href="#3）出现SSH公钥后，将红框部分复制，并在下方输入-q，随后按下回车可以退出该窗口" class="headerlink" title="3）出现SSH公钥后，将红框部分复制，并在下方输入:q，随后按下回车可以退出该窗口"></a>3）出现SSH公钥后，将红框部分复制，并在下方输入:q，随后按下回车可以退出该窗口</h6><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3snj973yxj30yd0pltcz.jpg" alt="编译公钥"></p>
+<h6 id="4）进入到github页面设置SSH公钥"><a href="#4）进入到github页面设置SSH公钥" class="headerlink" title="4）进入到github页面设置SSH公钥"></a>4）进入到github页面设置SSH公钥</h6><ul>
+<li>点击用户下拉菜单中的settings（step1)</li>
+<li>点击左侧的SHH and GPG keys（step2)</li>
+<li>在Title中输入公钥名称（随意）（step3)</li>
+<li>在key中贴上SSH公钥（step4)</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3snjaab7uj30s40iqgpf.jpg" alt="mou icon"></p>
+<h4 id="3-创建新的仓库"><a href="#3-创建新的仓库" class="headerlink" title="3. 创建新的仓库"></a>3. 创建新的仓库</h4><h6 id="1）创建新的仓库（repOSitory）"><a href="#1）创建新的仓库（repOSitory）" class="headerlink" title="1）创建新的仓库（repOSitory）"></a>1）创建新的仓库（repOSitory）</h6><ul>
+<li>点击用户左侧的+号菜单中的New repOSitory（step1)</li>
+<li>在repOSitory name中输入二级域名，格式请严格遵照username.github.io（step2) </li>
+<li><strong>ps：username填写github的登录用户名</strong>，否则上线的时候会报错</li>
+<li>是否公开选项可以选取Public（step3)</li>
+<li>勾选step4处，会自动生成一份可编辑的README.md文件（建议勾选）（step4)</li>
+<li>点击create repOSitory生成仓库完毕（step5)</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3snj6gs48j30t50j20wk.jpg" alt="mou icon"></p>
+<h6 id="2）查看新建的仓库（repOSitory）"><a href="#2）查看新建的仓库（repOSitory）" class="headerlink" title="2）查看新建的仓库（repOSitory）"></a>2）查看新建的仓库（repOSitory）</h6><ul>
+<li>可以回到github个人首页点击右侧的仓库区</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3snj6xqwfj30s70aqmzc.jpg" alt="mou icon"></p>
+<p>3）关联本地版本库与远程仓库（仅首次需要关联）</p>
+<pre><code>$ git remote add origin 后面跟上你的远程仓库的SSH地址
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6pwtotaj30s30fj41y.jpg" alt="SSH地址"></p>
+<p>4）本地版本库推动至远程</p>
+<pre><code>$ git push -u origin master
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6tyhqn6j30s30fj780.jpg" alt="完成效果"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/open-source/" rel="tag">#open source</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/12/伪元素的初解/" rel="next" title="::before与::after 伪元素的初解">
+                <i class="fa fa-chevron-left"></i> ::before与::after 伪元素的初解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/14/git版本库的创建与更新（初解）/"
+           data-title="git版本库初解 MacOS系统，其他系统仅作参考" data-url="http://yoursite.com/2016/05/14/git版本库的创建与更新（初解）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3synn3k61j30640643yg.jpg"
+               alt="Miles Xu" />
+          <p class="site-author-name" itemprop="name">Miles Xu</p>
+          <p class="site-description motion-element" itemprop="description">记录学习历程</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://xiaopxu.github.io" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装git"><span class="nav-number">1.</span> <span class="nav-text">一、安装git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-OS系统上直接安装x-code即可，其自带git"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. OS系统上直接安装x-code即可，其自带git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-其余系统请参考廖雪峰官方网站"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 其余系统请参考廖雪峰官方网站</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、本地创建版本库"><span class="nav-number">2.</span> <span class="nav-text">二、本地创建版本库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-本地新建版本库"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 本地新建版本库</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）新建版本库文件夹（名字随意）"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">1）新建版本库文件夹（名字随意）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）初始化版本库"><span class="nav-number">2.0.1.0.2.</span> <span class="nav-text">2）初始化版本库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-版本库的使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 版本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）工作区与暂存区"><span class="nav-number">2.0.2.0.1.</span> <span class="nav-text">1）工作区与暂存区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）管理修改工作"><span class="nav-number">2.0.2.0.2.</span> <span class="nav-text">2）管理修改工作</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、利用github远程托管版本库"><span class="nav-number">3.</span> <span class="nav-text">三、利用github远程托管版本库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-注册github账号并登陆"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 注册github账号并登陆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-获取本机的SSH公钥"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 获取本机的SSH公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）输入获取代码，回车直到出现图片所示图形为止"><span class="nav-number">3.0.2.0.1.</span> <span class="nav-text">1）输入获取代码，回车直到出现图片所示图形为止</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）输入编译代码"><span class="nav-number">3.0.2.0.2.</span> <span class="nav-text">2）输入编译代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3）出现SSH公钥后，将红框部分复制，并在下方输入-q，随后按下回车可以退出该窗口"><span class="nav-number">3.0.2.0.3.</span> <span class="nav-text">3）出现SSH公钥后，将红框部分复制，并在下方输入:q，随后按下回车可以退出该窗口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4）进入到github页面设置SSH公钥"><span class="nav-number">3.0.2.0.4.</span> <span class="nav-text">4）进入到github页面设置SSH公钥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-创建新的仓库"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 创建新的仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）创建新的仓库（repOSitory）"><span class="nav-number">3.0.3.0.1.</span> <span class="nav-text">1）创建新的仓库（repOSitory）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）查看新建的仓库（repOSitory）"><span class="nav-number">3.0.3.0.2.</span> <span class="nav-text">2）查看新建的仓库（repOSitory）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Miles Xu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xiaopxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
