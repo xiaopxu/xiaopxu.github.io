@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HTML," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -84,16 +84,31 @@
 
 
 
-<meta name="description" content="一、伪类与伪元素1.">
+<meta name="description" content="一、伪元素与伪类1. 常见的伪类:active      &amp;lt;!--向被激活的属性添加样式--&amp;gt;
+:hover         &amp;lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&amp;gt;
+:link         &amp;lt;!--向未被访问的链接添加样式--&amp;gt;
+:visited     &amp;lt;!--想已被访问的链接添加样式--&amp;gt;
+etc.
+2. 伪元素::before">
 <meta property="og:type" content="article">
-<meta property="og:title" content="伪元素的初解">
+<meta property="og:title" content="::before与::after  伪元素的初解">
 <meta property="og:url" content="http://yoursite.com/2016/05/12/伪元素的初解/index.html">
 <meta property="og:site_name" content="前端主基地">
-<meta property="og:description" content="一、伪类与伪元素1.">
-<meta property="og:updated_time" content="2016-05-12T12:56:08.000Z">
+<meta property="og:description" content="一、伪元素与伪类1. 常见的伪类:active      &amp;lt;!--向被激活的属性添加样式--&amp;gt;
+:hover         &amp;lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&amp;gt;
+:link         &amp;lt;!--向未被访问的链接添加样式--&amp;gt;
+:visited     &amp;lt;!--想已被访问的链接添加样式--&amp;gt;
+etc.
+2. 伪元素::before">
+<meta property="og:updated_time" content="2016-05-14T06:44:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="伪元素的初解">
-<meta name="twitter:description" content="一、伪类与伪元素1.">
+<meta name="twitter:title" content="::before与::after  伪元素的初解">
+<meta name="twitter:description" content="一、伪元素与伪类1. 常见的伪类:active      &amp;lt;!--向被激活的属性添加样式--&amp;gt;
+:hover         &amp;lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&amp;gt;
+:link         &amp;lt;!--向未被访问的链接添加样式--&amp;gt;
+:visited     &amp;lt;!--想已被访问的链接添加样式--&amp;gt;
+etc.
+2. 伪元素::before">
 
 
 
@@ -111,7 +126,7 @@
   };
 </script>
 
-  <title> 伪元素的初解 | 前端主基地 </title>
+  <title> ::before与::after  伪元素的初解 | 前端主基地 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -231,7 +246,7 @@
             
             
               
-                伪元素的初解
+                ::before与::after  伪元素的初解
               
             
           </h1>
@@ -278,7 +293,18 @@
       
 
       
-        <h1 id="一、伪类与伪元素"><a href="#一、伪类与伪元素" class="headerlink" title="一、伪类与伪元素"></a>一、伪类与伪元素</h1><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3>
+        <h2 id="一、伪元素与伪类"><a href="#一、伪元素与伪类" class="headerlink" title="一、伪元素与伪类"></a>一、伪元素与伪类</h2><h4 id="1-常见的伪类"><a href="#1-常见的伪类" class="headerlink" title="1. 常见的伪类"></a>1. 常见的伪类</h4><pre><code>:active      &lt;!--向被激活的属性添加样式--&gt;
+:hover         &lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&gt;
+:link         &lt;!--向未被访问的链接添加样式--&gt;
+:visited     &lt;!--想已被访问的链接添加样式--&gt;
+etc.
+</code></pre><h4 id="2-伪元素"><a href="#2-伪元素" class="headerlink" title="2. 伪元素"></a>2. 伪元素</h4><pre><code>::before
+::after
+::first-letter
+::first-line
+::selection
+</code></pre><h2 id="二、伪元素的效果"><a href="#二、伪元素的效果" class="headerlink" title="二、伪元素的效果"></a>二、伪元素的效果</h2><h4 id="1-before-after"><a href="#1-before-after" class="headerlink" title="1. before/after"></a>1. before/after</h4><p>来举个栗子</p>
+
       
     </div>
 
@@ -299,7 +325,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTML/" rel="tag">#HTML</a>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -341,7 +367,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/05/12/伪元素的初解/"
-           data-title="伪元素的初解" data-url="http://yoursite.com/2016/05/12/伪元素的初解/">
+           data-title="::before与::after  伪元素的初解" data-url="http://yoursite.com/2016/05/12/伪元素的初解/">
       </div>
     
   </div>
@@ -386,7 +412,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -396,7 +422,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -436,7 +462,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、伪类与伪元素"><span class="nav-number">1.</span> <span class="nav-text">一、伪类与伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、伪元素与伪类"><span class="nav-number">1.</span> <span class="nav-text">一、伪元素与伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-常见的伪类"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 常见的伪类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-伪元素"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 伪元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、伪元素的效果"><span class="nav-number">2.</span> <span class="nav-text">二、伪元素的效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-before-after"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. before/after</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
