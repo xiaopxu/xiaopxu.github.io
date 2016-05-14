@@ -85,13 +85,14 @@
 
 
 <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端主基地">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github仓库的创建与更新">
+<meta property="og:url" content="http://yoursite.com/2016/05/14/github仓库的创建与更新/index.html">
 <meta property="og:site_name" content="前端主基地">
 <meta property="og:description" content="记录学习历程">
+<meta property="og:updated_time" content="2016-05-14T08:15:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端主基地">
+<meta name="twitter:title" content="github仓库的创建与更新">
 <meta name="twitter:description" content="记录学习历程">
 
 
@@ -110,7 +111,7 @@
   };
 </script>
 
-  <title> 前端主基地 </title>
+  <title> github仓库的创建与更新 | 前端主基地 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,9 +132,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,9 +209,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -232,10 +231,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/05/14/github仓库的创建与更新/" itemprop="url">
-                  github仓库的创建与更新
-                </a>
+                github仓库的创建与更新
               
             
           </h1>
@@ -283,18 +279,19 @@
 
       
         
-          
-            
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -302,326 +299,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/12/伪元素的初解/" rel="next" title="::before与::after 伪元素的初解">
+                <i class="fa fa-chevron-left"></i> ::before与::after 伪元素的初解
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/05/12/伪元素的初解/" itemprop="url">
-                  ::before与::after 伪元素的初解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T19:40:20+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/12/伪元素的初解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/伪元素的初解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、伪元素与伪类"><a href="#一、伪元素与伪类" class="headerlink" title="一、伪元素与伪类"></a>一、伪元素与伪类</h2><h4 id="1-常见的伪类"><a href="#1-常见的伪类" class="headerlink" title="1. 常见的伪类"></a>1. 常见的伪类</h4><pre><code>:active      &lt;!--向被激活的属性添加样式--&gt;
-:hover         &lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&gt;
-:link         &lt;!--向未被访问的链接添加样式--&gt;
-:visited     &lt;!--想已被访问的链接添加样式--&gt;
-etc.
-</code></pre><h4 id="2-伪元素"><a href="#2-伪元素" class="headerlink" title="2. 伪元素"></a>2. 伪元素</h4><pre><code>::before       &lt;!--在元素之前添加内容--&gt;
-::after        &lt;!--在元素之后添加内容--&gt;
-::first-letter &lt;!--向文本的第一个字母添加特殊样式--&gt;
-::first-line   &lt;!--向文本的首行添加特殊样式--&gt;
-::selection    &lt;!--向选中的内容添加样式--&gt;
-</code></pre><hr>
-<h2 id="二、伪元素（这里只说-before和-after）"><a href="#二、伪元素（这里只说-before和-after）" class="headerlink" title="二、伪元素（这里只说::before和::after）"></a>二、伪元素（这里只说::before和::after）</h2><h4 id="1-了解"><a href="#1-了解" class="headerlink" title="1. 了解"></a>1. 了解</h4><ul>
-<li>创建一个虚假元素插入到元素的前或者后</li>
-<li>它不在文档流中，无法使用正常的DOM操作；</li>
-<li>它可以用css去操控</li>
-<li>在技术上来说，与添加一个span标签等价</li>
-<li>:before/:after写法也可以被浏览器解析，但是为了区别于伪类，还是建议用两个冒号书写</li>
-<li><strong>注意：因为其很难使用DOM操作，所以需要交互的部分不要使用伪元素去生成</strong></li>
-</ul>
-<h4 id="2-before-after基本语法"><a href="#2-before-after基本语法" class="headerlink" title="2. ::before/::after基本语法"></a>2. ::before/::after基本语法</h4><ul>
-<li>css样式中必须加入content属性</li>
-<li><p>content属性以表示该伪元素中的内容；若无内容则用空字符串表示</p>
-<pre><code>.p1::before{
-    content: &quot;我是一个:before&quot;;
-}
-.p1::after{
-    content: &quot;我是一个:after&quot;;
-}
-</code></pre></li>
-</ul>
-<h4 id="3-效果分析"><a href="#3-效果分析" class="headerlink" title="3. 效果分析"></a>3. 效果分析</h4><ul>
-<li>可以看到伪元素效果在技术上与span等价</li>
-<li>伪元素在浏览器检解析中的位置是在父元素<strong>内容</strong>的前后</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3uyyiye7hj30b4010mxd.jpg" alt=""></p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3uyyjcymqj307y07s3zb.jpg" alt=""><br>        <!--css样式--></p>
-<pre><code>*{
-    margin: 0;
-    padding: 0;
-}
-.p1::before{
-    content: &quot;我是一个:before&quot;;
-    background-color: skyblue;
-}
-.p1::after{
-    content: &quot;我是一个:after&quot;;
-    background-color: skyblue;
-}
-span{
-    background-color: skyblue;
-}
-p{
-    width: 400px;
-    background-color: pink;
-    text-align: center;
-}
-
-&lt;!--html--&gt;
-
-&lt;p class=&quot;p1&quot;&gt;我是一个p1&lt;/p&gt;
-&lt;p class=&quot;p2&quot;&gt;
-    &lt;span&gt;我是一个:before&lt;/span&gt;我是一个p2&lt;span&gt;我是一个:after&lt;/span&gt;
-&lt;/p&gt;
-</code></pre><h4 id="4-再来个例子"><a href="#4-再来个例子" class="headerlink" title="4. 再来个例子"></a>4. 再来个例子</h4><ul>
-<li>伪元素常配合定位来生成父级的某些附加部分，如下图米奇的耳朵</li>
-</ul>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3uyyjtr6ij305s05bjr8.jpg" alt=""><br>        <!--css部分--></p>
-<pre><code>*{
-    margin: 0;
-    padding: 0;
-}
-div{
-    width: 100px;
-    height: 100px;
-    border: 2px solid black;
-    border-radius: 50%;
-    position: relative;
-    left: 200px;
-    top: 200px;
-}
-div::before{
-    content: &quot;&quot;;
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-    left: -14px;
-    top: -24px;
-}
-div::after{
-    content: &quot;&quot;;
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-    left: 74px;
-    top: -24px;
-}
-
-&lt;!--html部分--&gt;
-
-&lt;div class=&quot;head&quot;&gt;&lt;/div&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/12/如何使用hexo搭建个人博客/" itemprop="url">
-                  如何使用hexo搭建个人博客（Mac OS系统，windows仅作参考）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T08:59:17+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/12/如何使用hexo搭建个人博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/如何使用hexo搭建个人博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3uwlxtikgj30yt0oz0xh.jpg" alt="思维导图"><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/12/如何使用hexo搭建个人博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -629,6 +332,14 @@ div::after{
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/14/github仓库的创建与更新/"
+           data-title="github仓库的创建与更新" data-url="http://yoursite.com/2016/05/14/github仓库的创建与更新/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -648,8 +359,17 @@ div::after{
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3synn3k61j30640643yg.jpg"
@@ -703,6 +423,17 @@ div::after{
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -806,6 +537,10 @@ div::after{
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
