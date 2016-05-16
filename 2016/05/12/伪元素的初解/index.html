@@ -25,7 +25,7 @@ etc.
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3uyyiye7hj30b4010mxd.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3uyyjcymqj307y07s3zb.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3uyyjtr6ij305s05bjr8.jpg">
-<meta property="og:updated_time" content="2016-05-14T09:59:44.000Z">
+<meta property="og:updated_time" content="2016-05-16T11:44:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="::before与::after 伪元素的初解">
 <meta name="twitter:description" content="一、伪元素与伪类1. 常见的伪类:active      &amp;lt;!--向被激活的属性添加样式--&amp;gt;
@@ -256,16 +256,15 @@ etc.
 </ul>
 <h4 id="2-before-after基本语法"><a href="#2-before-after基本语法" class="headerlink" title="2. ::before/::after基本语法"></a>2. ::before/::after基本语法</h4><ul>
 <li>css样式中必须加入content属性</li>
-<li><p>content属性以表示该伪元素中的内容；若无内容则用空字符串表示</p>
-<pre><code>.p1::before{
+<li>content属性以表示该伪元素中的内容；若无内容则用空字符串表示</li>
+</ul>
+<pre><code>.p1::before{    
     content: &quot;我是一个:before&quot;;
 }
-.p1::after{
+.p1::after{    
     content: &quot;我是一个:after&quot;;
 }
-</code></pre></li>
-</ul>
-<h4 id="3-效果分析"><a href="#3-效果分析" class="headerlink" title="3. 效果分析"></a>3. 效果分析</h4><ul>
+</code></pre><h4 id="3-效果分析"><a href="#3-效果分析" class="headerlink" title="3. 效果分析"></a>3. 效果分析</h4><ul>
 <li>可以看到伪元素效果在技术上与span等价</li>
 <li>伪元素在浏览器检解析中的位置是在父元素<strong>内容</strong>的前后</li>
 </ul>

@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3snj6xqwfj30s70aqmzc.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6pwtotaj30s30fj41y.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6tyhqn6j30s30fj780.jpg">
-<meta property="og:updated_time" content="2016-05-16T08:46:24.000Z">
+<meta property="og:updated_time" content="2016-05-16T11:47:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git版本库初解 MacOS系统，其他系统仅作参考">
 <meta name="twitter:description" content="思维导图">
@@ -228,18 +228,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3v6ipusu5j30rr0bx75v.jpg" alt="思维导图"><br><a id="more"></a></p>
-<h2 id="一、安装git"><a href="#一、安装git" class="headerlink" title="一、安装git"></a>一、安装git</h2><h4 id="1-OS系统上直接安装x-code即可，其自带git"><a href="#1-OS系统上直接安装x-code即可，其自带git" class="headerlink" title="1. OS系统上直接安装x-code即可，其自带git"></a>1. OS系统上直接安装x-code即可，其自带git</h4><h4 id="2-其余系统请参考廖雪峰官方网站"><a href="#2-其余系统请参考廖雪峰官方网站" class="headerlink" title="2. 其余系统请参考廖雪峰官方网站"></a>2. 其余系统请参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000" target="_blank" rel="external">廖雪峰官方网站</a></h4><hr>
-<h2 id="二、本地创建版本库"><a href="#二、本地创建版本库" class="headerlink" title="二、本地创建版本库"></a>二、本地创建版本库</h2><h4 id="1-本地新建版本库"><a href="#1-本地新建版本库" class="headerlink" title="1. 本地新建版本库"></a>1. 本地新建版本库</h4><p>1）新建版本库文件夹（名字随意）</p>
+<h2 id="一、安装git"><a href="#一、安装git" class="headerlink" title="一、安装git"></a>一、安装git</h2><h4 id="1-OS系统上直接安装x-code即可，其自带git"><a href="#1-OS系统上直接安装x-code即可，其自带git" class="headerlink" title="1. OS系统上直接安装x-code即可，其自带git"></a>1. OS系统上直接安装x-code即可，其自带git</h4><h4 id="2-其余系统请参考廖雪峰官方网站"><a href="#2-其余系统请参考廖雪峰官方网站" class="headerlink" title="2. 其余系统请参考廖雪峰官方网站"></a>2. 其余系统请参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000" target="_blank" rel="external">廖雪峰官方网站</a></h4><h2 id="二、本地创建版本库"><a href="#二、本地创建版本库" class="headerlink" title="二、本地创建版本库"></a>二、本地创建版本库</h2><h4 id="1-本地新建版本库"><a href="#1-本地新建版本库" class="headerlink" title="1. 本地新建版本库"></a>1. 本地新建版本库</h4><p>1）新建版本库文件夹（名字随意）</p>
 <p>2）初始化版本库</p>
 <ul>
-<li><p>初始化</p>
-<pre><code>$ git init
-</code></pre></li>
-<li><p>查看是否生成.git文件（即版本管理文件）；它是隐藏文件，用以下命令可查看</p>
-<pre><code>$ ls -ah
-</code></pre></li>
+<li>初始化</li>
 </ul>
-<h4 id="2-版本库的使用"><a href="#2-版本库的使用" class="headerlink" title="2. 版本库的使用"></a>2. 版本库的使用</h4><p>1）工作区与暂存区</p>
+<pre><code>$ git init
+</code></pre><ul>
+<li>查看是否生成.git文件（即版本管理文件）；它是隐藏文件，用以下命令可查看</li>
+</ul>
+<pre><code>$ ls -ah
+</code></pre><h4 id="2-版本库的使用"><a href="#2-版本库的使用" class="headerlink" title="2. 版本库的使用"></a>2. 版本库的使用</h4><p>1）工作区与暂存区</p>
 <ul>
 <li>工作区即你在本地的版本库文件夹</li>
 <li>暂存区（stage）即存在于.git文件之中，用来中转需要提交的文件</li>
@@ -248,18 +247,17 @@
 <p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3v6iqcbghj30cq06iaa8.jpg" alt="工作区与暂存区"></p>
 <p>2）管理修改工作</p>
 <ul>
-<li><p>工作区修改提交至暂存区</p>
+<li>工作区修改提交至暂存区</li>
+</ul>
 <pre><code>$ git add &apos;filename&apos;   //注意有多个文件需要提交的话重复该命令即可
 $ git add &apos;filename2&apos;  //类似于这种就是第二份文件
 $ git add .  //提交所有变动，简单粗暴
 &lt;!--注意：空文件夹无法提交，提交文件夹实质实在提交文件--&gt;
-</code></pre></li>
-<li><p>暂存区文件提交至git</p>
-<pre><code>$ git commit -m &apos;这是注释&apos;  //-m 是每次修改的备注
-</code></pre></li>
+</code></pre><ul>
+<li>暂存区文件提交至git</li>
 </ul>
-<hr>
-<h2 id="三、利用github远程托管版本库"><a href="#三、利用github远程托管版本库" class="headerlink" title="三、利用github远程托管版本库"></a>三、利用github远程托管版本库</h2><h4 id="1-注册github账号并登陆"><a href="#1-注册github账号并登陆" class="headerlink" title="1. 注册github账号并登陆"></a>1. 注册github账号并登陆</h4><h4 id="2-获取本机的SSH公钥"><a href="#2-获取本机的SSH公钥" class="headerlink" title="2. 获取本机的SSH公钥"></a>2. 获取本机的SSH公钥</h4><p>1）输入获取代码，回车直到出现图片所示图形为止</p>
+<pre><code>$ git commit -m &apos;这是注释&apos;  //-m 是每次修改的备注
+</code></pre><h2 id="三、利用github远程托管版本库"><a href="#三、利用github远程托管版本库" class="headerlink" title="三、利用github远程托管版本库"></a>三、利用github远程托管版本库</h2><h4 id="1-注册github账号并登陆"><a href="#1-注册github账号并登陆" class="headerlink" title="1. 注册github账号并登陆"></a>1. 注册github账号并登陆</h4><h4 id="2-获取本机的SSH公钥"><a href="#2-获取本机的SSH公钥" class="headerlink" title="2. 获取本机的SSH公钥"></a>2. 获取本机的SSH公钥</h4><p>1）输入获取代码，回车直到出现图片所示图形为止</p>
 <pre><code>$ ssh-keygen
 </code></pre><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3snj9kOSpj30gc0amgot.jpg" alt="获取公钥"></p>
 <p>2）输入编译代码</p>
@@ -302,7 +300,7 @@ $ git add .  //提交所有变动，简单粗暴
     
 <nav id="article-nav">
   
-    <a href="/2016/05/16/gulb使用初解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/16/gulp使用初解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
