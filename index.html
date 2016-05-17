@@ -308,89 +308,20 @@
       
         <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>$ npm install gulp-jade --save
 </code></pre><h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><ol>
-<li><p>在gulpfile.js中调用</p>
+<li>在gulpfile.js中调用</li>
+</ol>
 <pre><code>var jade = require(&apos;gulp-jade&apos;)
-</code></pre></li>
-<li><p>新建jade任务</p>
+</code></pre><ol>
+<li>新建jade任务</li>
+</ol>
 <pre><code>gulp.task(&apos;jade&apos;,function){
     gulp.src(&apos;view/*.jade&apos;)  //导入外部jade文件
     .pipe(jade())            //执行jade()方法
     .pipe(gulp.dest(&apos;desk/html/&apos;))    //导出在新文件夹中
 }
-</code></pre></li>
+</code></pre><ol>
 <li><p>终端执行编译，生成html文件（压缩形式）</p>
-<pre><code>$ gulp jade
-</code></pre></li>
-</ol>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ol>
-<li><p>html：&lt;开始标签&gt;+内容+&lt;/结束标签&gt;；jade：开始标签+空格+内容</p>
-<pre><code>&lt;h1 id=&quot;title&quot;&gt;我是h1&lt;/h1&gt;    //html
-h1#title 我是h1        //jade
-</code></pre></li>
-<li><p>嵌套结构使用Tab缩</p>
-<pre><code>body
-   h1#title 我是h1
-</code></pre></li>
-<li><p>标签内属性使用括号引入</p>
-<pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;  //html
-meta(charset=&apos;UTf-8&apos;)   //jade
-</code></pre></li>
-<li><p>id名：#id；类名：.class</p>
-<pre><code>&lt;h1 id=&quot;title&quot;&gt;&lt;/h1&gt;        //html
-&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;        //html
-h1#title    //jade
-div.box        //jade
-</code></pre></li>
-<li><p>单行注释：//</p>
-<pre><code>//我是注释
-</code></pre></li>
-<li><p><strong>模块引入</strong>：</p>
-<pre><code>include head.jade  //会在此处引入已经写好的其他jade模块内容
-</code></pre><p> <img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3yp95tuxqj303x02agli.jpg" alt="路径"></p>
-</li>
-</ol>
-<h3 id="完整举例："><a href="#完整举例：" class="headerlink" title="完整举例："></a>完整举例：</h3><pre><code>//html语言        
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 id=&quot;title&quot;&gt;我是h1&lt;/h1&gt;
-    &lt;div class=&quot;box&quot;&gt;
-        &lt;p&gt;我是p&lt;/p&gt;
-        &lt;ul&gt;
-            &lt;li&gt;我是&lt;span&gt;一个&lt;/span&gt;li&lt;/li&gt;
-            &lt;li&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-//jade言
-doctype
-html(lang=&quot;en&quot;)
-    head
-        meta(charset=&apos;UTf-8&apos;)
-        title Document
-    body
-        h1#title 我是h1
-        div.box
-            p 我是p
-            ul
-                li 我是        //此处嵌套写法可以关注一下
-                    span 一个
-                    | li    //竖杠来延续在li之中的span后追加内容
-                li
-                li
-
-//编译后
-&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta         charset=&quot;UTf-8&quot;&gt;&lt;title&gt;Document&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;title&quot;&gt;        我是h1&lt;/h1&gt;&lt;div class=&quot;box&quot;&gt;&lt;p&gt;我是p&lt;/p&gt;&lt;ul&gt;&lt;li&gt;我是&lt;span&gt;一个&lt;/        span&gt;li&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
-</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3yp95cb5gj30af08l74s.jpg" alt="浏览器编译"></p>
-
+<p> $ gulp jade</p>
       
     </div>
     
@@ -403,6 +334,10 @@ html(lang=&quot;en&quot;)
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/17/前端模板引擎jade/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
