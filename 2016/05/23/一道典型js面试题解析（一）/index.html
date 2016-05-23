@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f45mvkrzzqj307g034gll.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f45mvliillj307r03cdfw.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvjqgxej30ja1g1dni.jpg">
-<meta property="og:updated_time" content="2016-05-23T13:41:14.000Z">
+<meta property="og:updated_time" content="2016-05-23T13:46:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尝试解析js面试题（一）">
 <meta name="twitter:description" content="说明：这是一道比较典型的综合考察js中作用域、this指向、对象、解析顺序、运算符优先级等概念的综合性考题；话不多说，先上题；">
@@ -376,11 +376,11 @@ function fn1 (){
 fn1()
 var a = 2
 console.log(a) //2
-</code></pre><h4 id="4、getName"><a href="#4、getName" class="headerlink" title="4、getName();"></a>4、<code>getName();</code></h4><p>1）执行getName即是执行window.getName；所以执行结果同上题是1</p>
-<h4 id="5、new-Foo-getName"><a href="#5、new-Foo-getName" class="headerlink" title="5、new Foo.getName();"></a>5、<code>new Foo.getName();</code></h4><p>1）此处考察到了运算符优先级的问题，就题目所需来看，成员访问”.”&gt;new(带参数)&gt;函数调用”()”<strong>（注意，”()”分为函数调用及优先运算两种，优先级是不同的；原作者开始的解释就出现了错误）</strong></p>
+</code></pre><h4 id="4、getName-1"><a href="#4、getName-1" class="headerlink" title="4、getName(); //1"></a>4、<code>getName(); //1</code></h4><p>1）执行getName即是执行window.getName；所以执行结果同上题是1</p>
+<h4 id="5、new-Foo-getName-2"><a href="#5、new-Foo-getName-2" class="headerlink" title="5、new Foo.getName(); //2"></a>5、<code>new Foo.getName(); //2</code></h4><p>1）此处考察到了运算符优先级的问题，就题目所需来看，<code>成员访问&quot;.&quot;&gt;new(带参数)&gt;函数调用&quot;()&quot;</code><strong>（注意，”()”分为函数调用及优先运算两种，优先级是不同的；原作者开始的解释就出现了错误）</strong></p>
 <p>2）结果先执行foo.getName()，结果同第一题为2；而new 2不会有任何变化，因此这里的结果也是2</p>
-<h4 id="6、new-Foo-getName"><a href="#6、new-Foo-getName" class="headerlink" title="6、new Foo().getName();"></a>6、<code>new Foo().getName();</code></h4><p>1）从结果来看，应该理解成<code>(new Foo()).getName()</code>这样执行</p>
-<p>2）根据成员访问”.”&gt;new(带参数)&gt;函数调用”()”；成员访问优先执行，右侧是.getName()没问题</p>
+<h4 id="6、new-Foo-getName-3"><a href="#6、new-Foo-getName-3" class="headerlink" title="6、new Foo().getName(); //3"></a>6、<code>new Foo().getName(); //3</code></h4><p>1）从结果来看，应该理解成<code>(new Foo()).getName()</code>这样执行</p>
+<p>2）根据<code>成员访问&quot;.&quot;&gt;new(带参数)&gt;函数调用&quot;()&quot;</code>；成员访问优先执行，右侧是.getName()没问题</p>
 <p>3）左侧分为两种可能：一种是new(带参数)，即<code>(new Foo())</code>；此处结果是构建一个对象</p>
 <p>4）另一种是先执行<code>Foo()</code>函数后再<code>new</code>；此处结果是1</p>
 <p>5）因为new(带参数)&gt;函数调用”()”，所以是执行的<code>(new Foo())</code>，此对象Foo()自身没有getName这个属性，所以会向上追溯其原型链上的属性，即在此处执行了3；因此结果是3</p>
@@ -400,7 +400,7 @@ new F() //F {}
 <p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f45mvliillj307r03cdfw.jpg" alt=""></p>
 <p>原题中，返回的是this，而this在构造函数中本来就代表当前实例化对象，遂最终Foo函数返回实例化对象。</p>
 </blockquote>
-<h4 id="7、new-new-Foo-getName"><a href="#7、new-new-Foo-getName" class="headerlink" title="7、new new Foo().getName();"></a>7、<code>new new Foo().getName();</code></h4><p>1）这题我其实是懵逼的（懵逼脸😳）</p>
+<h4 id="7、new-new-Foo-getName-3"><a href="#7、new-new-Foo-getName-3" class="headerlink" title="7、new new Foo().getName(); //3"></a>7、<code>new new Foo().getName(); //3</code></h4><p>1）这题我其实是懵逼的（懵逼脸😳）</p>
 <p>2）求高手指教了 <em> (:з」∠)</em></p>
 <p>还是贴下原作者解释，感觉有点不对</p>
 <blockquote>
