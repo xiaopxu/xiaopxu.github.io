@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016 | 世界树</title>
+  <title>尝试解析js面试题（二） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="世界树">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尝试解析js面试题（二）">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/尝试解析js面试题（二）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="记录学习历程">
+<meta property="og:description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
+<meta property="og:updated_time" content="2016-05-23T15:05:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界树">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:title" content="尝试解析js面试题（二）">
+<meta name="twitter:description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -278,297 +279,438 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-尝试解析js面试题（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/05/23/尝试解析js面试题（二）/" class="article-date">
+  	<time datetime="2016-05-23T14:02:41.000Z" itemprop="datePublished">2016-05-23</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      尝试解析js面试题（二）
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/23/尝试解析js面试题（二）/" class="archive-article-date">
-  	<time datetime="2016-05-23T14:02:41.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/23/尝试解析js面试题（二）/">尝试解析js面试题（二）</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）<br><a id="more"></a></p>
+<pre><code>//第1题
+(function () {  
+    return typeof arguments;  
+})();  
+A. &quot;object&quot;
+B. &quot;array&quot;
+C. &quot;arguments&quot;
+D. &quot;undefined&quot;
 
-        <div class="article-info info-on-right">
-          
-          
+//第2题
+var f = function g() {
+    return 23;
+};
+typeof g();
+A. &quot;number&quot;
+B. &quot;undefined&quot;
+C. &quot;function&quot;
+D. Eorror
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+//第3题
+(function (x) {
+    delete x;
+    return x;
+})(1);
+A. 1
+B. null
+C. undefined
+D. Error
+
+//第4题
+var y = 1,
+x = y = typeof x;
+x;
+A. 1
+B. &quot;number&quot;
+C. undefined
+D. &quot;undefined&quot;
+
+//第5题
+(function f(f) {
+    return typeof f();
+})(function () {
+    return 1;
+});
+A. &quot;number&quot;
+B. &quot;undefined&quot;
+C. &quot;function&quot;
+D. Error
+
+//第6题
+var foo = {
+bar: function () {
+    return this.baz;
+},
+    baz: 1
+};
+(function () {
+    return typeof arguments[0]();
+})(foo.bar);
+A. &quot;undefined&quot;
+B. &quot;object&quot;
+C. &quot;number&quot;
+D. &quot;function&quot;
+
+//第7题
+var foo = {
+bar: function () {
+    return this.baz;
+},
+    baz: 1
+};
+typeof (f = foo.bar)();
+A. &quot;undefined&quot;
+B. &quot;object&quot;
+C. &quot;number&quot;
+D. &quot;function&quot;
+
+//第8题
+var f = (function f() {
+return &quot;1&quot;;
+}, function g() {
+    return 2;
+})();
+typeof f;
+A. &quot;string&quot;
+B. &quot;number&quot;
+C. &quot;function&quot;
+D. &quot;undefined&quot;
+
+//第9题
+var x = 1;
+if (function f() {}) {
+    x += typeof f;
+}
+x;
+A. 1
+B. &quot;1function&quot;
+C. &quot;1undefined&quot;
+D. NaN
+
+//第10题
+var x = [typeof x, typeof y][1];
+typeof typeof x;
+A. &quot;number&quot;
+B. &quot;string&quot;
+C. &quot;undefined&quot;
+D. &quot;object&quot;
+
+//第11题
+(function (foo) {
+    return typeof foo.bar;
+})({
+    foo: {
+        bar: 1
+    }
+});
+A、“undefined” 
+B、“object” 
+C、“number” 
+D、Error
+
+//第12题
+(function f() {
+    function f() {
+        return 1;
+    }
+    return f();
+    function f() {
+        return 2;
+    }
+})();
+A、1 
+B、2 
+C、Error (e.g. “Too much recursion”) 
+D、undefined
+
+//第13题
+function f() {
+    return f;
+}
+new f() instanceof f;
+A、true 
+B、false
+
+//第14题
+with (function(x, undefined){}) length;
+A、1 
+B、2 
+C、undefined 
+D、Error
+</code></pre><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>ps：很多举例引自<a href="http://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰官方网站js教程</a></p>
+<pre><code>//第1题  答案A
+(function () {  
+    return typeof arguments;  
+})();  
+A. &quot;object&quot;
+B. &quot;array&quot;
+C. &quot;arguments&quot;
+D. &quot;undefined&quot;
+</code></pre><p>arguments是函数免费赠送的一个关键字，功能类似数组，但实际上是一个对象，因此这题答案是A</p>
+<pre><code>//举个arguments的例子
+function foo(x) {
+    alert(x); // 10
+    for (var i=0; i&lt;arguments.length; i++) {
+        alert(arguments[i]); // 10, 20, 30
+    }
+}
+foo(10, 20, 30);
+</code></pre><hr>
+<pre><code>//第2题  答案D
+var f = function g() {
+    return 23;
+};
+typeof g();
+A. &quot;number&quot;
+B. &quot;undefined&quot;
+C. &quot;function&quot;
+D. Eorror
+</code></pre><p>1）typeof用来查看数据类型的（一共就6种）；看到typeof，应该就可以排除掉C</p>
+<p>2）注意此处查询的是函数g()的类型，而实际上g()并未被定义，所以会报错；所以答案是D</p>
+<pre><code>//调试比对结果
+var a = function fn1 (){}
+typeof a  //&quot;function&quot;
+typeof fn1()  //Uncaught ReferenceError: fn1 is not defined(…)
+</code></pre><hr>
+<pre><code>//第3题  答案A
+(function (x) {
+    delete x;
+    return x;
+})(1);
+A. 1
+B. null
+C. undefined
+D. Error
+</code></pre><p>1）delete是用来删除对象的属性的，它不能够删除函数中传递的参数</p>
+<p>2）所以这里<code>delete x</code>这句其实并没有什么软用，函数正常执行传参及返回参数；因此答案是A</p>
+<pre><code>//给个delete使用方法的举例
+var xiaoming = {
+    name: &apos;小明&apos;
+};
+xiaoming.age; // undefined
+xiaoming.age = 18; // 新增一个age属性
+xiaoming.age; // 18
+delete xiaoming.age; // 删除age属性
+xiaoming.age; // undefined
+delete xiaoming[&apos;name&apos;]; // 删除name属性
+xiaoming.name; // undefined
+delete xiaoming.school; // 删除一个不存在的school属性也不会报错
+</code></pre><hr>
+<pre><code>//第4题  答案D
+var y = 1,
+x = y = typeof x;
+x;
+A. 1
+B. &quot;number&quot;
+C. undefined
+D. &quot;undefined&quot;
+</code></pre><p>1）赋值运算符由右向左运算</p>
+<p>2）首先typeof x因为x未声明，因此结果是”undifined”<strong>（注意：typeof的结果都是以字符串形式给出的）</strong></p>
+<p>3）接着”undifined”被接连赋值给y与x，所以答案是D</p>
+<hr>
+<pre><code>//第5题  答案A
+(function f(f) {
+    return typeof f();
+})(function () {
+    return 1;
+});
+A. &quot;number&quot;
+B. &quot;undefined&quot;
+C. &quot;function&quot;
+D. Error
+</code></pre><hr>
+<pre><code>//第6题  答案A
+var foo = {
+bar: function () {
+    return this.baz;
+},
+    baz: 1
+};
+(function () {
+    return typeof arguments[0]();
+})(foo.bar);
+A. &quot;undefined&quot;
+B. &quot;object&quot;
+C. &quot;number&quot;
+D. &quot;function&quot;
+</code></pre><hr>
+<pre><code>//第7题  答案A
+var foo = {
+bar: function () {
+    return this.baz;
+},
+    baz: 1
+};
+typeof (f = foo.bar)();
+A. &quot;undefined&quot;
+B. &quot;object&quot;
+C. &quot;number&quot;
+D. &quot;function&quot;
+</code></pre><hr>
+<pre><code>//第8题  答案B
+var f = (function f() {
+return &quot;1&quot;;
+}, function g() {
+    return 2;
+})();
+typeof f;
+A. &quot;string&quot;
+B. &quot;number&quot;
+C. &quot;function&quot;
+D. &quot;undefined&quot;
+</code></pre><hr>
+<pre><code>//第9题  答案C
+var x = 1;
+if (function f() {}) {
+    x += typeof f;
+}
+x;
+A. 1
+B. &quot;1function&quot;
+C. &quot;1undefined&quot;
+D. NaN
+</code></pre><hr>
+<pre><code>//第10题  答案B
+var x = [typeof x, typeof y][1];
+typeof typeof x;
+A. &quot;number&quot;
+B. &quot;string&quot;
+C. &quot;undefined&quot;
+D. &quot;object&quot;
+</code></pre><hr>
+<pre><code>//第11题  答案A
+(function (foo) {
+    return typeof foo.bar;
+})({
+    foo: {
+        bar: 1
+    }
+});
+A、“undefined” 
+B、“object” 
+C、“number” 
+D、Error
+</code></pre><hr>
+<pre><code>//第12题  答案B
+(function f() {
+    function f() {
+        return 1;
+    }
+    return f();
+    function f() {
+        return 2;
+    }
+})();
+A、1 
+B、2 
+C、Error (e.g. “Too much recursion”) 
+D、undefined
+</code></pre><hr>
+<pre><code>//第13题  答案B
+function f() {
+    return f;
+}
+new f() instanceof f;
+A、true 
+B、false
+</code></pre><hr>
+<pre><code>//第14题  答案B
+with (function(x, undefined){}) length;
+A、1 
+B、2 
+C、undefined 
+D、Error
+</code></pre>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/23/一道典型js面试题解析（一）/" class="archive-article-date">
-  	<time datetime="2016-05-23T08:22:32.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/23/一道典型js面试题解析（一）/">尝试解析js面试题（一）</a>
-    </h1>
   
+    <a href="/2016/05/23/一道典型js面试题解析（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">尝试解析js面试题（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li></ul>
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/18/bootstrap学习（二）/" class="archive-article-date">
-  	<time datetime="2016-05-18T08:31:34.000Z" itemprop="datePublished">May 18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/18/bootstrap学习（二）/">bootstrap学习（二）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/18/bootstrap学习（一）/" class="archive-article-date">
-  	<time datetime="2016-05-18T03:21:53.000Z" itemprop="datePublished">May 18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/18/bootstrap学习（一）/">bootstrap学习（一）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li></ul>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="尝试解析js面试题（二）" data-title="尝试解析js面试题（二）" data-url="http://yoursite.com/2016/05/23/尝试解析js面试题（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/17/前端模板引擎jade/" class="archive-article-date">
-  	<time datetime="2016-05-17T12:27:37.000Z" itemprop="datePublished">May 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/17/前端模板引擎jade/">前端模板引擎jade学习（一）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jade/">jade</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/16/gulp使用初解/" class="archive-article-date">
-  	<time datetime="2016-05-16T08:26:19.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/16/gulp使用初解/">gulp使用初解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/14/git版本库的创建与更新（初解）/" class="archive-article-date">
-  	<time datetime="2016-05-14T08:15:29.000Z" itemprop="datePublished">May 14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/14/git版本库的创建与更新（初解）/">git版本库初解 MacOS系统，其他系统仅作参考</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/12/伪元素的初解/" class="archive-article-date">
-  	<time datetime="2016-05-12T11:40:20.000Z" itemprop="datePublished">May 12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/12/伪元素的初解/">::before与::after 伪元素的初解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/12/如何使用hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2016-05-12T00:59:17.000Z" itemprop="datePublished">May 12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/12/如何使用hexo搭建个人博客/">如何使用hexo搭建个人博客（Mac OS系统，windows仅作参考）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 </div>
       <footer id="footer">
@@ -594,8 +736,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
