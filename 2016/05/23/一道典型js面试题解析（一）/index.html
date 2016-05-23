@@ -4,63 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>bootstrap学习（二） | 世界树</title>
+  <title>尝试解析js面试题（一） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、表单基础表单
-对于基础表单，Bootstrap并未对其做太多定制性效果设计，仅仅对表单内的fieldset/legeng/label标签进行定制
-主要是想这些元素的margin、padding、border等进行了细化
-
-.form-control类
-
-宽度100%
-设置了一个浅灰色的边框（#ccc）
-具有4px的圆角
-设置阴影效果，元素得到焦点时，阴影变化
-设置了placeholder的颜色">
+  <meta name="description" content="说明：这是一道比较典型的综合考察js中作用域、this指向、对象、解析顺序、运算符优先级等概念的综合性考题；话不多说，先上题；">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bootstrap学习（二）">
-<meta property="og:url" content="http://yoursite.com/2016/05/18/bootstrap学习（二）/index.html">
+<meta property="og:title" content="尝试解析js面试题（一）">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/一道典型js面试题解析（一）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="一、表单基础表单
-对于基础表单，Bootstrap并未对其做太多定制性效果设计，仅仅对表单内的fieldset/legeng/label标签进行定制
-主要是想这些元素的margin、padding、border等进行了细化
-
-.form-control类
-
-宽度100%
-设置了一个浅灰色的边框（#ccc）
-具有4px的圆角
-设置阴影效果，元素得到焦点时，阴影变化
-设置了placeholder的颜色">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zuusu2u3j30z6039jrk.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuutf1rxj304j01k744.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuvwgt8j30ob03174h.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuusl5aaj305a03eq2y.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zv1niheyj30gq038mx7.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zv1nz87zj30as03o74f.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuwl5z7j30hi02gmx6.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuuvrm1jj30a9017wei.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zv1pqf2lj30d501e0ss.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuutwmc9j30a401d0sr.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zv1pw1gcj30yi039mxl.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zv1qhigrj30dv021748.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zv1r495lj30zu04t74j.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuu6swuj30xc08y0t7.jpg">
-<meta property="og:updated_time" content="2016-05-18T13:39:08.000Z">
+<meta property="og:description" content="说明：这是一道比较典型的综合考察js中作用域、this指向、对象、解析顺序、运算符优先级等概念的综合性考题；话不多说，先上题；">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvkaw6qj306003aq2w.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f45mvkrzzqj307g034gll.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f45mvliillj307r03cdfw.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvjqgxej30ja1g1dni.jpg">
+<meta property="og:updated_time" content="2016-05-23T13:41:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bootstrap学习（二）">
-<meta name="twitter:description" content="一、表单基础表单
-对于基础表单，Bootstrap并未对其做太多定制性效果设计，仅仅对表单内的fieldset/legeng/label标签进行定制
-主要是想这些元素的margin、padding、border等进行了细化
-
-.form-control类
-
-宽度100%
-设置了一个浅灰色的边框（#ccc）
-具有4px的圆角
-设置阴影效果，元素得到焦点时，阴影变化
-设置了placeholder的颜色">
-<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zuusu2u3j30z6039jrk.jpg">
+<meta name="twitter:title" content="尝试解析js面试题（一）">
+<meta name="twitter:description" content="说明：这是一道比较典型的综合考察js中作用域、this指向、对象、解析顺序、运算符优先级等概念的综合性考题；话不多说，先上题；">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvkaw6qj306003aq2w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -324,11 +284,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-bootstrap学习（二）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-一道典型js面试题解析（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/18/bootstrap学习（二）/" class="article-date">
-  	<time datetime="2016-05-18T08:31:34.000Z" itemprop="datePublished">2016-05-18</time>
+      <a href="/2016/05/23/一道典型js面试题解析（一）/" class="article-date">
+  	<time datetime="2016-05-23T08:22:32.000Z" itemprop="datePublished">2016-05-23</time>
 </a>
     </div>
   
@@ -341,7 +301,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      bootstrap学习（二）
+      尝试解析js面试题（一）
     </h1>
   
 
@@ -350,7 +310,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li></ul>
 	</div>
 
         
@@ -361,129 +321,97 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、表单"><a href="#一、表单" class="headerlink" title="一、表单"></a>一、表单</h2><h3 id="基础表单"><a href="#基础表单" class="headerlink" title="基础表单"></a>基础表单</h3><blockquote>
-<p>对于基础表单，Bootstrap并未对其做太多定制性效果设计，仅仅对表单内的<code>fieldset</code>/<code>legeng</code>/<code>label</code>标签进行定制</p>
-<p>主要是想这些元素的margin、padding、border等进行了细化</p>
-</blockquote>
-<p><code>.form-control</code>类</p>
-<ul>
-<li>宽度100%</li>
-<li>设置了一个浅灰色的边框（#ccc）</li>
-<li>具有4px的圆角</li>
-<li>设置阴影效果，元素得到焦点时，阴影变化</li>
-<li>设置了placeholder的颜色（#999）</li>
-</ul>
-<a id="more"></a>
-<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zuusu2u3j30z6039jrk.jpg" alt="form-control"></p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuutf1rxj304j01k744.jpg" alt="原始焦点"></p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuvwgt8j30ob03174h.jpg" alt="form-control焦点"></p>
-<p><code>role</code>属性</p>
-<ul>
-<li><code>role=&quot;form&quot;</code>告诉辅助设备这是个表单</li>
-<li><code>role=&quot;button&quot;</code>告诉设备，这是个按钮，可以点击</li>
-</ul>
-<p><code>.form-group</code>：产生一个margin-bottom=15px效果</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuusl5aaj305a03eq2y.jpg" alt="form-group"></p>
-<h3 id="form表单元素"><a href="#form表单元素" class="headerlink" title="form表单元素"></a>form表单元素</h3><h5 id="input表单"><a href="#input表单" class="headerlink" title="input表单"></a>input表单</h5><p>使用时必须声明type类型</p>
-<p>多用<code>form-control</code></p>
-<p><code>.input-sm</code></p>
-<p><code>.input-lg</code></p>
-<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zv1niheyj30gq038mx7.jpg" alt="表单大小"></p>
-<p><code>disabled</code></p>
-<p><code>placeholder</code></p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zv1nz87zj30as03o74f.jpg" alt="disabled/placeholder"></p>
-<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><p>多用<code>form-control</code></p>
-<p><code>.moutiple</code>：多行选择</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuwl5z7j30hi02gmx6.jpg" alt="多行"></p>
-<h5 id="textarea"><a href="#textarea" class="headerlink" title="textarea"></a>textarea</h5><p>设置<code>rows</code>，<code>cols</code>可定宽高，但如果添加了<code>form-control</code>类名，则不必设置<code>cols</code></p>
-<h5 id="单选框、多选框"><a href="#单选框、多选框" class="headerlink" title="单选框、多选框"></a>单选框、多选框</h5><p>日常最头痛的控件与文字对齐问题，在bootstrap中无需关心</p>
-<p><code>.checkbox-inline</code>：复选框水平排列</p>
-<p><code>.radio-inline</code>：单选框水平排列</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuuvrm1jj30a9017wei.jpg" alt="原始样式"><br><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zv1pqf2lj30d501e0ss.jpg" alt="内联样式"></p>
-<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>bootstrap中按钮全都用button按钮实现</p>
-<blockquote>
-<p>Bootstrap框架首先通过基础类名“.btn”定义了一个基础的按钮风格，然后通过“.btn-default”定义了一个默认的按钮风格。</p>
-<p>默认按钮的风格就是在基础按钮的风格的基础上修改了按钮的<strong>背景颜色</strong>、<strong>边框颜色</strong>和<strong>文本颜色</strong>。</p>
-</blockquote>
-<p>.btn：默认按钮（同样支持a标签及input标签中的submit）</p>
-<button class="“bin" btn-default”="" type="“button”">默认按钮</button>
+        <p>说明：这是一道比较典型的综合考察js中<code>作用域</code>、<code>this指向</code>、<code>对象</code>、<code>解析顺序</code>、<code>运算符优先级</code>等概念的综合性考题；话不多说，先上题；<br><a id="more"></a></p>
+<h3 id="原作者解析：小小沧海（博客园）"><a href="#原作者解析：小小沧海（博客园）" class="headerlink" title="原作者解析：小小沧海（博客园）"></a>原作者解析：<a href="http://www.cnblogs.com/xxcanghai/p/5189353.html" target="_blank" rel="external">小小沧海（博客园）</a></h3><pre><code>function Foo() {
+    getName = function () {
+        alert (1); 
+    };
+    return this;
+}
+Foo.getName = function () {
+    alert (2);
+};
+Foo.prototype.getName = function () {
+    alert (3);
+};
+var getName = function () {
+    alert (4);
+};
+function getName() {
+    alert (5);
+}
 
-<p><code>.btn-primary</code>：主要按钮</p>
-<p><code>.btn-success</code>：成功按钮</p>
-<p><code>.btn-warning</code>：警告按钮</p>
-<p><code>.btn-danger</code>：危险按钮</p>
-<p><code>.btn-link</code>：链接按钮</p>
-<pre><code>&lt;button class=&quot;btn-primary&quot;&gt;登录&lt;/button&gt;
-&lt;button class=&quot;btn-success&quot;&gt;登录&lt;/button&gt;
-&lt;button class=&quot;btn-warning&quot;&gt;登录&lt;/button&gt;
-&lt;button class=&quot;btn-danger&quot;&gt;登录&lt;/button&gt;
-&lt;button class=&quot;btn-link&quot;&gt;登录&lt;/button&gt;
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zuutwmc9j30a401d0sr.jpg" alt="按钮颜色"></p>
-<h5 id="按钮大小"><a href="#按钮大小" class="headerlink" title="按钮大小"></a>按钮大小</h5><p><code>.btn-lg</code>：大型按钮</p>
-<p><code>.btn-sm</code>：小型按钮</p>
-<p><code>.btn-xs</code>：超小型按钮</p>
-<p><code>.btn-block</code>：块状按钮</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zv1pw1gcj30yi039mxl.jpg" alt="按钮大小"></p>
-<h5 id="内联表单"><a href="#内联表单" class="headerlink" title="内联表单"></a>内联表单</h5><p><code>.form-inline</code></p>
-<pre><code>&lt;form action=&quot;&quot; class=&quot;form-inline&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;用户名/邮箱&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;密码&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;checkbox&quot;&gt;
-        &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt;记住密码&lt;/label&gt;
-    &lt;/div&gt;
-    &lt;button class=&quot;btn btn-primary&quot;&gt;提交&lt;/button&gt;
-   &lt;/form&gt;
-</code></pre><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zv1qhigrj30dv021748.jpg" alt="内联表单"></p>
-<h5 id="横向表单"><a href="#横向表单" class="headerlink" title="横向表单"></a>横向表单</h5><p><code>.form-horizontal</code>配合栅格系统</p>
-<pre><code>&lt;form action=&quot;&quot; class=&quot;horiaontal&quot; role=&quot;form&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label for=&quot;user&quot; class=&quot;col-md-1 control-label&quot;&gt;用户名&lt;/label&gt;
-        &lt;div class=&quot;col-md-11&quot;&gt;
-            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;user&quot; placeholder=&quot;请输入用户名&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label for=&quot;password&quot; class=&quot;col-md-1 control-label&quot;&gt;密码&lt;/label&gt;
-        &lt;div class=&quot;col-md-11&quot;&gt;
-            &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;password&quot; placeholder=&quot;请输入密码&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;div class=&quot;col-md-offset-1 col-md-11&quot;&gt;
-            &lt;div class=&quot;checkbox&quot;&gt;
-                &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt;记住密码&lt;/label&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-     &lt;div class=&quot;form-group&quot;&gt;
-        &lt;div class=&quot;col-md-offset-1 col-md-11&quot;&gt;
-            &lt;button class=&quot;btn btn-primary&quot;&gt;登录&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/form&gt;
-</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zv1r495lj30zu04t74j.jpg" alt="横向表单"></p>
-<h3 id="综合demo"><a href="#综合demo" class="headerlink" title="综合demo"></a>综合demo</h3><pre><code>&lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;page-header&quot;&gt;
-        &lt;h2&gt;登录页面&lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label for=&quot;username&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt;用户名：&lt;/label&gt;
-        &lt;input id=&quot;username&quot; name=&quot;username&quot; class=&quot;form-control&quot; placeholder=&quot;用户名/邮箱&quot; type=&quot;text&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label for=&quot;password&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-lock&quot;&gt;&lt;/span&gt;密码：&lt;/label&gt;
-        &lt;input id=&quot;password&quot; name=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;密码&quot; type=&quot;text&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;input type=&quot;checkbox&quot;&gt;记住我
-    &lt;/div&gt;
-    &lt;button class=&quot;btn btn-primary&quot;&gt;提交&lt;/button&gt;
-&lt;/div&gt;
-</code></pre><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zuuu6swuj30xc08y0t7.jpg" alt="综合demo"></p>
+//请写出以下输出结果：
+Foo.getName();
+getName();
+Foo().getName();
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
+</code></pre><h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><h4 id="1、Foo-getName-2"><a href="#1、Foo-getName-2" class="headerlink" title="1、Foo.getName(); //2"></a>1、<code>Foo.getName(); //2</code></h4><p>1）结果执行的是Foo对象的一个叫做getName()的属性，而1、4、5中的getName都是作为函数存在，所以可以排除1、4、5</p>
+<p>2）剩下两个中，2是Foo对象自身的属性，3是Foo对象原型链上的属性，而自身属性的优先级高于原型链上的属性，所以执行结果是2</p>
+<h4 id="2、getName-4"><a href="#2、getName-4" class="headerlink" title="2、getName(); //4"></a>2、<code>getName(); //4</code></h4><p>1）结果执行的是getName函数，而题目代码中有3个相关函数，分别是1、4、5</p>
+<p>2）1中的getName是定义在Foo函数中的函数，由于Foo尚未执行，因此它没有暴露出来，无法被外部调用，可以排除</p>
+<p>3）4和5都可以被正常调用，关键在调用先后问题</p>
+<p>4）由于5是普通函数（优先级最高），4是匿名函数；js解析时会将5提前至最上方优先解析，而后面解析的4会将5覆盖，所以执行结果是4</p>
+<h4 id="3、Foo-getName-1"><a href="#3、Foo-getName-1" class="headerlink" title="3、Foo().getName(); //1"></a>3、<code>Foo().getName(); //1</code></h4><p>1）结果执行的是Foo函数，Foo函数中有个返回值是this；this被普通函数调用后，指向的对象一定是window对象，所以此处的结果已经可以解析为window.getName()，即调用getName()函数</p>
+<blockquote>
+<p>2）由于window.getName()已经被修改为1，所以执行结果是1（？？）</p>
+</blockquote>
+<p>上面那句话是原作者的解释，此处还没理解透彻为什么1没有被2覆盖；下面举个例子对比下：</p>
+<pre><code>//第一个例子是题目的类型，不明为何上边fn1的结果未被覆盖？？
+function fn1 (){
+    a = 1;
+    return this
+}
+fn1()
+var a = 2
+console.log(fn1().a) //1
+
+//第二个例子是我理解的会正常出现覆盖的情况
+function fn1 (){
+    a = 1;
+}
+fn1()
+var a = 2
+console.log(a) //2
+</code></pre><h4 id="4、getName"><a href="#4、getName" class="headerlink" title="4、getName();"></a>4、<code>getName();</code></h4><p>1）执行getName即是执行window.getName；所以执行结果同上题是1</p>
+<h4 id="5、new-Foo-getName"><a href="#5、new-Foo-getName" class="headerlink" title="5、new Foo.getName();"></a>5、<code>new Foo.getName();</code></h4><p>1）此处考察到了运算符优先级的问题，就题目所需来看，成员访问”.”&gt;new(带参数)&gt;函数调用”()”<strong>（注意，”()”分为函数调用及优先运算两种，优先级是不同的；原作者开始的解释就出现了错误）</strong></p>
+<p>2）结果先执行foo.getName()，结果同第一题为2；而new 2不会有任何变化，因此这里的结果也是2</p>
+<h4 id="6、new-Foo-getName"><a href="#6、new-Foo-getName" class="headerlink" title="6、new Foo().getName();"></a>6、<code>new Foo().getName();</code></h4><p>1）从结果来看，应该理解成<code>(new Foo()).getName()</code>这样执行</p>
+<p>2）根据成员访问”.”&gt;new(带参数)&gt;函数调用”()”；成员访问优先执行，右侧是.getName()没问题</p>
+<p>3）左侧分为两种可能：一种是new(带参数)，即<code>(new Foo())</code>；此处结果是构建一个对象</p>
+<p>4）另一种是先执行<code>Foo()</code>函数后再<code>new</code>；此处结果是1</p>
+<p>5）因为new(带参数)&gt;函数调用”()”，所以是执行的<code>(new Foo())</code>，此对象Foo()自身没有getName这个属性，所以会向上追溯其原型链上的属性，即在此处执行了3；因此结果是3</p>
+<pre><code>//这里就是模拟new Foo()的结果
+function F(){return this}
+new F() //F {}
+</code></pre><p>关于这点，原作者有解释如下（还是可以理解的）：</p>
+<blockquote>
+<p>构造函数的返回值</p>
+<p>在传统语言中，构造函数不应该有返回值，实际执行的返回值就是此构造函数的实例化对象。</p>
+<p>而在js中构造函数可以有返回值也可以没有。</p>
+<p>1、没有返回值则按照其他语言一样返回实例化对象。</p>
+<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvkaw6qj306003aq2w.jpg" alt=""></p>
+<p>2、若有返回值则检查其返回值是否为引用类型。如果是非引用类型，如基本类型（string,number,boolean,null,undefined）则与无返回值相同，实际返回其实例化对象。</p>
+<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f45mvkrzzqj307g034gll.jpg" alt=""></p>
+<p>3、若返回值是引用类型，则实际返回值为这个引用类型。</p>
+<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f45mvliillj307r03cdfw.jpg" alt=""></p>
+<p>原题中，返回的是this，而this在构造函数中本来就代表当前实例化对象，遂最终Foo函数返回实例化对象。</p>
+</blockquote>
+<h4 id="7、new-new-Foo-getName"><a href="#7、new-new-Foo-getName" class="headerlink" title="7、new new Foo().getName();"></a>7、<code>new new Foo().getName();</code></h4><p>1）这题我其实是懵逼的（懵逼脸😳）</p>
+<p>2）求高手指教了 <em> (:з」∠)</em></p>
+<p>还是贴下原作者解释，感觉有点不对</p>
+<blockquote>
+<p>第七问, new new Foo().getName(); 同样是运算符优先级问题。</p>
+<p>最终实际执行为：</p>
+<p><code>new ((new Foo()).getName)();</code></p>
+<p>先初始化Foo的实例化对象，然后将其原型上的getName函数作为构造函数再次new。</p>
+<p>遂最终结果为3</p>
+</blockquote>
+<hr>
+<h4 id="最后，引用一张原作者提供的相当实用的运算符优先级表格（鼓掌👏）"><a href="#最后，引用一张原作者提供的相当实用的运算符优先级表格（鼓掌👏）" class="headerlink" title="最后，引用一张原作者提供的相当实用的运算符优先级表格（鼓掌👏）"></a>最后，引用一张原作者提供的相当实用的运算符优先级表格（鼓掌👏）</h4><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f45mvjqgxej30ja1g1dni.jpg" alt="运算符优先级--博客园"></p>
 
       
     </div>
@@ -493,18 +421,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/05/23/一道典型js面试题解析（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          尝试解析js面试题（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/18/bootstrap学习（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">bootstrap学习（一）</div>
+    <a href="/2016/05/18/bootstrap学习（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">bootstrap学习（二）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -539,7 +458,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="bootstrap学习（二）" data-title="bootstrap学习（二）" data-url="http://yoursite.com/2016/05/18/bootstrap学习（二）/"></div>
+	<div class="ds-thread" data-thread-key="一道典型js面试题解析（一）" data-title="尝试解析js面试题（一）" data-url="http://yoursite.com/2016/05/23/一道典型js面试题解析（一）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
