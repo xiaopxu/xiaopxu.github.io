@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>尝试解析js面试题（二） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
+  <meta name="description" content="说明：一共有13题（原本14题，最后一道什么鬼，嫌弃不要了），覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尝试解析js面试题（二）">
 <meta property="og:url" content="http://yoursite.com/2016/05/23/尝试解析js面试题（二）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
-<meta property="og:updated_time" content="2016-05-23T15:13:43.000Z">
+<meta property="og:description" content="说明：一共有13题（原本14题，最后一道什么鬼，嫌弃不要了），覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
+<meta property="og:updated_time" content="2016-05-24T15:18:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尝试解析js面试题（二）">
-<meta name="twitter:description" content="说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
+<meta name="twitter:description" content="说明：一共有13题（原本14题，最后一道什么鬼，嫌弃不要了），覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -78,7 +78,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -316,7 +316,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>说明：一共有14题，覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）<br><a id="more"></a></p>
+        <p>说明：一共有13题（原本14题，最后一道什么鬼，嫌弃不要了），覆盖面比较广，都属于比较烧脑的类型，各种神坑；不过对于夯实js理论基础帮助非常大；看看都能做对几题吧（🙈😏）<br><a id="more"></a></p>
 <pre><code>//第1题
 (function () {  
     return typeof arguments;  
@@ -467,7 +467,8 @@ A、1
 B、2 
 C、undefined 
 D、Error
-</code></pre><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>ps：很多举例引自<a href="http://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰官方网站js教程</a></p>
+</code></pre><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>ps1：很多举例引自<a href="http://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰官方网站js教程</a></p>
+<p>ps2：这套题在知乎上也有相关的解析可以参考<a href="https://www.zhihu.com/question/34079683" target="_blank" rel="external">如何理解这14道JavaScript 题–知乎</a></p>
 <pre><code>//第1题  答案A
 (function () {  
     return typeof arguments;  
@@ -495,12 +496,18 @@ A. &quot;number&quot;
 B. &quot;undefined&quot;
 C. &quot;function&quot;
 D. Eorror
-</code></pre><p>1）typeof用来查看数据类型的（一共就6种）；看到typeof，应该就可以排除掉C</p>
-<p>2）注意此处查询的是函数g()的类型，而实际上g()并未被定义，所以会报错；所以答案是D</p>
+</code></pre><p>1）函数定义有两种方式，一种是普通函数直接声明<code>function a () {return b;};</code>（这种在解析时会被优先处理）</p>
+<p>2）另外一种就是匿名函数 <code>var a = function () {returnb;};</code>，这种也被称为表达式类型，因为右边部分已经成为一个表达式的一部分，无法再被正常访问</p>
+<p>3）题目中的情况按照第二种方法理解，作为表达式的g函数已经无法被访问</p>
+<p>4）注意，题目是typeof g()，不是typeof g；这两者的区别在于函数调用”()”的运算优先级高于typeof，所以先解析g()的情况下，js直接报错，而不是给出”undefiend”；因此答案是D</p>
 <pre><code>//调试比对结果
+//typeof a是function这个没有问题
+//typeof fn1是得到undefined
+//typeof fn1()是错误报警形式出现
 var a = function fn1 (){}
 typeof a  //&quot;function&quot;
 typeof fn1()  //Uncaught ReferenceError: fn1 is not defined(…)
+typeof fn1  //&quot;undefined&quot;
 </code></pre><hr>
 <pre><code>//第3题  答案A
 (function (x) {
@@ -548,12 +555,23 @@ A. &quot;number&quot;
 B. &quot;undefined&quot;
 C. &quot;function&quot;
 D. Error
-</code></pre><hr>
+</code></pre><p>1）这道题可以拆分一下，首先是函数本体</p>
+<pre><code>//此处是一个函数，传入了一个叫f的参数，这个参数还是另外一个函数
+//随后在本体函数内部，将这个参数所代表的函数执行了一下，并返回其typeof结果
+(function f(f) {
+    return typeof f();  //这里的f是指参数函数
+})();
+</code></pre><p>2）其次是参数</p>
+<pre><code>function () {
+    return 1;
+}
+</code></pre><p>3）所以现在就很清晰了，按照运算符优先级，首先参数函数执行f()结果为1；typeof 1结果为”number”；所以结果是A</p>
+<hr>
 <pre><code>//第6题  答案A
 var foo = {
-bar: function () {
-    return this.baz;
-},
+    bar: function () {
+        return this.baz;
+    },
     baz: 1
 };
 (function () {
@@ -563,7 +581,18 @@ A. &quot;undefined&quot;
 B. &quot;object&quot;
 C. &quot;number&quot;
 D. &quot;function&quot;
-</code></pre><hr>
+</code></pre><p>1）先说下我的理解，这题考的是this的指向问题</p>
+<p>2）this指向的四种情况，其中只有作为方法调用或者apply/call强行指向的情况下才可能指向原函数</p>
+<p>3）在作为普通函数调用的时候是指向window的，所以这里的<code>argument[0]()</code>的调用形式我认为是这种调用</p>
+<p>4）也就是说this.baz就是window.baz，当然是”undefined”，所以答案是A</p>
+<h5 id="this对我来说还是比较绕的一个东西，就再贴上别人的解析看看吧"><a href="#this对我来说还是比较绕的一个东西，就再贴上别人的解析看看吧" class="headerlink" title="this对我来说还是比较绕的一个东西，就再贴上别人的解析看看吧"></a>this对我来说还是比较绕的一个东西，就再贴上别人的解析看看吧</h5><p>这个分析总的结果就是foo.bar中的this指向的是arguments(此处懵逼脸😳)</p>
+<blockquote>
+<p>为什么是”undefined”？.<br>我们必须要知道this运算符是怎么工作的.</p>
+<p>JS语言精粹总结的很精炼:<br>1 纯粹的函数调用<br>2 作为对象方法的调用<br>3 作为构造函数调用<br>4 apply调用</p>
+<p>我们看看题目是属于那种环境？<br>在arguments<a href="">0</a>中执行了一个方法,arguments[0]就是foo.bar方法<br>注意:这在foo.bar中的this是没有绑定到foo</p>
+<p>虽然 foo.bar 传递给了函数，但是真正执行的时候，函数 bar 的上下文环境是 arguments ，并不是 foo<br>arguemnts[0] 可以理解为 arguments.0（不过写代码就不要这样了，语法会错误的），所以这样看来，上下文环境是 arguemnts 就没问题了,所以在执行baz的时候自然this就是window了,window 上没有baz属性,返回的就是undefined, typeof调用的话就转换成”undefined”了</p>
+</blockquote>
+<hr>
 <pre><code>//第7题  答案A
 var foo = {
 bar: function () {
@@ -576,10 +605,16 @@ A. &quot;undefined&quot;
 B. &quot;object&quot;
 C. &quot;number&quot;
 D. &quot;function&quot;
-</code></pre><hr>
+</code></pre><p>1）这题还是在考察this的指向问题</p>
+<p>2）foo.bar的确是方法的调用方式，但是在赋值给f的时候这个this的指向还是被改变了</p>
+<p>3）把调用函数拆分一下就清楚了</p>
+<pre><code>var f = foo.bar
+typeof f();
+</code></pre><p>4）这样在调用形式上又是普通函数调用，this指向window；同上题，答案是A</p>
+<hr>
 <pre><code>//第8题  答案B
 var f = (function f() {
-return &quot;1&quot;;
+    return &quot;1&quot;;
 }, function g() {
     return 2;
 })();
@@ -588,7 +623,17 @@ A. &quot;string&quot;
 B. &quot;number&quot;
 C. &quot;function&quot;
 D. &quot;undefined&quot;
-</code></pre><hr>
+</code></pre><p>1）此处是一个立即执行函数，但是在前面的包含函数的圆括号（命名空间）中出现了2个函数，并用逗号分隔</p>
+<p>2）这种形式，最终圆括号返回的是最后的一个值</p>
+<pre><code>//来看一个例子
+var a = (1,2,3,4)
+console.log(a) //4
+
+//题目中的情况，最终将后面的函数返回
+var f = (function f() {return &quot;1&quot;;}, function g() {return 2;})
+console.log(f) //function g() {return 2;}
+</code></pre><p>3）所以，同样的此处会返回第二个函数出来执行，得到的最终返回值是2并赋值给f；所以答案是B</p>
+<hr>
 <pre><code>//第9题  答案C
 var x = 1;
 if (function f() {}) {
@@ -599,6 +644,18 @@ A. 1
 B. &quot;1function&quot;
 C. &quot;1undefined&quot;
 D. NaN
+</code></pre><p>1）首先在if判定中，函数f的布尔值是true；所以判定条件成立，可以执行if中的语句</p>
+<p>2）函数f在正常声明的情况下，typeof f应该是”function”</p>
+<p>3）但是题目中f函数只是if的判定条件，没有经过声明；所以typeof f返回”undefined”，所以答案是C</p>
+<pre><code>//单独声明的情况下，f是函数类型
+function f(){}
+typeof f //&quot;function&quot;
+
+//但题目中f作为一个if中的判定条件存在，未得到声明
+if(function f(){}){
+
+}
+typeof f //&quot;undefined&quot;
 </code></pre><hr>
 <pre><code>//第10题  答案B
 var x = [typeof x, typeof y][1];
@@ -607,7 +664,9 @@ A. &quot;number&quot;
 B. &quot;string&quot;
 C. &quot;undefined&quot;
 D. &quot;object&quot;
-</code></pre><hr>
+</code></pre><p>1）数组中获取坐标1的是typeof y，因为y未声明，所以返回”undefined”并赋值给x</p>
+<p>2）所以typeof x就是typeof “undefined”返回”string”，typeof “string”依然返回”string”；所以答案是B</p>
+<hr>
 <pre><code>//第11题  答案A
 (function (foo) {
     return typeof foo.bar;
@@ -616,11 +675,22 @@ D. &quot;object&quot;
         bar: 1
     }
 });
-A、“undefined” 
-B、“object” 
-C、“number” 
+A、&quot;undefined&quot;
+B、&quot;object&quot;
+C、&quot;number&quot;
 D、Error
-</code></pre><hr>
+</code></pre><p>1）又是一个立即执行的匿名函数，首先拆分一下</p>
+<pre><code>var a = { foo:{ bar:1 } }
+(function (foo) { return typeof foo.bar; })(a);
+</code></pre><p>2）再简化</p>
+<pre><code>var a = { foo:{ bar:1 } }
+var foo = a;
+typeof foo.bar
+</code></pre><p>3）再简化，用a将foo替代掉</p>
+<pre><code>var a = { foo:{ bar:1 } }
+typeof a.bar
+</code></pre><p>现在就清楚了，无法直接通过a访问bar属性，只有通过a.foo.bar才成立，所以答案是A </p>
+<h5 id="ps：这个思路是看到的别人的解析，但是总觉得简化函数的第二步存在问题（var-foo-a这步）"><a href="#ps：这个思路是看到的别人的解析，但是总觉得简化函数的第二步存在问题（var-foo-a这步）" class="headerlink" title="ps：这个思路是看到的别人的解析，但是总觉得简化函数的第二步存在问题（var foo = a这步）"></a>ps：这个思路是看到的别人的解析，但是总觉得简化函数的第二步存在问题（var foo = a这步）</h5><hr>
 <pre><code>//第12题  答案B
 (function f() {
     function f() {
@@ -635,7 +705,10 @@ A、1
 B、2 
 C、Error (e.g. “Too much recursion”) 
 D、undefined
-</code></pre><hr>
+</code></pre><p>1）形式类似于第8题，中间多了个return</p>
+<p>2）正常来说，return会导致跳出函数，所以后边的语句不会执行</p>
+<p>3）但是，此处因为两个函数都是普通声明的函数，会被优先解析，所以第二个函数是在return前执行的；所以答案还是B</p>
+<hr>
 <pre><code>//第13题  答案B
 function f() {
     return f;
@@ -643,14 +716,51 @@ function f() {
 new f() instanceof f;
 A、true 
 B、false
-</code></pre><hr>
-<pre><code>//第14题  答案B
-with (function(x, undefined){}) length;
-A、1 
-B、2 
-C、undefined 
-D、Error
-</code></pre>
+</code></pre><p>1）首先，instanceof是用来检测原型的，如果是原型返回true，否则返回false</p>
+<p>2）此处函数f中return了一个返回值f，导致new出来的东西与原来期望的实例化对象已经不是一个东西了，所以答案是false</p>
+<pre><code>//如果这里返回的是this或者不定义返回值（默认返回一个this）
+function f() {
+    return this;
+}
+new f() instanceof f; //true
+
+//题目中return了f后的结果
+function f() {
+    return f;
+}
+new f() instanceof f; //false
+</code></pre><p>3）再说的详细一些，引用一篇看到的解释：<a href="http://www.cnblogs.com/xxcanghai/p/5189353.html" target="_blank" rel="external">小小沧海–第六问处对于new的解释</a></p>
+<blockquote>
+<p>1、没有返回值则按照其他语言一样返回实例化对象。</p>
+<p>2、若有返回值则检查其返回值是否为引用类型。如果是非引用类型，如基本类型（string,number,boolean,null,undefined）则与无返回值相同，实际返回其实例化对象。</p>
+<p>3、若返回值是引用类型，则实际返回值为这个引用类型。</p>
+</blockquote>
+<pre><code>//对比调试
+//首先没有返回值，没有问题
+function a(){}
+new a() //a {}
+new a() instanceof a //true
+
+//这是返回非引用类型，也是true
+function a(){return true}
+new a() //a {}
+new a() instanceof a //true
+
+//这是返回引用类型，这个就是false了，因为new出来的东西被返回值覆盖
+function a(){return {a:1}}
+new a() //Object {a: 1}
+new a() instanceof a //false
+
+//类似的，题目中应该也是引用的类型
+function f() {return f;}
+new f() //function f(){return f} 
+    //关键就是这里了
+    //new出来的东西被返回值强行指向原本的函数本身，而不是其实例化对象，当然原型也无从谈起
+new f() instanceof f; //false
+</code></pre><p>也就是说，调试结果显示；只有new出来的是原函数的实例化对象，这个原型才会指向原函数（这是我的理解😳）</p>
+<p>妈蛋总算写完，累死宝宝了😂</p>
+<p>新手上路，请各位大神指导</p>
+
       
     </div>
     
