@@ -312,8 +312,7 @@
 <p>在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式</p>
 </blockquote>
 <p>以上的引用来自《JavaScript语言精粹》中关于函数调用的部分</p>
-<p>说的非常清楚；this参数随着<strong>调用方式</strong>的不同而指向不同的对象</p>
-<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3>
+<p>说的非常清楚；this参数随着<strong>调用方式</strong>的不同而指向不同的对象<br>
       
     </div>
     
@@ -326,6 +325,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/25/JavaScript中this指向对象的理解/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -370,71 +373,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用<br>(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法</p>
-<p>因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染</p>
-<p>首先看看函数定义的两种方法：<br>函数声明：</p>
-<pre><code>function fn1(){
-    console.log(&apos;函数声明&apos;)
-}
-</code></pre><p>函数表达式：</p>
-<pre><code>var fn1 = function(){
-    console.log(&apos;函数表达式&apos;)
-}
-</code></pre><p>函数包括四个部分，function关键字、函数名称、圆括号、花括号</p>
-<p>其中函数名称可以被省略，此时函数被称为<strong>匿名函数</strong>；</p>
-<p>当这种写法出现在表达式部分,又被成为函数表达式</p>
-<blockquote>
-<p>函数可以出现在任何允许表达式出现的地方—-《JavaScript语言精粹》</p>
-</blockquote>
-<p>这两种定义函数的方法有什么区别呢？看看以下的对比：</p>
-<pre><code>//函数调用放置在声明函数之前，函数能够被正常调用
-fn1()
-function fn1(){
-    console.log(&apos;函数声明&apos;)
-}  //函数声明
-
-//函数调用放置在函数表达式之前，结果出现报警
-fn1()
-var fn1 = function(){
-    console.log(&apos;函数表达式&apos;)
-}  //Uncaught TypeError: fn1 is not a function(…)
-</code></pre><p>根据JavaScript的解析方式，先扫描一遍整个js部分，将函数声明提升至最前方（函数声明是一等公民），而函数表达式则只有在解析到其所在位置时才会被解析</p>
-<p>根据这个情况，函数声明实际上实在其函数调用前解析的，所以它能够被正常调用</p>
-<p>再看看下面的对比：</p>
-<pre><code>//函数声明后跟一对圆括号无法调用
-function fn1(){
-    console.log(&apos;函数声明&apos;)
-}()  //Uncaught SyntaxError: Unexpected token ((…)
-
-//函数表达式后跟一对圆括号可以立即调用
-var fn1 = function(){
-    console.log(&apos;函数表达式&apos;)
-}()  //函数表达式
-</code></pre><p>由以上对比可以知道，函数以表达式情况出现时，可以以后面加一对圆括号的方式立即调用</p>
-<p>所以我们常见的这种立即调用的方法，实际上可以看成将匿名函数转换成了函数表达式，随后立即调用</p>
-<pre><code>//以下是调试台的调试结果，利用这些运算符可以将函数转换成表达式形式
-//这些可以实现立即调用，而剩余符号会导致报错
-//不过其余的运算符会出现将函数返回值进行运算的情况，所以常用括号
-
-(function(){console.log(&apos;OK&apos;)})()
-//OK
-//undefined
-
-+function(){console.log(&apos;OK&apos;)}()
-//OK
-//NaN
-
--function(){console.log(&apos;OK&apos;)}()
-//OK
-//NaN
-
-~function(){console.log(&apos;OK&apos;)}()
-//OK
-//-1
-
-!function(){console.log(&apos;OK&apos;)}()
-//OK
-//true
-</code></pre>
+<p>因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染<br>
       
     </div>
     
@@ -447,6 +386,10 @@ var fn1 = function(){
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/25/对js中立即执行函数调用原理的理解/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

@@ -7,27 +7,18 @@
   <title>对js中立即执行函数调用原理的理解 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法
-因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染
-首先看看函数定义的两种方法：函数声明：
-function fn1(){
-    console.lo">
+因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对js中立即执行函数调用原理的理解">
 <meta property="og:url" content="http://yoursite.com/2016/05/25/对js中立即执行函数调用原理的理解/index.html">
 <meta property="og:site_name" content="世界树">
 <meta property="og:description" content="最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法
-因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染
-首先看看函数定义的两种方法：函数声明：
-function fn1(){
-    console.lo">
-<meta property="og:updated_time" content="2016-05-25T14:44:47.000Z">
+因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染">
+<meta property="og:updated_time" content="2016-05-25T14:45:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对js中立即执行函数调用原理的理解">
 <meta name="twitter:description" content="最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法
-因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染
-首先看看函数定义的两种方法：函数声明：
-function fn1(){
-    console.lo">
+因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -329,8 +320,7 @@ function fn1(){
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用<br>(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法</p>
-<p>因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染</p>
-<p>首先看看函数定义的两种方法：<br>函数声明：</p>
+<p>因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染<br><a id="more"></a><br>首先看看函数定义的两种方法：<br>函数声明：</p>
 <pre><code>function fn1(){
     console.log(&apos;函数声明&apos;)
 }
