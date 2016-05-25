@@ -4,17 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: git | 世界树</title>
+  <title>JavaScript中this指向对象的理解 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="世界树">
-<meta property="og:url" content="http://yoursite.com/tags/git/index.html">
+  <meta name="description" content="JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳
+
+除了声明时定义的形式参数，每个函数接受两个附加的参数：this和arguments，参数this在面向对象编程中非常重要，它的值取决于调用的模式。
+在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式
+
+以上的引用来自《Ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中this指向对象的理解">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/JavaScript中this指向对象的理解/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="记录学习历程">
+<meta property="og:description" content="JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳
+
+除了声明时定义的形式参数，每个函数接受两个附加的参数：this和arguments，参数this在面向对象编程中非常重要，它的值取决于调用的模式。
+在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式
+
+以上的引用来自《Ja">
+<meta property="og:updated_time" content="2016-05-25T14:44:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界树">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:title" content="JavaScript中this指向对象的理解">
+<meta name="twitter:description" content="JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳
+
+除了声明时定义的形式参数，每个函数接受两个附加的参数：this和arguments，参数this在面向对象编程中非常重要，它的值取决于调用的模式。
+在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式
+
+以上的引用来自《Ja">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -278,53 +294,115 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-JavaScript中this指向对象的理解" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/14/git版本库的创建与更新（初解）/" class="archive-article-date">
-  	<time datetime="2016-05-14T08:15:29.000Z" itemprop="datePublished">May 14</time>
+    <div class="article-meta">
+      <a href="/2016/05/25/JavaScript中this指向对象的理解/" class="article-date">
+  	<time datetime="2016-05-25T14:14:41.000Z" itemprop="datePublished">2016-05-25</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/14/git版本库的创建与更新（初解）/">git版本库初解 MacOS系统，其他系统仅作参考</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript中this指向对象的理解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳</p>
+<blockquote>
+<p>除了声明时定义的形式参数，每个函数接受两个附加的参数：this和arguments，参数this在面向对象编程中非常重要，它的值取决于调用的模式。</p>
+<p>在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式</p>
+</blockquote>
+<p>以上的引用来自《JavaScript语言精粹》中关于函数调用的部分</p>
+<p>说的非常清楚；this参数随着<strong>调用方式</strong>的不同而指向不同的对象</p>
+<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/25/对js中立即执行函数调用原理的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对js中立即执行函数调用原理的理解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript中this指向对象的理解" data-title="JavaScript中this指向对象的理解" data-url="http://yoursite.com/2016/05/25/JavaScript中this指向对象的理解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -350,9 +428,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}

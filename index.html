@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -118,7 +118,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/bootstrap/" style="font-size: 20px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 20px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/bootstrap/" style="font-size: 20px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 20px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a>
 					</div>
 				</section>
 				
@@ -279,6 +279,190 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-JavaScript中this指向对象的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/25/JavaScript中this指向对象的理解/" class="article-date">
+  	<time datetime="2016-05-25T14:14:41.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/25/JavaScript中this指向对象的理解/">JavaScript中this指向对象的理解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳</p>
+<blockquote>
+<p>除了声明时定义的形式参数，每个函数接受两个附加的参数：this和arguments，参数this在面向对象编程中非常重要，它的值取决于调用的模式。</p>
+<p>在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式</p>
+</blockquote>
+<p>以上的引用来自《JavaScript语言精粹》中关于函数调用的部分</p>
+<p>说的非常清楚；this参数随着<strong>调用方式</strong>的不同而指向不同的对象</p>
+<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-对js中立即执行函数调用原理的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/25/对js中立即执行函数调用原理的理解/" class="article-date">
+  	<time datetime="2016-05-25T11:12:57.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/25/对js中立即执行函数调用原理的理解/">对js中立即执行函数调用原理的理解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在很多面试题中看到(function(){})()形式的函数调用方法，这里就参照网上的资料来试着解析一下为什么可以调用<br>(function(){})()、(function(){}())这样的调用形式，是立即执行函数的常用写法</p>
+<p>因为这种写法可以形成命名空间，使变量私有化，所以多被用来防止变量污染</p>
+<p>首先看看函数定义的两种方法：<br>函数声明：</p>
+<pre><code>function fn1(){
+    console.log(&apos;函数声明&apos;)
+}
+</code></pre><p>函数表达式：</p>
+<pre><code>var fn1 = function(){
+    console.log(&apos;函数表达式&apos;)
+}
+</code></pre><p>函数包括四个部分，function关键字、函数名称、圆括号、花括号</p>
+<p>其中函数名称可以被省略，此时函数被称为<strong>匿名函数</strong>；</p>
+<p>当这种写法出现在表达式部分,又被成为函数表达式</p>
+<blockquote>
+<p>函数可以出现在任何允许表达式出现的地方—-《JavaScript语言精粹》</p>
+</blockquote>
+<p>这两种定义函数的方法有什么区别呢？看看以下的对比：</p>
+<pre><code>//函数调用放置在声明函数之前，函数能够被正常调用
+fn1()
+function fn1(){
+    console.log(&apos;函数声明&apos;)
+}  //函数声明
+
+//函数调用放置在函数表达式之前，结果出现报警
+fn1()
+var fn1 = function(){
+    console.log(&apos;函数表达式&apos;)
+}  //Uncaught TypeError: fn1 is not a function(…)
+</code></pre><p>根据JavaScript的解析方式，先扫描一遍整个js部分，将函数声明提升至最前方（函数声明是一等公民），而函数表达式则只有在解析到其所在位置时才会被解析</p>
+<p>根据这个情况，函数声明实际上实在其函数调用前解析的，所以它能够被正常调用</p>
+<p>再看看下面的对比：</p>
+<pre><code>//函数声明后跟一对圆括号无法调用
+function fn1(){
+    console.log(&apos;函数声明&apos;)
+}()  //Uncaught SyntaxError: Unexpected token ((…)
+
+//函数表达式后跟一对圆括号可以立即调用
+var fn1 = function(){
+    console.log(&apos;函数表达式&apos;)
+}()  //函数表达式
+</code></pre><p>由以上对比可以知道，函数以表达式情况出现时，可以以后面加一对圆括号的方式立即调用</p>
+<p>所以我们常见的这种立即调用的方法，实际上可以看成将匿名函数转换成了函数表达式，随后立即调用</p>
+<pre><code>//以下是调试台的调试结果，利用这些运算符可以将函数转换成表达式形式
+//这些可以实现立即调用，而剩余符号会导致报错
+//不过其余的运算符会出现将函数返回值进行运算的情况，所以常用括号
+
+(function(){console.log(&apos;OK&apos;)})()
+//OK
+//undefined
+
++function(){console.log(&apos;OK&apos;)}()
+//OK
+//NaN
+
+-function(){console.log(&apos;OK&apos;)}()
+//OK
+//NaN
+
+~function(){console.log(&apos;OK&apos;)}()
+//OK
+//-1
+
+!function(){console.log(&apos;OK&apos;)}()
+//OK
+//true
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-尝试解析js面试题（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -803,66 +987,10 @@ etc.
 
 
   
-    <article id="post-如何使用hexo搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/05/12/如何使用hexo搭建个人博客/" class="article-date">
-  	<time datetime="2016-05-12T00:59:17.000Z" itemprop="datePublished">2016-05-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/12/如何使用hexo搭建个人博客/">如何使用hexo搭建个人博客（Mac OS系统，windows仅作参考）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3uwlxtikgj30yt0oz0xh.jpg" alt="思维导图"><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/12/如何使用hexo搭建个人博客/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
