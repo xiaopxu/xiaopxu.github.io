@@ -22,7 +22,7 @@
 在JavaScript中一共有四种调用模式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式
 
 以上的引用来自《Ja">
-<meta property="og:updated_time" content="2016-05-25T14:46:12.000Z">
+<meta property="og:updated_time" content="2016-05-27T13:29:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中this指向对象的理解">
 <meta name="twitter:description" content="JavaScript函数中的this参数一直是初学者难以理解的东西，这里就this在不同调用方式中的指向问题做一下归纳
@@ -93,7 +93,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -134,7 +134,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/bootstrap/" style="font-size: 20px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 20px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/bootstrap/" style="font-size: 15px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 15px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a>
 					</div>
 				</section>
 				
@@ -338,7 +338,79 @@
 </blockquote>
 <p>以上的引用来自《JavaScript语言精粹》中关于函数调用的部分</p>
 <p>说的非常清楚；this参数随着<strong>调用方式</strong>的不同而指向不同的对象<br><a id="more"></a></p>
-<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3>
+<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3><blockquote>
+<p>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象</p>
+</blockquote>
+<pre><code>var fn1 = {
+    name : &quot;function&quot;,
+    getName : function () {
+        console.log(this.name) 
+    }
+}
+
+fn1.getName()  //function
+</code></pre><h3 id="函数调用模式"><a href="#函数调用模式" class="headerlink" title="函数调用模式"></a>函数调用模式</h3><blockquote>
+<p>当一个函数并非作为一个对象的属性时，它就是被当做函数来调用的；这种情况下this指向全局对象</p>
+</blockquote>
+<pre><code>var fn1 = {
+    name : &quot;function&quot;,
+    getName : function () {
+        var inner = function () {
+            console.log(this.name) 
+        }
+        inner()
+    }
+}
+
+fn1.getName()  //&quot;&quot;  (因为window.name = &quot;&quot;)
+</code></pre><p>以上情况是语言设计上的一个错误，这使得方法无法利用内部函数来帮助工作</p>
+<p>不过有一个比较简单的方法可以解决此类错位：<br>1）将关键字this赋值给另一个变量，使用新的变量来规避这种设定<br>2）<code>var that = this;</code></p>
+<pre><code>var fn1 = {
+    name : &quot;function&quot;,
+    getName : function () {
+        var that = this;    //使用新的变量来访问this
+        var inner = function () {
+            console.log(that.name)   //此处用that访问属性
+        }
+        inner()
+    }
+}
+
+fn1.getName()  //function
+</code></pre><h3 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h3><blockquote>
+<p>如果一个函数前面带上new来调用，那么背地里将会创建一个连接到该函数的prototype成员的新对象，同时this会被绑定到那个新对象上</p>
+<p>如果穿件的目的就是希望结合new前缀来调用，那它就被称为构造器函数。按照约定，它们保存在以大写格式命名的变量里</p>
+</blockquote>
+<pre><code>function fn1 () {
+    this.name = &quot;function&quot;;
+    this.getName = function () {
+        console.log(this.name);
+    } 
+}
+
+var NewFunc = new fn1();  //此处的NewFunc首字母按照约定大写
+
+NewFunc.getName();  //function
+</code></pre><p>这部分牵扯到的构造函数、原型等原理比较复杂，我也还没有彻底理解，就不在这里多说了😳</p>
+<h3 id="Apply调用模式"><a href="#Apply调用模式" class="headerlink" title="Apply调用模式"></a>Apply调用模式</h3><blockquote>
+<p>apply方法让我们构建一个参数数组传递给调用函数。它也允许我们选择this的值。apply方法接受两个参数，第一个是要绑定给this的值，第二个就是一个参数数组</p>
+</blockquote>
+<pre><code>//这个例子我们上面看过
+//如果用inner()调用，最终结果是this指向window，打印出空字符串&quot;&quot;
+var fn1 = {
+    name : &quot;function&quot;,
+    getName : function () {
+        var inner = function () {
+            console.log(this.name) 
+        }
+        inner.apply(fn1)  //用apply方法将this强行指向外部函数fn1
+    }
+}
+
+fn1.getName()  //function
+</code></pre><p>这个例子是上面函数调用中的例子，当时我们用的是函数调用模式<code>inner()</code></p>
+<p>现在我们在调用时用<code>inner.apply(fn1)</code>，强行将this指向fn1，结果就变成了我们想要的function</p>
+
       
     </div>
     
@@ -346,6 +418,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/05/27/JavaScript获取字符串中出现次数最多的字母及其次数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JavaScript获取字符串中出现次数最多的字母及其次数
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/25/对js中立即执行函数调用原理的理解/" id="article-nav-older" class="article-nav-link-wrap">
