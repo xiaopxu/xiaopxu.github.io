@@ -18,7 +18,7 @@
 
 基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
 引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
-<meta property="og:updated_time" content="2016-05-31T13:22:58.000Z">
+<meta property="og:updated_time" content="2016-05-31T13:29:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js数据类型查看typeof方式的优化">
 <meta name="twitter:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
@@ -328,13 +328,30 @@
         <p>JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型</p>
 <ul>
 <li><strong>基本数据类型</strong>包含5类，分别是：Number、String、Boolean、Null、Undefined</li>
-<li><p><strong>引用数据类型</strong>包含剩下的Array、Date、Math、RegExp、Object、Function等</p>
-<a id="more"></a>
-<p>如果我们要查看某个变量的数据类型，可以使用typeof操作符</p>
-<p>  var num = 123;<br>  var str = ‘abc’;<br>  var bol = true;<br>  var n = null;<br>  var un = undefined;<br>  var arr = [];<br>  var obj = {};<br>  var re = /\d+/;<br>  var m = Math;</p>
-<p>  console.log( typeof num );     //number<br>  console.log( typeof str );  //string<br>  console.log( typeof bol );  //boolean<br>  console.log( typeof n );  //object<br>  console.log( typeof un );    //undefined<br>  console.log( typeof arr );  //object<br>  console.log( typeof obj );  //object<br>  console.log( typeof re );  //object<br>  console.log( typeof m );  //object<br>可以看出：typeof操作符对于简单数据类型的识别比较优秀，但是引用数据类型基本都是返回的object，导致我们并不能知道具体类型</p>
+<li><strong>引用数据类型</strong>包含剩下的Array、Date、Math、RegExp、Object、Function等<a id="more"></a>
 </li>
 </ul>
+<p>如果我们要查看某个变量的数据类型，可以使用typeof操作符</p>
+<pre><code>var num = 123;
+var str = &apos;abc&apos;;
+var bol = true;
+var n = null;
+var un = undefined;
+var arr = [];
+var obj = {};
+var re = /\d+/;
+var m = Math;
+
+console.log( typeof num );     //number
+console.log( typeof str );  //string
+console.log( typeof bol );  //boolean
+console.log( typeof n );  //object
+console.log( typeof un );    //undefined
+console.log( typeof arr );  //object
+console.log( typeof obj );  //object
+console.log( typeof re );  //object
+console.log( typeof m );  //object
+</code></pre><p>可以看出：typeof操作符对于简单数据类型的识别比较优秀，但是引用数据类型基本都是返回的object，导致我们并不能知道具体类型</p>
 <p>我们可以将这种判定方法进行一定的优化，实现对于引用数据类型比较准确地判断</p>
 <h5 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h5><ul>
 <li>Object对象的prototype的toString()方法会返回一个包含对象本身类型的字符串</li>
