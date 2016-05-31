@@ -18,7 +18,7 @@
 
 基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
 引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
-<meta property="og:updated_time" content="2016-05-31T13:29:34.000Z">
+<meta property="og:updated_time" content="2016-05-31T13:46:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js数据类型查看typeof方式的优化">
 <meta name="twitter:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
@@ -368,7 +368,14 @@ console.log(Object.prototype.toString.call(arr))  //[object Array]
 <pre><code>var arr = [];
 console.log(Object.prototype.toString.call(arr))  //[object Array]
 console.log(Object.prototype.toString.call(arr).slice(8,-1).toLowerCase())  //array
-</code></pre><h5 id="所以最后的实现方式如下："><a href="#所以最后的实现方式如下：" class="headerlink" title="所以最后的实现方式如下："></a>所以最后的实现方式如下：</h5><pre><code>var arr = [];
+</code></pre><h5 id="所以最后的实现方式如下："><a href="#所以最后的实现方式如下：" class="headerlink" title="所以最后的实现方式如下："></a>所以最后的实现方式如下：</h5><pre><code>//封装成type函数调用
+function type(obj){
+    var o = {};
+    return o.toString.call(obj).slice(8,-1).toLowerCase();
+}
+
+//测试如下
+var arr = [];
 var obj = {};
 var re = /\d+/;
 var m = Math;
