@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/5 | 世界树</title>
+  <title>JavaScript中对象的循环方法--for循环与for-in循环 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="世界树">
-<meta property="og:url" content="http://yoursite.com/archives/2016/05/index.html">
+  <meta name="description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中对象的循环方法--for循环与for-in循环">
+<meta property="og:url" content="http://yoursite.com/2016/05/31/for循环与for-in循环/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="记录学习历程">
+<meta property="og:description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
+<meta property="og:updated_time" content="2016-05-31T12:50:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界树">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:title" content="JavaScript中对象的循环方法--for循环与for-in循环">
+<meta name="twitter:description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -278,320 +279,182 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-for循环与for-in循环" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/05/31/for循环与for-in循环/" class="article-date">
+  	<time datetime="2016-05-31T08:45:14.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript中对象的循环方法--for循环与for-in循环
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/传值与传址/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:53:52.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/传值与传址/">JavaScript赋值时的传值与传址</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别<br><a id="more"></a></p>
+<h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><p>for语句对于数组的循环比较适用</p>
+<pre><code>//基本的数组可以循环
+var arr = [1,2,3,4]
+for (var i = 0; i&lt;arr.length; i++){
+    console.log(arr[i]);    //1 2 3 4  
+}
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+//复杂的数组也可以循环
+var arr = [1,2,[3,4],{a:&apos;abc&apos;,b:true}]
+for (var i = 0; i&lt;arr.length; i++){
+    console.log(arr[i])    //1 2 [3,4] {a:&apos;abc&apos;,b:true}  
+}
+</code></pre><p>如果是对一个对象循环就会出现问题</p>
+<pre><code>//但是，如果是一个对象，就会出现问题
+var obj = {a:123, b:&apos;abc&apos;, c:true}
+for (var i = 0; i&lt;obj.length; i++){
+    console.log(obj[i]);    //在chrome浏览器下调试，不出现任何东西，也没有报警
+}
+</code></pre><h5 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h5><ul>
+<li><p>问题出在语句的判断条件<code>i &lt; obj.length</code>，<code>obj.length</code>是<code>undefined</code></p>
+</li>
+<li><p>所以现在就是在判断<code>i &lt; undefined</code>，也就是判断<code>i &lt; NAN</code>，所以结果一定是<code>false</code></p>
+</li>
+<li><p>因此语句根本不会被执行，所以不会有任何东西被打印出来</p>
+</li>
+</ul>
+<h5 id="但是对象的情况下也有特例："><a href="#但是对象的情况下也有特例：" class="headerlink" title="但是对象的情况下也有特例："></a>但是对象的情况下也有特例：</h5><pre><code>var obj = {
+    &apos;0&apos; = 123,
+    &apos;1&apos; = &apos;abc&apos;,
+    &apos;2&apos; = true,
+    length = 3
+};
+for (var i = 0; i&lt;obj.length; i++){
+    console.log(i)    //0 1 2
+    console.log(obj[i]);    //123 &apos;abc&apos; true
+}
+</code></pre><p>给obj定义一个长度，并给每个元素定义一个位置下标（而不是使用abc，寻找不到的位置下标会打印undefined），就可以正常使用for语句</p>
+<pre><code>var obj = {
+    &apos;a&apos; = 123,
+    &apos;1&apos; = &apos;abc&apos;,
+    &apos;2&apos; = true,
+    length = 3
+};
+for (var i = 0; i&lt;obj.length; i++){
+    console.log(i)    //0 1 2  可以看到第一个位置还是用0坐标去获取的
+    console.log(obj[i]);    //undefined &apos;abc&apos; true  第一个的位置下标不是0，导致打印undefined
+}
+</code></pre><h3 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a>for-in语句</h3><p>for-in语句可以用来枚举对象属性，每次循环时，都会将obj中存在的一个属性名赋值给变量i，直到属性全部被枚举一遍</p>
+<pre><code>var obj = {a:123,b:&apos;abc&apos;,c:true};
+for (var i in obj){
+    console.log(i)    //a b c
+    console.log(obj[i]);    //123 &apos;abc&apos; true
+}
+</code></pre><p>for-in语句还可以枚举出document等对象的所有属性</p>
+<pre><code>var n = 0;
+for (var i in document){
+    n++
+    console.log(document[i])  //一大堆属性
+}
+console.log(n);  //在chrome下232（这个数可能每个浏览器会有差别）
+</code></pre><p>以下这点需要特别注意一下</p>
+<blockquote>
+<p>ECMAScript对象的属性没有顺序，因此通过for-in循环输出的属性名顺序是不可测的。具体来讲，所有属性都会被返回一次，但返回的先后次序可能会因浏览器而异 —-《JavaScript高级程序设计》</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/31/传值与传址/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JavaScript赋值时的传值与传址
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/31/原型与原型链/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">原型与原型链</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/for循环与for-in循环/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:45:14.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/for循环与for-in循环/">JavaScript中对象的循环方法--for循环与for-in循环</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/原型与原型链/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:43:42.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/原型与原型链/">原型与原型链</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="for循环与for-in循环" data-title="JavaScript中对象的循环方法--for循环与for-in循环" data-url="http://yoursite.com/2016/05/31/for循环与for-in循环/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:42:57.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/">面向对象学习--工厂模式与构造函数模式</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/js数据类型查看typeof方式的优化/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:41:34.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/js数据类型查看typeof方式的优化/">js数据类型查看typeof方式的优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/面向对象学习-继承/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:40:49.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/面向对象学习-继承/">面向对象学习--继承</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/30/js面向对象学习（一）/" class="archive-article-date">
-  	<time datetime="2016-05-30T12:10:09.000Z" itemprop="datePublished">May 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/30/js面向对象学习（一）/">js面向对象学习（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/27/JavaScript获取字符串中出现次数最多的字母及其次数/" class="archive-article-date">
-  	<time datetime="2016-05-27T11:36:14.000Z" itemprop="datePublished">May 27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/27/JavaScript获取字符串中出现次数最多的字母及其次数/">JavaScript获取字符串中出现次数最多的字母及其次数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/25/JavaScript中this指向对象的理解/" class="archive-article-date">
-  	<time datetime="2016-05-25T14:14:41.000Z" itemprop="datePublished">May 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/25/JavaScript中this指向对象的理解/">JavaScript中this指向对象的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/25/对js中立即执行函数调用原理的理解/" class="archive-article-date">
-  	<time datetime="2016-05-25T11:12:57.000Z" itemprop="datePublished">May 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/25/对js中立即执行函数调用原理的理解/">对js中立即执行函数调用原理的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/05/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -617,8 +480,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

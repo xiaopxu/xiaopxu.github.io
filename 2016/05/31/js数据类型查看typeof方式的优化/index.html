@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/5 | 世界树</title>
+  <title>js数据类型查看typeof方式的优化 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="世界树">
-<meta property="og:url" content="http://yoursite.com/archives/2016/05/index.html">
+  <meta name="description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
+
+基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
+引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js数据类型查看typeof方式的优化">
+<meta property="og:url" content="http://yoursite.com/2016/05/31/js数据类型查看typeof方式的优化/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="记录学习历程">
+<meta property="og:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
+
+基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
+引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+<meta property="og:updated_time" content="2016-05-31T13:22:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界树">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:title" content="js数据类型查看typeof方式的优化">
+<meta name="twitter:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
+
+基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
+引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -278,320 +288,161 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-js数据类型查看typeof方式的优化" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/05/31/js数据类型查看typeof方式的优化/" class="article-date">
+  	<time datetime="2016-05-31T08:41:34.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js数据类型查看typeof方式的优化
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/传值与传址/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:53:52.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/传值与传址/">JavaScript赋值时的传值与传址</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型</p>
+<ul>
+<li><strong>基本数据类型</strong>包含5类，分别是：Number、String、Boolean、Null、Undefined</li>
+<li><p><strong>引用数据类型</strong>包含剩下的Array、Date、Math、RegExp、Object、Function等</p>
+<a id="more"></a>
+<p>如果我们要查看某个变量的数据类型，可以使用typeof操作符</p>
+<p>  var num = 123;<br>  var str = ‘abc’;<br>  var bol = true;<br>  var n = null;<br>  var un = undefined;<br>  var arr = [];<br>  var obj = {};<br>  var re = /\d+/;<br>  var m = Math;</p>
+<p>  console.log( typeof num );     //number<br>  console.log( typeof str );  //string<br>  console.log( typeof bol );  //boolean<br>  console.log( typeof n );  //object<br>  console.log( typeof un );    //undefined<br>  console.log( typeof arr );  //object<br>  console.log( typeof obj );  //object<br>  console.log( typeof re );  //object<br>  console.log( typeof m );  //object<br>可以看出：typeof操作符对于简单数据类型的识别比较优秀，但是引用数据类型基本都是返回的object，导致我们并不能知道具体类型</p>
+</li>
+</ul>
+<p>我们可以将这种判定方法进行一定的优化，实现对于引用数据类型比较准确地判断</p>
+<h5 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h5><ul>
+<li>Object对象的prototype的toString()方法会返回一个包含对象本身类型的字符串</li>
+<li>将字符串中需要的部分截取出来</li>
+</ul>
+<p>toString()方法使用</p>
+<pre><code>console.log(Object.prototype.toString())  //[object Object]
+</code></pre><p>这里第二个打印值就是我们需要的类型</p>
+<p>因为这里的this指向Object本身，所以返回的是Object</p>
+<p>我们可以在使用方法时用call方法改变this的指向，变成我们需要判定的变量即可</p>
+<pre><code>var arr = [];
+console.log(Object.prototype.toString.call(arr))  //[object Array]
+</code></pre><p>现在我们用字符串操作符slice将需要的部分截取出来，再将字母全部变为小写就得到需要的返回值了</p>
+<pre><code>var arr = [];
+console.log(Object.prototype.toString.call(arr))  //[object Array]
+console.log(Object.prototype.toString.call(arr).slice(8,-1).toLowerCase())  //array
+</code></pre><h5 id="所以最后的实现方式如下："><a href="#所以最后的实现方式如下：" class="headerlink" title="所以最后的实现方式如下："></a>所以最后的实现方式如下：</h5><pre><code>var arr = [];
+var obj = {};
+var re = /\d+/;
+var m = Math;
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+console.log(
+    type( arr ),     //array
+    type( obj ),      //object
+    type( re ),      //regexp
+    type( m ),          //math
+    type( window ),   //window
+    type( document ),  //htmldocument
+    type( function(){} ),  //function
+    type( &apos;abc&apos; ),      //string
+    type( null ),       //null
+    type( undefined )    //undefiend
+);
+</code></pre><p>这样就可以得到我们要的效果，这些返回会方便我们在if语句中进行条件判断</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          面向对象学习--工厂模式与构造函数模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/31/面向对象学习-继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面向对象学习--继承</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/for循环与for-in循环/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:45:14.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/for循环与for-in循环/">JavaScript中对象的循环方法--for循环与for-in循环</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/原型与原型链/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:43:42.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/原型与原型链/">原型与原型链</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js数据类型查看typeof方式的优化" data-title="js数据类型查看typeof方式的优化" data-url="http://yoursite.com/2016/05/31/js数据类型查看typeof方式的优化/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:42:57.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/">面向对象学习--工厂模式与构造函数模式</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/js数据类型查看typeof方式的优化/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:41:34.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/js数据类型查看typeof方式的优化/">js数据类型查看typeof方式的优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/31/面向对象学习-继承/" class="archive-article-date">
-  	<time datetime="2016-05-31T08:40:49.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/31/面向对象学习-继承/">面向对象学习--继承</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/30/js面向对象学习（一）/" class="archive-article-date">
-  	<time datetime="2016-05-30T12:10:09.000Z" itemprop="datePublished">May 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/30/js面向对象学习（一）/">js面向对象学习（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/27/JavaScript获取字符串中出现次数最多的字母及其次数/" class="archive-article-date">
-  	<time datetime="2016-05-27T11:36:14.000Z" itemprop="datePublished">May 27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/27/JavaScript获取字符串中出现次数最多的字母及其次数/">JavaScript获取字符串中出现次数最多的字母及其次数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/25/JavaScript中this指向对象的理解/" class="archive-article-date">
-  	<time datetime="2016-05-25T14:14:41.000Z" itemprop="datePublished">May 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/25/JavaScript中this指向对象的理解/">JavaScript中this指向对象的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/25/对js中立即执行函数调用原理的理解/" class="archive-article-date">
-  	<time datetime="2016-05-25T11:12:57.000Z" itemprop="datePublished">May 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/25/对js中立即执行函数调用原理的理解/">对js中立即执行函数调用原理的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/05/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -617,8 +468,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
