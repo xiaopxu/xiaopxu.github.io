@@ -12,10 +12,12 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/02/canvas时钟效果/index.html">
 <meta property="og:site_name" content="世界树">
 <meta property="og:description" content="用canvas实现的时钟效果">
-<meta property="og:updated_time" content="2016-06-02T13:29:13.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4h7i4rmfej30e00e1758.jpg">
+<meta property="og:updated_time" content="2016-06-02T13:38:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas时钟效果">
 <meta name="twitter:description" content="用canvas实现的时钟效果">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4h7i4rmfej30e00e1758.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -317,134 +319,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用canvas实现的时钟效果"><a href="#用canvas实现的时钟效果" class="headerlink" title="用canvas实现的时钟效果"></a>用canvas实现的时钟效果</h3><a id="more"></a>
-<p><head><br>    <meta charset="UTF-8"><br>    <title>时钟</title><br>    <style></p>
-<pre><code>    #canvas1{
-        box-shadow: 0px 5px 40px black;
-    }
-&lt;/style&gt;
-</code></pre><p></head></p>
-<p><body><br>    <canvas id="canvas1" width="500" height="500"><br>        这是个表<br>    </canvas></p>
-<p></body></p>
-<script>
-
-    var canvas = document.getElementById('canvas1');
-
-    var context = canvas.getContext('2d');
-
-    var r = canvas.width / 2;
-
-    context.lineCap = "round";
-
-    var anglePerHour = Math.PI * 2 / 12;
-    var anglePerMin = Math.PI * 2 / 60;
-    var anglePerSec = Math.PI * 2 / 60;
-
-    var timer = null;
-
-    //坐标系变更
-    context.translate(r,r);
-    context.rotate(- Math.PI / 2);
-
-
-    function  drowDial () {
-        //表盘绘制
-        context.beginPath();
-        context.fillStyle = "#BBB";
-        context.arc(0,0,r,0,Math.PI * 2,true);
-        context.fill();
-
-        //大刻度绘制
-        context.beginPath();
-        context.lineWidth = 10;
-        context.strokeStyle = "red";
-
-        for (var i = 0; i < 12; i++) {
-            context.save();
-            context.rotate(i * anglePerHour);
-            context.moveTo(r - 40,0);
-            context.lineTo(r - 10,0);
-            context.stroke();
-            context.restore();
-        }
-
-        //小刻度绘制
-        context.beginPath();
-        context.lineWidth = 5;
-        context.strokeStyle = "#fff";
-
-        for (var i = 0; i < 60; i++) {
-            if (i % 5 !==0){
-                context.save();
-                context.rotate(i * anglePerMin);
-                context.moveTo(r - 30,0);
-                context.lineTo(r - 10,0);
-                context.stroke();
-                context.restore();
-            }
-        }
-    }
-
-
-    function drowPointer () {
-         //时间获取
-        var date = new Date();
-        var hour = date.getHours();
-        var min = date.getMinutes();
-        var sec = date.getSeconds();
-
-        //时针绘制
-        context.beginPath();
-        context.lineWidth = 20;
-        context.strokeStyle = "skyblue";
-
-        context.save();
-        context.rotate(hour * anglePerHour + min * anglePerMin / 12 + sec * anglePerSec / 12 / 60);
-        context.moveTo(0,0);
-        context.lineTo(120,0);
-        context.stroke();
-        context.restore();
-
-        //分针绘制
-        context.beginPath();
-        context.lineWidth = 10;
-        context.strokeStyle = "pink";
-
-        context.save();
-        context.rotate(min * anglePerMin + sec * anglePerSec / 60);
-        context.moveTo(0,0);
-        context.lineTo(150,0);
-        context.stroke();
-        context.restore();
-
-        //秒针绘制
-        context.beginPath();
-        context.lineWidth = 5;
-        context.strokeStyle = "gold";
-
-        context.save();
-        context.rotate(sec * anglePerSec);
-        context.moveTo(0,0);
-        context.lineTo(170,0);
-        context.stroke();
-        context.restore();
-    }
-
-    drowDial();
-    drowPointer();
-
-    function timerGo () {
-        timer = setInterval(function () {
-            context.clearRect(-r,-r,r,r);
-            drowDial();
-            drowPointer();
-        }, 1000)
-    }
-
-    timerGo();
-
-</script>
-
-
+<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4h7i4rmfej30e00e1758.jpg" alt="时钟"></p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -597,7 +472,7 @@
 
 &lt;/script&gt;
 &lt;/html&gt;
-</code></pre></style></head></p>
+</code></pre>
       
     </div>
     

@@ -12,10 +12,12 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/02/canvas随拖动变化的贝塞尔曲线/index.html">
 <meta property="og:site_name" content="世界树">
 <meta property="og:description" content="canvas实现贝塞尔曲线模拟">
-<meta property="og:updated_time" content="2016-06-02T13:28:38.000Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4h7i5gehpj30g00fmaan.jpg">
+<meta property="og:updated_time" content="2016-06-02T13:39:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas随拖动变化的贝塞尔曲线">
 <meta name="twitter:description" content="canvas实现贝塞尔曲线模拟">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4h7i5gehpj30g00fmaan.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -313,7 +315,220 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="canvas实现贝塞尔曲线模拟"><a href="#canvas实现贝塞尔曲线模拟" class="headerlink" title="canvas实现贝塞尔曲线模拟"></a>canvas实现贝塞尔曲线模拟</h3><a id="more"></a>
-<html lang="en"><br><head><br>    <meta charset="UTF-8"><br>    <title>贝塞尔曲线</title><br>    <style><br>        <em>{<br>            margin: 0;<br>            padding: 0;<br>        }<br>        #canvas{<br>            margin: 200px auto;<br>            display: block;<br>            border: 1px solid #000;<br>        }<br>        #cover{<br>            width: 500px;<br>            height: 500px;<br>            margin: 200px auto;<br>            position: relative;<br>            left: 0;<br>            top: -700px;<br>        }<br>        #left{<br>            width: 26px;<br>            height: 26px;<br>            background-color: skyblue;<br>            border-radius: 50%;<br>            position: absolute;<br>            left: 50px;<br>            top: 50px;<br>        }<br>        #right{<br>            width: 26px;<br>            height: 26px;<br>            background-color: pink;<br>            border-radius: 50%;<br>            position: absolute;<br>            left: 450px;<br>            top: 450px;<br>        }<br>        .active{<br>            box-shadow: 0 0 10px yellow;<br>        }<br>        .start{<br>            width: 24px;<br>            height: 24px;<br>            border: 1px solid #ccc;<br>            border-radius: 50%;<br>            position: absolute;<br>            left: -13px;<br>            bottom: -13px;<br>            background-color: #fff;<br>        }<br>        .end{<br>            width: 24px;<br>            height: 24px;<br>            border: 1px solid #ccc;<br>            border-radius: 50%;<br>            position: absolute;<br>            right: -13px;<br>            top: -13px;<br>            background-color: #fff;<br>        }<br>    </style><br></head><br><body><br>    <canvas id="canvas" width="500" height="500"></canvas><br>    <div id="cover"><br>        <div id="left"></div><br>        <div id="right"></div><br>        <div class="start"></div><br>        <div class="end"></div><br>    </div><br></body><br><script><br><br>    var canvas = document.getElementById(‘canvas’);<br>    var context =  canvas.getContext(‘2d’);<br><br>    var btn1 = document.getElementById(‘left’);<br>    var btn2 = document.getElementById(‘right’);<br><br>    //画布宽高<br>    var w = canvas.width;<br>    var h = canvas.height;<br><br>    //左右拖动点的中心点位置<br>    var L1 = btn1.offsetLeft + btn1.offsetWidth / 2;<br>    var T1 = btn1.offsetTop + btn1.offsetHeight / 2;<br><br>    var L2 = btn2.offsetLeft + btn2.offsetWidth / 2;<br>    var T2 = btn2.offsetTop + btn2.offsetHeight / 2;<br><br>    //绘制背景上的浅灰色长条<br>    function bacImg () {<br>        context.beginPath();<br>        for (var i = 0; i &lt; 10; i++) {<br>            context.fillStyle = “#eee”;<br>            context.rect(0,50 </em> i,w,25);<br>            context.fill();<br>        }<br>    }<br><br>    //绘制拖动点到边角的连线<br>    function p2p () {<br>        context.beginPath();<br>        context.strokeStyle = “555”;<br>        context.lineWidth = 1;<br><br>        context.moveTo(L1,T1);<br>        context.lineTo(w,0);<br>        context.stroke();<br><br>        context.moveTo(L2,T2);<br>        context.lineTo(0,h);<br>        context.stroke();<br>    }<br><br>    //绘制贝塞尔曲线<br>    function bezier () {<br>        context.beginPath();<br>        context.strokeStyle = “#000”;<br>        context.lineWidth = 5;<br><br>        context.moveTo(0,h)<br>        context.bezierCurveTo(L1,T1,L2,T2,w,0)<br>        context.stroke();<br>    }<br><br>    bacImg();<br>    p2p();<br>    bezier();<br><br>    //左拖动点事件<br>    btn1.onmousedown = function (e) {<br><br>        var ev = e||window.event;<br><br>        var x = ev.clientX - canvas.offsetLeft;<br>        var y = ev.clientY - canvas.offsetTop;<br><br>        var offsetx = x - btn1.offsetLeft;<br>        var offsety = y - btn1.offsetTop;<br><br>        btn1.className = “active”<br><br>        document.onmousemove = function (e) {<br><br>            var ev = e||window.event;<br><br>            var x = ev.clientX - canvas.offsetLeft;<br>            var y = ev.clientY - canvas.offsetTop;<br><br>            btn1.style.left = x - offsetx + “px”;<br>            btn1.style.top = y - offsety + “px”;<br><br>            L1 = btn1.offsetLeft + btn1.offsetWidth / 2;<br>            T1 = btn1.offsetTop + btn1.offsetHeight / 2;<br><br>            context.clearRect(0,0,w,h);<br>            bacImg();<br>            p2p();<br>            bezier();<br>        }<br>        btn1.onmouseup = function () {<br>            document.onmousemove = null;<br>            btn1.className = “”;<br>        }<br>    }<br><br>    //右拖动点事件<br>    btn2.onmousedown = function (e) {<br><br>        var ev = e||window.event;<br><br>        var x = ev.clientX - canvas.offsetLeft;<br>        var y = ev.clientY - canvas.offsetTop;<br><br>        var offsetx = x - btn2.offsetLeft;<br>        var offsety = y - btn2.offsetTop;<br><br>        btn2.className = “active”<br><br>        document.onmousemove = function (e) {<br><br>            var ev = e||window.event;<br><br>            var x = ev.clientX - canvas.offsetLeft;<br>            var y = ev.clientY - canvas.offsetTop;<br><br>            btn2.style.left = x - offsetx + “px”;<br>            btn2.style.top = y - offsety + “px”;<br><br>            L2 = btn2.offsetLeft + btn2.offsetWidth / 2;<br>            T2 = btn2.offsetTop + btn2.offsetHeight / 2;<br><br>            context.clearRect(0,0,w,h);<br>            bacImg();<br>            p2p();<br>            bezier();<br>        }<br>        btn2.onmouseup = function () {<br>            document.onmousemove = null;<br>            btn2.className = “”;<br>        }<br>    }<br><br></script><br><br><br>    &lt;!DOCTYPE html&gt;<br>    <html lang="en"><br>    <head><br>        <meta charset="UTF-8"><br>        <title>贝塞尔曲线</title><br>        <style><br>            <em>{<br>                margin: 0;<br>                padding: 0;<br>            }<br>            #canvas{<br>                margin: 200px auto;<br>                display: block;<br>                border: 1px solid #000;<br>            }<br>            #cover{<br>                width: 500px;<br>                height: 500px;<br>                margin: 200px auto;<br>                position: relative;<br>                left: 0;<br>                top: -700px;<br>            }<br>            #left{<br>                width: 26px;<br>                height: 26px;<br>                background-color: skyblue;<br>                border-radius: 50%;<br>                position: absolute;<br>                left: 50px;<br>                top: 50px;<br>            }<br>            #right{<br>                width: 26px;<br>                height: 26px;<br>                background-color: pink;<br>                border-radius: 50%;<br>                position: absolute;<br>                left: 450px;<br>                top: 450px;<br>            }<br>            .active{<br>                box-shadow: 0 0 10px yellow;<br>            }<br>            .start{<br>                width: 24px;<br>                height: 24px;<br>                border: 1px solid #ccc;<br>                border-radius: 50%;<br>                position: absolute;<br>                left: -13px;<br>                bottom: -13px;<br>                background-color: #fff;<br>            }<br>            .end{<br>                width: 24px;<br>                height: 24px;<br>                border: 1px solid #ccc;<br>                border-radius: 50%;<br>                position: absolute;<br>                right: -13px;<br>                top: -13px;<br>                background-color: #fff;<br>            }<br>        </style><br>    </head><br>    <body><br>        <canvas id="canvas" width="500" height="500"></canvas><br>        <div id="cover"><br>            <div id="left"></div><br>            <div id="right"></div><br>            <div class="start"></div><br>            <div class="end"></div><br>        </div><br>    </body><br>    <script><br><br>        var canvas = document.getElementById(‘canvas’);<br>        var context =  canvas.getContext(‘2d’);<br><br>        var btn1 = document.getElementById(‘left’);<br>        var btn2 = document.getElementById(‘right’);<br><br>        //画布宽高<br>        var w = canvas.width;<br>        var h = canvas.height;<br><br>        //左右拖动点的中心点位置<br>        var L1 = btn1.offsetLeft + btn1.offsetWidth / 2;<br>        var T1 = btn1.offsetTop + btn1.offsetHeight / 2;<br><br>        var L2 = btn2.offsetLeft + btn2.offsetWidth / 2;<br>        var T2 = btn2.offsetTop + btn2.offsetHeight / 2;<br><br>        //绘制背景上的浅灰色长条<br>        function bacImg () {<br>            context.beginPath();<br>            for (var i = 0; i &lt; 10; i++) {<br>                context.fillStyle = “#eee”;<br>                context.rect(0,50 </em> i,w,25);<br>                context.fill();<br>            }<br>        }<br><br>        //绘制拖动点到边角的连线<br>        function p2p () {<br>            context.beginPath();<br>            context.strokeStyle = “555”;<br>            context.lineWidth = 1;<br><br>            context.moveTo(L1,T1);<br>            context.lineTo(w,0);<br>            context.stroke();<br><br>            context.moveTo(L2,T2);<br>            context.lineTo(0,h);<br>            context.stroke();<br>        }<br><br>        //绘制贝塞尔曲线<br>        function bezier () {<br>            context.beginPath();<br>            context.strokeStyle = “#000”;<br>            context.lineWidth = 5;<br><br>            context.moveTo(0,h)<br>            context.bezierCurveTo(L1,T1,L2,T2,w,0)<br>            context.stroke();<br>        }<br><br>        bacImg();<br>        p2p();<br>        bezier();<br><br>        //左拖动点事件<br>        btn1.onmousedown = function (e) {<br><br>            var ev = e||window.event;<br><br>            var x = ev.clientX - canvas.offsetLeft;<br>            var y = ev.clientY - canvas.offsetTop;<br><br>            var offsetx = x - btn1.offsetLeft;<br>            var offsety = y - btn1.offsetTop;<br><br>            btn1.className = “active”<br><br>            document.onmousemove = function (e) {<br><br>                var ev = e||window.event;<br><br>                var x = ev.clientX - canvas.offsetLeft;<br>                var y = ev.clientY - canvas.offsetTop;<br><br>                btn1.style.left = x - offsetx + “px”;<br>                btn1.style.top = y - offsety + “px”;<br><br>                L1 = btn1.offsetLeft + btn1.offsetWidth / 2;<br>                T1 = btn1.offsetTop + btn1.offsetHeight / 2;<br><br>                context.clearRect(0,0,w,h);<br>                bacImg();<br>                p2p();<br>                bezier();<br>            }<br>            btn1.onmouseup = function () {<br>                document.onmousemove = null;<br>                btn1.className = “”;<br>            }<br>        }<br><br>        //右拖动点事件<br>        btn2.onmousedown = function (e) {<br><br>            var ev = e||window.event;<br><br>            var x = ev.clientX - canvas.offsetLeft;<br>            var y = ev.clientY - canvas.offsetTop;<br><br>            var offsetx = x - btn2.offsetLeft;<br>            var offsety = y - btn2.offsetTop;<br><br>            btn2.className = “active”<br><br>            document.onmousemove = function (e) {<br><br>                var ev = e||window.event;<br><br>                var x = ev.clientX - canvas.offsetLeft;<br>                var y = ev.clientY - canvas.offsetTop;<br><br>                btn2.style.left = x - offsetx + “px”;<br>                btn2.style.top = y - offsety + “px”;<br><br>                L2 = btn2.offsetLeft + btn2.offsetWidth / 2;<br>                T2 = btn2.offsetTop + btn2.offsetHeight / 2;<br><br>                context.clearRect(0,0,w,h);<br>                bacImg();<br>                p2p();<br>                bezier();<br>            }<br><br>            btn2.onmouseup = function () {<br>                document.onmousemove = null;<br>                btn2.className = “”;<br>            }<br>        }<br><br>    </script><br><br>    </html></html>
+<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4h7i5gehpj30g00fmaan.jpg" alt="贝塞尔曲线"></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;贝塞尔曲线&lt;/title&gt;
+    &lt;style&gt;
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            margin: 200px auto;
+            display: block;
+            border: 1px solid #000;
+        }
+        #cover{
+            width: 500px;
+            height: 500px;
+            margin: 200px auto;
+            position: relative;
+            left: 0;
+            top: -700px;
+        }
+        #left{
+            width: 26px;
+            height: 26px;
+            background-color: skyblue;
+            border-radius: 50%;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        #right{
+            width: 26px;
+            height: 26px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+            left: 450px;
+            top: 450px;
+        }
+        .active{
+            box-shadow: 0 0 10px yellow;
+        }
+        .start{
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            left: -13px;
+            bottom: -13px;
+            background-color: #fff;
+        }
+        .end{
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            right: -13px;
+            top: -13px;
+            background-color: #fff;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
+    &lt;div id=&quot;cover&quot;&gt;
+        &lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;right&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;start&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;end&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+
+    var canvas = document.getElementById(&apos;canvas&apos;);
+    var context =  canvas.getContext(&apos;2d&apos;);
+
+    var btn1 = document.getElementById(&apos;left&apos;);
+    var btn2 = document.getElementById(&apos;right&apos;);
+
+    //画布宽高
+    var w = canvas.width;
+    var h = canvas.height;
+
+    //左右拖动点的中心点位置
+    var L1 = btn1.offsetLeft + btn1.offsetWidth / 2;
+    var T1 = btn1.offsetTop + btn1.offsetHeight / 2;
+
+    var L2 = btn2.offsetLeft + btn2.offsetWidth / 2;
+    var T2 = btn2.offsetTop + btn2.offsetHeight / 2;
+
+    //绘制背景上的浅灰色长条
+    function bacImg () {
+        context.beginPath();
+        for (var i = 0; i &lt; 10; i++) {
+            context.fillStyle = &quot;#eee&quot;;
+            context.rect(0,50 * i,w,25);
+            context.fill();
+        }
+    }
+
+    //绘制拖动点到边角的连线
+    function p2p () {
+        context.beginPath();
+        context.strokeStyle = &quot;555&quot;;
+        context.lineWidth = 1;
+
+        context.moveTo(L1,T1);
+        context.lineTo(w,0);
+        context.stroke();
+
+        context.moveTo(L2,T2);
+        context.lineTo(0,h);
+        context.stroke();
+    }
+
+    //绘制贝塞尔曲线
+    function bezier () {
+        context.beginPath();
+        context.strokeStyle = &quot;#000&quot;;
+        context.lineWidth = 5;
+
+        context.moveTo(0,h)
+        context.bezierCurveTo(L1,T1,L2,T2,w,0)
+        context.stroke(); 
+    }
+
+    bacImg();
+    p2p();
+    bezier();
+
+    //左拖动点事件
+    btn1.onmousedown = function (e) {
+
+        var ev = e||window.event;
+
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+
+        var offsetx = x - btn1.offsetLeft;
+        var offsety = y - btn1.offsetTop;
+
+        btn1.className = &quot;active&quot;
+
+        document.onmousemove = function (e) {
+
+            var ev = e||window.event;
+
+            var x = ev.clientX - canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+
+            btn1.style.left = x - offsetx + &quot;px&quot;;
+            btn1.style.top = y - offsety + &quot;px&quot;;
+
+            L1 = btn1.offsetLeft + btn1.offsetWidth / 2;
+            T1 = btn1.offsetTop + btn1.offsetHeight / 2;
+
+            context.clearRect(0,0,w,h);
+            bacImg();
+            p2p();
+            bezier();
+        }
+        btn1.onmouseup = function () {
+            document.onmousemove = null;
+            btn1.className = &quot;&quot;;
+        }
+    }  
+
+    //右拖动点事件
+    btn2.onmousedown = function (e) {
+
+        var ev = e||window.event;
+
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+
+        var offsetx = x - btn2.offsetLeft;
+        var offsety = y - btn2.offsetTop;
+
+        btn2.className = &quot;active&quot;
+
+        document.onmousemove = function (e) {
+
+            var ev = e||window.event;
+
+            var x = ev.clientX - canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+
+            btn2.style.left = x - offsetx + &quot;px&quot;;
+            btn2.style.top = y - offsety + &quot;px&quot;;
+
+            L2 = btn2.offsetLeft + btn2.offsetWidth / 2;
+            T2 = btn2.offsetTop + btn2.offsetHeight / 2;
+
+            context.clearRect(0,0,w,h);
+            bacImg();
+            p2p();
+            bezier();
+        }
+
+        btn2.onmouseup = function () {
+            document.onmousemove = null;
+            btn2.className = &quot;&quot;;
+        }
+    }
+
+&lt;/script&gt;
+
+&lt;/html&gt;
+</code></pre>
       
     </div>
     

@@ -12,10 +12,12 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/02/canvas简易涂鸦板效果/index.html">
 <meta property="og:site_name" content="世界树">
 <meta property="og:description" content="用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦">
-<meta property="og:updated_time" content="2016-06-02T13:29:03.000Z">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4h7i5wdl1j30ee0eb0tt.jpg">
+<meta property="og:updated_time" content="2016-06-02T13:37:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas简易涂鸦板效果">
 <meta name="twitter:description" content="用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4h7i5wdl1j30ee0eb0tt.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -317,47 +319,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦<br><a id="more"></a></p>
-<p><head><br>    <meta charset="UTF-8"><br>    <title>涂鸦</title><br>    <style><br>        *{<br>            margin: 0;<br>            padding: 0;<br>        }</p>
-<pre><code>    #canvas1{
-        box-shadow: 0 5px 40px black;
-    }
-&lt;/style&gt;
-</code></pre><p></head></p>
-<p><body><br>    <canvas id="canvas1" width="500" height="500"></canvas><br></body></p>
-<script>
-    var canvas = document.getElementById('canvas1');
-
-    var context = canvas.getContext('2d')
-
-    canvas.onmousedown = function (e) {
-
-        var ev = e||window.event;
-
-        var x = ev.clientX - canvas.offsetLeft;
-        var y = ev.clientY - canvas.offsetTop;
-
-        context.beginPath();
-        context.moveTo(x,y);
-
-        canvas.onmousemove = function (e) {
-            var ev = e||window.event;
-            var x = ev.clientX - canvas.offsetLeft;
-            var y = ev.clientY - canvas.offsetTop;
-            console.log(x)
-            context.lineWidth = 5;
-            context.strokeStyle = "red";
-
-            context.lineTo(x,y);
-            context.stroke()
-        }
-        canvas.onmouseup = function () {
-            canvas.onmousemove = null;
-        }
-    }
-
-</script>
-
-
+<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4h7i5wdl1j30ee0eb0tt.jpg" alt="涂鸦板"></p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -405,7 +367,7 @@
 
 &lt;/script&gt;
 &lt;/html&gt;
-</code></pre></style></head></p>
+</code></pre>
       
     </div>
     
