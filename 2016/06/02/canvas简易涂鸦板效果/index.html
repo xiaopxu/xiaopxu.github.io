@@ -4,59 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>bootstrap学习（一） | 世界树</title>
+  <title>canvas简易涂鸦板效果 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、全局样式style.css
-移除body的maigin
-
-背景白色
-
-设置了基本的字体样式
-
-设置全局链接样式，鼠标悬停时才会出现下划线">
+  <meta name="description" content="用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bootstrap学习（一）">
-<meta property="og:url" content="http://yoursite.com/2016/05/18/bootstrap学习（一）/index.html">
+<meta property="og:title" content="canvas简易涂鸦板效果">
+<meta property="og:url" content="http://yoursite.com/2016/06/02/canvas简易涂鸦板效果/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="一、全局样式style.css
-移除body的maigin
-
-背景白色
-
-设置了基本的字体样式
-
-设置全局链接样式，鼠标悬停时才会出现下划线">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zngwhfejj305s06dmxf.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zngwhfejj305s06dmxf.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2ngze4j30d101i0st.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3znf3n0dbj30j00260th.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2mqs0xj306k068jro.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3znf49u5hj30yh03lweh.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2tv64pj30rx09lgmz.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2r4wt1j30s304owf9.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2rio4vj30s104qdgn.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zn2rz1hrj30s404qwfd.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2sfmsoj30s304nwf9.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2spcptj30s30433za.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2spcptj30s30433za.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2qe5kkj309w072mxv.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2psnwrj30ec09ztab.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zn2oqq77j30en09ygn1.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2ojb46j30ev0a2wg0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2m232mj30os0m00z9.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2nwojnj3025019dfl.jpg">
-<meta property="og:updated_time" content="2016-05-24T15:21:44.000Z">
+<meta property="og:description" content="用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦">
+<meta property="og:updated_time" content="2016-06-02T13:29:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bootstrap学习（一）">
-<meta name="twitter:description" content="一、全局样式style.css
-移除body的maigin
-
-背景白色
-
-设置了基本的字体样式
-
-设置全局链接样式，鼠标悬停时才会出现下划线">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zngwhfejj305s06dmxf.jpg">
+<meta name="twitter:title" content="canvas简易涂鸦板效果">
+<meta name="twitter:description" content="用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -320,11 +279,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-bootstrap学习（一）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-canvas简易涂鸦板效果" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/18/bootstrap学习（一）/" class="article-date">
-  	<time datetime="2016-05-18T03:21:53.000Z" itemprop="datePublished">2016-05-18</time>
+      <a href="/2016/06/02/canvas简易涂鸦板效果/" class="article-date">
+  	<time datetime="2016-06-02T12:57:39.000Z" itemprop="datePublished">2016-06-02</time>
 </a>
     </div>
   
@@ -337,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      bootstrap学习（一）
+      canvas简易涂鸦板效果
     </h1>
   
 
@@ -346,7 +305,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
 	</div>
 
         
@@ -357,131 +316,96 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、全局样式style-css"><a href="#一、全局样式style-css" class="headerlink" title="一、全局样式style.css"></a>一、全局样式style.css</h2><ul>
-<li><p>移除body的maigin</p>
-</li>
-<li><p>背景白色</p>
-</li>
-<li><p>设置了基本的字体样式</p>
-</li>
-<li><p>设置全局链接样式，鼠标悬停时才会出现下划线</p>
-<a id="more"></a>
-<h2 id="二、标题"><a href="#二、标题" class="headerlink" title="二、标题"></a>二、标题</h2><h3 id="重置h1-h6样式"><a href="#重置h1-h6样式" class="headerlink" title="重置h1~h6样式"></a>重置h1~h6样式</h3></li>
-<li><p>重置了margin-top（h1~h3：20px；h4~h6：10px）</p>
-</li>
-<li><p>重置了margin-bottom（10px）</p>
-</li>
-<li><p>所有标题行高1.1（font-size的1.1），颜色字体继承父级</p>
-</li>
-<li><p>固定字体大小</p>
-<ul>
-<li>h1：36px</li>
-<li>h2：30px</li>
-<li>h3：24px</li>
-<li>h4：18px</li>
-<li>h5：14px</li>
-<li>h6：12px</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zngwhfejj305s06dmxf.jpg" alt="标题演示"></p>
-<h3 id="标题类名"><a href="#标题类名" class="headerlink" title="标题类名"></a>标题类名</h3><p>效果与h1~h6标签相同</p>
-<pre><code>&lt;div class=&quot;h1&quot;&gt;hello world&lt;/div&gt;
-&lt;div class=&quot;h2&quot;&gt;hello world&lt;/div&gt;
-&lt;div class=&quot;h3&quot;&gt;hello world&lt;/div&gt;
-&lt;div class=&quot;h4&quot;&gt;hello world&lt;/div&gt;
-&lt;div class=&quot;h5&quot;&gt;hello world&lt;/div&gt;
-&lt;div class=&quot;h6&quot;&gt;hello world&lt;/div&gt;
-</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zngwhfejj305s06dmxf.jpg" alt="标题类名"></p>
-<h3 id="副标题"><a href="#副标题" class="headerlink" title="副标题"></a>副标题</h3><p>字体大小继承父级的65%</p>
-<pre><code>&lt;div class=&quot;h1&quot;&gt;hello world&lt;small&gt;This is first bootstrap class&lt;/small&gt;&lt;/div&gt;
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2ngze4j30d101i0st.jpg" alt="副标题"></p>
-<h2 id="三、强调内容"><a href="#三、强调内容" class="headerlink" title="三、强调内容"></a>三、强调内容</h2><h3 id="lead一般配合段落标签使用"><a href="#lead一般配合段落标签使用" class="headerlink" title=".lead一般配合段落标签使用"></a><code>.lead</code>一般配合段落标签使用</h3><pre><code>&lt;p class=&quot;lead&quot;&gt;我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落&lt;/p&gt;
-&lt;p&gt;我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落&lt;/p&gt;
-</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3znf3n0dbj30j00260th.jpg" alt="lead强调"></p>
-<h3 id="颜色强调相关的类"><a href="#颜色强调相关的类" class="headerlink" title="颜色强调相关的类"></a>颜色强调相关的类</h3><p><code>.text-muted</code>：提示，使用浅灰色（#999）</p>
-<p><code>.text-primary</code>：主要，使用蓝色（#428bca）</p>
-<p><code>.text-success</code>：成功，使用浅绿色(#3c763d)</p>
-<p><code>.text-info</code>：通知信息，使用浅蓝色（#31708f）</p>
-<p><code>.text-warning</code>：警告，使用黄色（#8a6d3b）</p>
-<p><code>.text-danger</code>：危险，使用褐色（#a94442）</p>
-<pre><code>&lt;h1 class=&quot;text-muted&quot;&gt;hello world&lt;/h1&gt;
-&lt;h2 class=&quot;text-primary&quot;&gt;hello world&lt;/h2&gt;
-&lt;h3 class=&quot;text-success&quot;&gt;hello world&lt;/h3&gt;
-&lt;h4 class=&quot;text-info&quot;&gt;hello world&lt;/h4&gt;
-&lt;h5 class=&quot;text-warning&quot;&gt;hello world&lt;/h5&gt;
-&lt;h6 class=&quot;text-danger&quot;&gt;hello world&lt;/h6&gt;
-</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2mqs0xj306k068jro.jpg" alt="颜色强调"></p>
-<h2 id="四、文本对齐"><a href="#四、文本对齐" class="headerlink" title="四、文本对齐"></a>四、文本对齐</h2><p><code>.text-left</code>：左对齐</p>
-<p><code>.text-left</code>：右对齐</p>
-<p><code>.text-left</code>：居中</p>
-<p><code>.text-left</code>：两端对齐（这个没出效果，汗~~）</p>
-<pre><code>&lt;p class=&quot;text-left&quot;&gt;我是段落&lt;/p&gt;
-&lt;p class=&quot;text-center&quot;&gt;我是段落&lt;/p&gt;
-&lt;p class=&quot;text-right&quot;&gt;我是段落&lt;/p&gt;
-&lt;p class=&quot;text-justify&quot;&gt;我是段落&lt;/p&gt;
-</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3znf49u5hj30yh03lweh.jpg" alt="对齐方式"></p>
-<h2 id="五、列表"><a href="#五、列表" class="headerlink" title="五、列表"></a>五、列表</h2><p><code>.list-unstyled</code>：ul、ol除去序列样式</p>
-<p><code>.list-inline</code>：ul、ol水平列表</p>
-<p><code>.dl-horizontal</code>：dl水平列表</p>
-<h2 id="六、代码风格"><a href="#六、代码风格" class="headerlink" title="六、代码风格"></a>六、代码风格</h2><p>多行代码中用<code>.pre-scrollable</code>使超出部分用滚动条控制显示</p>
-<pre><code>&lt;pre class=&quot;pre-scrollable&quot;&gt;
-    function something(){
-        console.log(&apos;haha&apos;)
+        <p>用canvas实现的简易涂鸦板效果，用鼠标点击在画布上随意涂鸦<br><a id="more"></a></p>
+<p><head><br>    <meta charset="UTF-8"><br>    <title>涂鸦</title><br>    <style><br>        *{<br>            margin: 0;<br>            padding: 0;<br>        }</p>
+<pre><code>    #canvas1{
+        box-shadow: 0 5px 40px black;
     }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-    function something(){
-        console.log(&apos;haha&apos;)
-    }
-&lt;/pre&gt;
-</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2tv64pj30rx09lgmz.jpg" alt="代码滚动条"></p>
-<h2 id="七、表格"><a href="#七、表格" class="headerlink" title="七、表格"></a>七、表格</h2><h3 id="基础表格"><a href="#基础表格" class="headerlink" title="基础表格"></a>基础表格</h3><p><code>.table</code></p>
-<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2r4wt1j30s304owf9.jpg" alt="原始样式"></p>
-<h3 id="附加样式表格"><a href="#附加样式表格" class="headerlink" title="附加样式表格"></a>附加样式表格</h3><p><code>.table-striped</code>：斑马线</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2rio4vj30s104qdgn.jpg" alt="斑马线"><br><code>.table-bordered</code>：带边框</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zn2rz1hrj30s404qwfd.jpg" alt="边框"><br><code>.table-hover</code>：鼠标悬停高亮</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2sfmsoj30s304nwf9.jpg" alt="悬停高亮"><br><code>.table-condensed</code>：紧凑型（高度变小）</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2spcptj30s30433za.jpg" alt="紧凑"></p>
-<h3 id="响应式表格"><a href="#响应式表格" class="headerlink" title="响应式表格"></a>响应式表格</h3><p>当视窗宽度小于768px，且文字需要换行时出现滚动条</p>
-<p><code>.responsive</code><br><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2spcptj30s30433za.jpg" alt="响应式"></p>
-<h2 id="八、图片"><a href="#八、图片" class="headerlink" title="八、图片"></a>八、图片</h2><p><code>.img-responsive</code>：响应式图片</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2qe5kkj309w072mxv.jpg" alt="响应式"></p>
-<p><code>.img-rounded</code>：圆角风格</p>
-<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f3zn2psnwrj30ec09ztab.jpg" alt="圆角"></p>
-<p><code>.img-cicle</code>：圆形风格</p>
-<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3zn2oqq77j30en09ygn1.jpg" alt="圆形"></p>
-<p><code>.img-thumbnail</code>：缩略图片（外边多个1px边框）</p>
-<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2ojb46j30ev0a2wg0.jpg" alt="缩略"></p>
-<h2 id="九、图标"><a href="#九、图标" class="headerlink" title="九、图标"></a>九、图标</h2><blockquote>
-<p>Bootstrap框架中也为大家提供了近200个不同的icon图片，而这些图标都是使用CSS3的@font-face属性配合字体来实现的icon效果。</p>
-</blockquote>
-<p>这些样式可以加载在任何标签中，不过通常来说都是使用的span标签</p>
-<p><a href="http://getbootstrap.com/components/#glyphicons" target="_blank" rel="external">图标样式地址</a></p>
-<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f3zn2m232mj30os0m00z9.jpg" alt="标签样式"></p>
-<p>通过<code>.glyphicon</code>来实现获取</p>
-<pre><code>&lt;span class=&quot;glyphicon glyphicon-road&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;glyphicon glyphicon-log-in&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt;
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3zn2nwojnj3025019dfl.jpg" alt="标签样式举例"></p>
+&lt;/style&gt;
+</code></pre><p></head></p>
+<p><body><br>    <canvas id="canvas1" width="500" height="500"></canvas><br></body></p>
+<script>
+    var canvas = document.getElementById('canvas1');
 
+    var context = canvas.getContext('2d')
+
+    canvas.onmousedown = function (e) {
+
+        var ev = e||window.event;
+
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+
+        context.beginPath();
+        context.moveTo(x,y);
+
+        canvas.onmousemove = function (e) {
+            var ev = e||window.event;
+            var x = ev.clientX - canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+            console.log(x)
+            context.lineWidth = 5;
+            context.strokeStyle = "red";
+
+            context.lineTo(x,y);
+            context.stroke()
+        }
+        canvas.onmouseup = function () {
+            canvas.onmousemove = null;
+        }
+    }
+
+</script>
+
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;涂鸦&lt;/title&gt;
+    &lt;style&gt;
+        #canvas1{
+            box-shadow: 0 5px 40px black;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;canvas1&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var canvas = document.getElementById(&apos;canvas1&apos;);
+
+    var context = canvas.getContext(&apos;2d&apos;)
+
+    canvas.onmousedown = function (e) {
+
+        var ev = e||window.event;
+
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+
+        context.beginPath();
+        context.moveTo(x,y);
+
+        canvas.onmousemove = function (e) {
+            var ev = e||window.event;
+            var x = ev.clientX - canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+            console.log(x)
+            context.lineWidth = 5;
+            context.strokeStyle = &quot;red&quot;;
+
+            context.lineTo(x,y);
+            context.stroke()
+        }
+        canvas.onmouseup = function () {
+            canvas.onmousemove = null;
+        }
+    }
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre></style></head></p>
       
     </div>
     
@@ -490,18 +414,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/05/18/bootstrap学习（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/06/02/canvas时钟效果/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          bootstrap学习（二）
+          canvas时钟效果
         
       </div>
     </a>
   
   
-    <a href="/2016/05/17/前端模板引擎jade/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端模板引擎jade学习（一）</div>
+    <a href="/2016/06/01/图片随鼠标立体转动效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图片随鼠标立体转动效果</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -536,7 +460,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="bootstrap学习（一）" data-title="bootstrap学习（一）" data-url="http://yoursite.com/2016/05/18/bootstrap学习（一）/"></div>
+	<div class="ds-thread" data-thread-key="canvas简易涂鸦板效果" data-title="canvas简易涂鸦板效果" data-url="http://yoursite.com/2016/06/02/canvas简易涂鸦板效果/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

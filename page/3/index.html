@@ -4,20 +4,17 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>gulp使用初解 | 世界树</title>
+  <title>世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="思维导图">
-<meta property="og:type" content="article">
-<meta property="og:title" content="gulp使用初解">
-<meta property="og:url" content="http://yoursite.com/2016/05/16/gulp使用初解/index.html">
+  <meta name="description" content="记录学习历程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="世界树">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="思维导图">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3xkf6yvzqj30mu0hrmz1.jpg">
-<meta property="og:updated_time" content="2016-05-18T09:13:57.000Z">
+<meta property="og:description" content="记录学习历程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gulp使用初解">
-<meta name="twitter:description" content="思维导图">
-<meta name="twitter:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3xkf6yvzqj30mu0hrmz1.jpg">
+<meta name="twitter:title" content="世界树">
+<meta name="twitter:description" content="记录学习历程">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -281,11 +278,13 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-gulp使用初解" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-伪元素的初解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/16/gulp使用初解/" class="article-date">
-  	<time datetime="2016-05-16T08:26:19.000Z" itemprop="datePublished">2016-05-16</time>
+      <a href="/2016/05/12/伪元素的初解/" class="article-date">
+  	<time datetime="2016-05-12T11:40:20.000Z" itemprop="datePublished">2016-05-12</time>
 </a>
     </div>
   
@@ -297,200 +296,125 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      gulp使用初解
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/伪元素的初解/">::before与::after 伪元素的初解</a>
     </h1>
   
 
       </header>
       
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>思维导图<br><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3xkf6yvzqj30mu0hrmz1.jpg" alt="思维导图"><br><a id="more"></a></p>
-<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><h4 id="1-nodeJS"><a href="#1-nodeJS" class="headerlink" title="1. nodeJS"></a>1. nodeJS</h4><blockquote>
-<p>nodeJS的出现，可以算是前端里程碑式的一个事件，它让前端攻城狮们摆脱了浏览器的束缚，踏上了一个更加宽广的舞台。前端的可能性，从此更加具有想象空间。</p>
-<p>随着一系列基于nodes的应用/工具的出现，工作中与nodeJS打交道的机会越来越多。无论在node应用的开发，还是使用中，包管理都扮演着一个很重要的作用。NPM（node package manager），作为node的包管理工具，极大地便利了我们的开发工作，很有必要了解一下。</p>
-</blockquote>
-<h4 id="2-NPM"><a href="#2-NPM" class="headerlink" title="2. NPM"></a>2. NPM</h4><blockquote>
-<p>NPM（node package manager），通常称为node包管理器。顾名思义，它的主要功能就是管理node包，包括：安装、卸载、更新、查看、搜索、发布等。</p>
-<p>NPM的背后，是基于couchdb的一个数据库，详细记录了每个包的信息，包括作者、版本、依赖、授权信息等。它的一个很重要的作用就是：将开发者从繁琐的包管理工作（版本、依赖等）中解放出来，更加专注于功能的开发。</p>
-</blockquote>
-<h4 id="3-gulp"><a href="#3-gulp" class="headerlink" title="3. gulp"></a>3. gulp</h4><blockquote>
-<p>gulp是基于Nodejs的自动任务运行器， 她能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的的<strong>测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成</strong>，并监听文件在改动后重复指定的这些步骤。在实现上，她借鉴了Unix操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。通过本文，我们将学习如何使用Gulp来改变开发流程，从而使开发更加快速高效。</p>
-<p>gulp 和 grunt 非常类似，但相比于 grunt 的频繁 IO 操作，gulp 的流操作，能更快地更便捷地完成构建工作。</p>
-</blockquote>
-<h2 id="二、安装gulp"><a href="#二、安装gulp" class="headerlink" title="二、安装gulp"></a>二、安装gulp</h2><h4 id="1-nodeJS（上官网直接安装-nodeJS官网）"><a href="#1-nodeJS（上官网直接安装-nodeJS官网）" class="headerlink" title="1. nodeJS（上官网直接安装 nodeJS官网）"></a>1. nodeJS（上官网直接安装 <a href="https://nodejs.org/en/" target="_blank" rel="external">nodeJS官网</a>）</h4><h4 id="2-gulp"><a href="#2-gulp" class="headerlink" title="2. gulp"></a>2. gulp</h4><p>1）全局安装gulp</p>
-<pre><code>$ sudo npm install -g gulp
-</code></pre><p>2）在项目文件夹下进行npm初始化，生成package.json</p>
-<pre><code>$ npm init  
-//初始化安装过程中，会提示设置package文件的参数，只要设置name就行了（不要叫gulp），不然开发依赖好像安装会报错
-//其他的如果没有需要设定的，一路回车就行了
-</code></pre><p>3）开发依赖安装</p>
-<pre><code>$ npm install gulp-name --save-dev
-//安装成功后会在package.json文件中看到安装版本记录
-</code></pre><h2 id="三、gulp使用"><a href="#三、gulp使用" class="headerlink" title="三、gulp使用"></a>三、gulp使用</h2><h4 id="1-新建gulpfile-js"><a href="#1-新建gulpfile-js" class="headerlink" title="1. 新建gulpfile.js"></a>1. 新建gulpfile.js</h4><h4 id="2-调用gulp"><a href="#2-调用gulp" class="headerlink" title="2. 调用gulp"></a>2. 调用gulp</h4><pre><code>var gulp = require(&apos;gulp&apos;)
-var name = require(&apos;gulp-name&apos;)  //插件调用
-</code></pre><h4 id="3-gulp使用方法"><a href="#3-gulp使用方法" class="headerlink" title="3. gulp使用方法"></a>3. gulp使用方法</h4><p>1）基本语法</p>
-<ul>
-<li>创建目标</li>
-</ul>
-<pre><code>gulp.task(&apos;&apos;,[],function(){})
-
-//例子1（默认）：
-gulp.task(&apos;default&apos;,function() {
-      console.log(&apos;我是default&apos;)
-});
-//运行结果：
-$ gulp  //终端运行命令，后面不跟东西，默认执行default
-[21:54:33] Using gulpfile ~/Desktop/nodeJS/gulp/gulpfile.js
-[21:54:33] Starting &apos;default&apos;...
-我是default
-[21:54:33] Finished &apos;default&apos; after 120 μs
-
-//例子2（自定义）
-gulp.task(&apos;task1&apos;,function () {
-    console.log(&apos;我是task1&apos;)
-})
-//运行结果：
-$ gulp task1  //后面跟上自定义的任务名称
-[21:58:00] Using gulpfile ~/Desktop/nodeJS/gulp/gulpfile.js
-[21:58:00] Starting &apos;task1&apos;...
-我是task1
-[21:58:00] Finished &apos;task1&apos; after 121 μs
-
-//例子3（复合）
-gulp.task(&apos;default&apos;,[&apos;task1&apos;],function() {
-      console.log(&apos;我是default&apos;)
-});
-//运行结果：
-$ gulp  //先执行自定义，后执行默认
-[22:01:33] Using gulpfile ~/Desktop/nodeJS/gulp/gulpfile.js
-[22:01:33] Starting &apos;task1&apos;...
-我是task1
-[22:01:33] Finished &apos;task1&apos; after 99 μs
-[22:01:33] Starting &apos;default&apos;...
-我是default
-[22:01:33] Finished &apos;default&apos; after 38 μs
-</code></pre><ul>
-<li>目标文件（举例看后面插件举例）</li>
-</ul>
-<pre><code>gulp.src(&apos;&apos;)
-</code></pre><ul>
-<li>目标输出（举例看后面插件举例）</li>
-</ul>
-<pre><code>gulp.dest(&apos;&apos;)
-</code></pre><ul>
-<li>管道（上文的输出是下文的输入）（举例看后面插件举例）</li>
-</ul>
-<pre><code>.pipe()
-</code></pre><p>2）gulp插件使用（<a href="http://gulpjs.com/plugins" target="_blank" rel="external">插件网站</a>）</p>
-<ul>
-<li>插件安装</li>
-</ul>
-<pre><code>$ npm install gulp-name1 gulp-name2 --save-dev
-</code></pre><ul>
-<li>插件调用</li>
-</ul>
-<pre><code>var name = require(&apos;gulp-name&apos;)
-</code></pre><ul>
-<li>插件语法</li>
-</ul>
-<pre><code>.pipe(name())
-
-//举例
-gulp.task(&apos;min&apos;,function () {
-    gulp.src(&apos;js/*.js&apos;)          //外部引用
-    .pipe(concat(&apos;new.js&apos;))        //合并多个js文件，并生成一个新的文件
-    .pipe(jsmin())                //压缩这个新生成的js文件
-    .pipe(gulp.dest(&apos;newJS/&apos;))    //将新生成的文件放入新的文件夹中
-})
-</code></pre>
+        <h2 id="一、伪元素与伪类"><a href="#一、伪元素与伪类" class="headerlink" title="一、伪元素与伪类"></a>一、伪元素与伪类</h2><h4 id="1-常见的伪类"><a href="#1-常见的伪类" class="headerlink" title="1. 常见的伪类"></a>1. 常见的伪类</h4><pre><code>:active      &lt;!--向被激活的属性添加样式--&gt;
+:hover         &lt;!--当鼠标悬浮于元素上方时，向元素添加样式--&gt;
+:link         &lt;!--向未被访问的链接添加样式--&gt;
+:visited     &lt;!--想已被访问的链接添加样式--&gt;
+etc.
+</code></pre><h4 id="2-伪元素"><a href="#2-伪元素" class="headerlink" title="2. 伪元素"></a>2. 伪元素</h4><pre><code>::before       &lt;!--在元素之前添加内容--&gt;
+::after        &lt;!--在元素之后添加内容--&gt;
+::first-letter &lt;!--向文本的第一个字母添加特殊样式--&gt;
+::first-line   &lt;!--向文本的首行添加特殊样式--&gt;
+::selection    &lt;!--向选中的内容添加样式--&gt;
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a>
       
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/12/伪元素的初解/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
     </div>
     
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2016/05/17/前端模板引擎jade/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          前端模板引擎jade学习（一）
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/05/14/git版本库的创建与更新（初解）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git版本库初解 MacOS系统，其他系统仅作参考</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-如何使用hexo搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/12/如何使用hexo搭建个人博客/" class="article-date">
+  	<time datetime="2016-05-12T00:59:17.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/如何使用hexo搭建个人博客/">如何使用hexo搭建个人博客（Mac OS系统，windows仅作参考）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f3uwlxtikgj30yt0oz0xh.jpg" alt="思维导图"><br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/12/如何使用hexo搭建个人博客/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
   
 </article>
 
 
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-    <a class="jiathis_button_twitter"></a>
-    <a class="jiathis_button_plus"></a> 
-    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
 
 
 
 
 
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="gulp使用初解" data-title="gulp使用初解" data-url="http://yoursite.com/2016/05/16/gulp使用初解/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
 
-
-
-
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -514,8 +438,8 @@ gulp.task(&apos;min&apos;,function () {
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
