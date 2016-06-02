@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -306,119 +306,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p><img src="" alt="思维导图"></p>
-<h3 id="canvas标签添加"><a href="#canvas标签添加" class="headerlink" title="canvas标签添加"></a>canvas标签添加</h3><p>要使用canvas，首先要在body中添加上canvas标签</p>
-<p>canvas标签是一块默认300*150大小的画布</p>
-<h3 id="画布宽高设置："><a href="#画布宽高设置：" class="headerlink" title="画布宽高设置："></a>画布宽高设置：</h3><p>使用canvas标签的属性，width及height直接在行间设置</p>
-<p>此处注意：不要用css样式去改画布大小，这个会导致画布中的图像被拉伸</p>
-<pre><code>&lt;canvas id=&quot;canvas1&quot; width=&quot;800&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
-</code></pre><h3 id="画布css样式"><a href="#画布css样式" class="headerlink" title="画布css样式"></a>画布css样式</h3><p>画布的其他css样式可以正常设置</p>
-<p>canvas标签中的内容<br>canvas标签中的内容是（包括标签）只有在不支持此效果的低版本浏览器中才会显示的；在高版本浏览器中不会显示出来</p>
-<pre><code>&lt;canvas id=&quot;canvas1&quot; width=&quot;800&quot; height=&quot;500&quot;&gt;
-    只是一个canvas标签，然而你看不到
-&lt;/canvas&gt;
-</code></pre><h3 id="获取canvas标签及上下文"><a href="#获取canvas标签及上下文" class="headerlink" title="获取canvas标签及上下文"></a>获取canvas标签及上下文</h3><p>canvas标签使用js正常dom节点的获取方法获取</p>
-<pre><code>var canvas = document.getElementById(&apos;canvas1&apos;);
-</code></pre><p>上下文是记录canvas执行命令语句的地方，获取如下，后面的参数现在只有2d可选</p>
-<pre><code>var context = canvas.getContext(&apos;2d&apos;);
-</code></pre><h3 id="canvas坐标系"><a href="#canvas坐标系" class="headerlink" title="canvas坐标系"></a>canvas坐标系</h3><p>左上角是00点，x轴正方向向右，y轴正方向向下</p>
-<h3 id="新建图层beginPath"><a href="#新建图层beginPath" class="headerlink" title="新建图层beginPath()"></a>新建图层<code>beginPath()</code></h3><p>这个方法代表重新开始一段路径，即可以理解为新建一个图层</p>
-<p>这个的方法之后执行的绘制动作，不会执行到这个方法之前的命令</p>
-<pre><code>context.beginPath();
-</code></pre><h3 id="样式设置"><a href="#样式设置" class="headerlink" title="样式设置"></a>样式设置</h3><p>边框设置：<code>context.strokeStyle</code></p>
-<p>填充设置：<code>context.fillStyle</code></p>
-<p>线宽设置：<code>context.lineWidth</code></p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.fillStyle = &apos;yellow&apos;;
-</code></pre><p><img src="" alt="">    </p>
-<h3 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h3><h5 id="绘制命令"><a href="#绘制命令" class="headerlink" title="绘制命令"></a>绘制命令</h5><ol>
-<li>边框式绘制：<code>context.stroke();</code></li>
-<li>填充式绘制：<code>context.fill();</code></li>
-</ol>
-<h5 id="绘制直线："><a href="#绘制直线：" class="headerlink" title="绘制直线："></a>绘制直线：</h5><ol>
-<li>设置画笔开始位置：<code>context.moveTo(x,y)</code></li>
-<li>设置画笔结束位置：<code>context.lineTo(x,y)</code></li>
-<li><p>线段两边圆角：<code>context.lineCap = &quot;round&quot;</code></p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.moveTo(100,100);
-context.lineTo(500,100);
-context.stroke();
-</code></pre></li>
-</ol>
-<p><img src="" alt=""></p>
-<h5 id="绘制三角：方法就是绘制3条直线"><a href="#绘制三角：方法就是绘制3条直线" class="headerlink" title="绘制三角：方法就是绘制3条直线"></a>绘制三角：方法就是绘制3条直线</h5><p>绘制多条连续线段时，不必每次重新定义起始点</p>
-<p>画笔会停在上一段线段的终点，并默认为下一次绘制的起始点</p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.moveTo(10,10);
-context.lineTo(10,110);
-context.lineTo(110,110);
-context.lineTo(10,10);
-context.stroke();
-</code></pre><p>注意，此处用绘制直线的方法，进行图形的绘制时；直线封闭处会出现瑕疵，不会完全闭合<br><img src="" alt=""></p>
-<p>闭合方法：<code>context.closePath()</code></p>
-<p>加上上面的闭合命令后，闭合处的瑕疵就会被修复</p>
-<p><img src="" alt=""></p>
-<h5 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h5><p>定义矩形：<code>context.rect(x,y,w,h);</code></p>
-<ol>
-<li>x：起始位置x坐标（矩形左上角）</li>
-<li>y：起始位置y坐标（矩形左上角）</li>
-<li>w：矩形宽</li>
-<li>h：矩形高</li>
-</ol>
-<p>边框式绘制：</p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.rect(150,150,200,100);
-context.stroke();
-</code></pre><p><img src="" alt=""></p>
-<p>填充式绘制：</p>
-<pre><code>context.fillStyle = &apos;yellow&apos;;
-context.rect(150,150,200,100);
-context.fill();
-</code></pre><p><img src="" alt=""></p>
-<p>直接绘制：省去了定义矩形的步骤，按照定义的样式直接填充或描边</p>
-<pre><code>context.fillRect(x,y,w,h)
-context.strokeRect(x,y,w,h)
-</code></pre><h5 id="填充-描边同时使用注意："><a href="#填充-描边同时使用注意：" class="headerlink" title="填充+描边同时使用注意："></a>填充+描边同时使用注意：</h5><p>这两个效果同时使用时，先后顺序的不同会导致效果的差异</p>
-<p>一般是在填充后再去描边，如下效果<br><img src="" alt=""></p>
-<p>如果是描边后再填充的话，填充效果会遮挡一般的边框<br><img src="" alt=""></p>
-<h5 id="绘制弧形"><a href="#绘制弧形" class="headerlink" title="绘制弧形"></a>绘制弧形</h5><p>常用方法：context.arc(x,y,r,θ1,θ2,boolean)</p>
-<ol>
-<li>x：中心点x坐标</li>
-<li>y：中心点y坐标</li>
-<li>r：圆半径</li>
-<li>θ1：起始角度</li>
-<li>θ2：结束角度</li>
-<li><p>布尔值：false逆时针（默认），true顺时针</p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.arc(300,100,100,0,Math.PI/2,true)
-context.stroke();
-</code></pre></li>
-</ol>
-<p><img src="" alt=""></p>
-<h5 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h5><p>设置文字样式：<code>context.font = &#39;italic size family&#39;</code></p>
-<ol>
-<li>italic：斜体</li>
-<li>size：字体大小</li>
-<li>family：字体</li>
-</ol>
-<p>设置文字内容：<code>context.strokeText(&quot;text&quot;,x,y)</code></p>
-<ol>
-<li>“text”：中文字内容</li>
-<li>x：起始x坐标</li>
-<li><p>y：起始y坐标</p>
-<pre><code>context.lineWidth = 1;
-context.strokeStyle = &quot;green&quot;;
-context.font = &quot;italic 150px arial&quot;
-context.strokeText(&quot;我是文字&quot;,50,200);
-</code></pre></li>
-</ol>
-<p><img src="" alt=""></p>
-<h5 id="渐变样式"><a href="#渐变样式" class="headerlink" title="渐变样式"></a>渐变样式</h5><h5 id="绘制阴影"><a href="#绘制阴影" class="headerlink" title="绘制阴影"></a>绘制阴影</h5><h5 id="坐标变换"><a href="#坐标变换" class="headerlink" title="坐标变换"></a>坐标变换</h5><h5 id="绘制贝塞尔曲线"><a href="#绘制贝塞尔曲线" class="headerlink" title="绘制贝塞尔曲线"></a>绘制贝塞尔曲线</h5><h5 id="绘制二次曲线"><a href="#绘制二次曲线" class="headerlink" title="绘制二次曲线"></a>绘制二次曲线</h5>
+        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3>
       
     </div>
     
@@ -431,6 +319,10 @@ context.strokeText(&quot;我是文字&quot;,50,200);
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/02/canvas学习（一）/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

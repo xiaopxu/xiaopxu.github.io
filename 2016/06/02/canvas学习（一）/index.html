@@ -6,31 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>canvas学习（一） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介：
-canvas标签添加要使用canvas，首先要在body中添加上canvas标签
-canvas标签是一块默认300*150大小的画布
-画布宽高设置：使用canvas标签的属性，width及height直接在行间设置
-此处注意：不要用css样式去改画布大小，这个会导致画布中的图像被拉伸
-&amp;lt;canvas id=&amp;quot;canvas1&amp;quot; width=&amp;quot;800&amp;quo">
+  <meta name="description" content="简介：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas学习（一）">
 <meta property="og:url" content="http://yoursite.com/2016/06/02/canvas学习（一）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="简介：
-canvas标签添加要使用canvas，首先要在body中添加上canvas标签
-canvas标签是一块默认300*150大小的画布
-画布宽高设置：使用canvas标签的属性，width及height直接在行间设置
-此处注意：不要用css样式去改画布大小，这个会导致画布中的图像被拉伸
-&amp;lt;canvas id=&amp;quot;canvas1&amp;quot; width=&amp;quot;800&amp;quo">
-<meta property="og:updated_time" content="2016-06-02T14:42:59.000Z">
+<meta property="og:description" content="简介：">
+<meta property="og:updated_time" content="2016-06-02T14:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习（一）">
-<meta name="twitter:description" content="简介：
-canvas标签添加要使用canvas，首先要在body中添加上canvas标签
-canvas标签是一块默认300*150大小的画布
-画布宽高设置：使用canvas标签的属性，width及height直接在行间设置
-此处注意：不要用css样式去改画布大小，这个会导致画布中的图像被拉伸
-&amp;lt;canvas id=&amp;quot;canvas1&amp;quot; width=&amp;quot;800&amp;quo">
+<meta name="twitter:description" content="简介：">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -93,7 +78,7 @@ canvas标签是一块默认300*150大小的画布
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -331,7 +316,8 @@ canvas标签是一块默认300*150大小的画布
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p><img src="" alt="思维导图"></p>
+        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><a id="more"></a>
+<p><img src="" alt="思维导图"></p>
 <h3 id="canvas标签添加"><a href="#canvas标签添加" class="headerlink" title="canvas标签添加"></a>canvas标签添加</h3><p>要使用canvas，首先要在body中添加上canvas标签</p>
 <p>canvas标签是一块默认300*150大小的画布</p>
 <h3 id="画布宽高设置："><a href="#画布宽高设置：" class="headerlink" title="画布宽高设置："></a>画布宽高设置：</h3><p>使用canvas标签的属性，width及height直接在行间设置</p>
@@ -365,12 +351,8 @@ context.fillStyle = &apos;yellow&apos;;
 <li>设置画笔开始位置：<code>context.moveTo(x,y)</code></li>
 <li>设置画笔结束位置：<code>context.lineTo(x,y)</code></li>
 <li><p>线段两边圆角：<code>context.lineCap = &quot;round&quot;</code></p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.moveTo(100,100);
-context.lineTo(500,100);
-context.stroke();
-</code></pre></li>
+<p> context.strokeStyle = “red”;<br> context.lineWidth = 2;<br> context.moveTo(100,100);<br> context.lineTo(500,100);<br> context.stroke();</p>
+</li>
 </ol>
 <p><img src="" alt=""></p>
 <h5 id="绘制三角：方法就是绘制3条直线"><a href="#绘制三角：方法就是绘制3条直线" class="headerlink" title="绘制三角：方法就是绘制3条直线"></a>绘制三角：方法就是绘制3条直线</h5><p>绘制多条连续线段时，不必每次重新定义起始点</p>
@@ -418,11 +400,8 @@ context.strokeRect(x,y,w,h)
 <li>θ1：起始角度</li>
 <li>θ2：结束角度</li>
 <li><p>布尔值：false逆时针（默认），true顺时针</p>
-<pre><code>context.strokeStyle = &quot;red&quot;;
-context.lineWidth = 2;
-context.arc(300,100,100,0,Math.PI/2,true)
-context.stroke();
-</code></pre></li>
+<p> context.strokeStyle = “red”;<br> context.lineWidth = 2;<br> context.arc(300,100,100,0,Math.PI/2,true)<br> context.stroke();</p>
+</li>
 </ol>
 <p><img src="" alt=""></p>
 <h5 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h5><p>设置文字样式：<code>context.font = &#39;italic size family&#39;</code></p>
@@ -436,11 +415,8 @@ context.stroke();
 <li>“text”：中文字内容</li>
 <li>x：起始x坐标</li>
 <li><p>y：起始y坐标</p>
-<pre><code>context.lineWidth = 1;
-context.strokeStyle = &quot;green&quot;;
-context.font = &quot;italic 150px arial&quot;
-context.strokeText(&quot;我是文字&quot;,50,200);
-</code></pre></li>
+<p> context.lineWidth = 1;<br> context.strokeStyle = “green”;<br> context.font = “italic 150px arial”<br> context.strokeText(“我是文字”,50,200);</p>
+</li>
 </ol>
 <p><img src="" alt=""></p>
 <h5 id="渐变样式"><a href="#渐变样式" class="headerlink" title="渐变样式"></a>渐变样式</h5><h5 id="绘制阴影"><a href="#绘制阴影" class="headerlink" title="绘制阴影"></a>绘制阴影</h5><h5 id="坐标变换"><a href="#坐标变换" class="headerlink" title="坐标变换"></a>坐标变换</h5><h5 id="绘制贝塞尔曲线"><a href="#绘制贝塞尔曲线" class="headerlink" title="绘制贝塞尔曲线"></a>绘制贝塞尔曲线</h5><h5 id="绘制二次曲线"><a href="#绘制二次曲线" class="headerlink" title="绘制二次曲线"></a>绘制二次曲线</h5>
