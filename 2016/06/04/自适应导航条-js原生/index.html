@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4jh61sy4pj30l70fdq3g.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4jh22c80cj30f90egjs3.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4jh22qfjaj30f70bet94.jpg">
-<meta property="og:updated_time" content="2016-06-04T12:53:30.000Z">
+<meta property="og:updated_time" content="2016-06-04T12:57:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自适应导航条--js原生">
 <meta name="twitter:description" content="自适应导航条js原生版看到bootstrap等第三方库中的导航条非常简单好用，没想到自己用原生试着实现用了这么多行代码😳">
@@ -328,20 +328,20 @@
 </ol>
 <h5 id="js："><a href="#js：" class="headerlink" title="js："></a>js：</h5><ol>
 <li>用布尔值作为开关控制点击状态</li>
-<li>先设置bol = true</li>
+<li>先设置bol = true，让判断走if语句</li>
 <li>点击一次后，定时器执行navbar和nav的高度增大至预设值，关闭定时器</li>
 <li>定时器后将bol改为false，这样下次点击就会执行else中语句</li>
 <li>else中定时器控制nav及navbar高度减小至预设值，关闭定时器</li>
 <li>定时器后将bol再改为true，这样下次点击就会执行if中语句</li>
 </ol>
-<p>#####遇到的坑：<br>遇到的比较棘手的问题就是开关状态、点击事件、定时器到底该如何嵌套，不过最后还是把思路理清楚了</p>
+<h5 id="遇到的坑："><a href="#遇到的坑：" class="headerlink" title="遇到的坑："></a>遇到的坑：</h5><p>遇到的比较棘手的问题就是开关状态、点击事件、定时器到底该如何嵌套，不过最后还是把思路理清楚了</p>
 <ol>
-<li>先用布尔值判定是走if语句（高度++）还是else语句（高度–）</li>
+<li>先用布尔值判定是走if语句（高度+）还是else语句（高度-）</li>
 <li>再到点击按钮</li>
 <li>点击按钮后再触发定时器</li>
 <li>高度变化至设定值时关闭定时器，及改变布尔值</li>
 </ol>
-<p>还有个问题就是因为navbar定位之后失去了撑开下方区块的功能，最后只能讲父级nav的高度同步增大，不知道是不是有点绕了</p>
+<p>还有个问题就是因为navbar定位之后失去了撑开下方区块的功能，最后只能将父级nav的高度同步增大，不知道是不是有点绕了</p>
 <p>上代码：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
