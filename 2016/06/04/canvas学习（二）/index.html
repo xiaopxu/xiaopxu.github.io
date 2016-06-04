@@ -4,27 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>JavaScript赋值时的传值与传址 | 世界树</title>
+  <title>canvas学习（二） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+  <meta name="description" content="记录学习历程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript赋值时的传值与传址">
-<meta property="og:url" content="http://yoursite.com/2016/05/31/传值与传址/index.html">
+<meta property="og:title" content="canvas学习（二）">
+<meta property="og:url" content="http://yoursite.com/2016/06/04/canvas学习（二）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
-<meta property="og:updated_time" content="2016-05-31T12:49:31.000Z">
+<meta property="og:description" content="记录学习历程">
+<meta property="og:updated_time" content="2016-06-04T07:37:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript赋值时的传值与传址">
-<meta name="twitter:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+<meta name="twitter:title" content="canvas学习（二）">
+<meta name="twitter:description" content="记录学习历程">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -288,11 +279,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-传值与传址" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-canvas学习（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/31/传值与传址/" class="article-date">
-  	<time datetime="2016-05-31T08:53:52.000Z" itemprop="datePublished">2016-05-31</time>
+      <a href="/2016/06/04/canvas学习（二）/" class="article-date">
+  	<time datetime="2016-06-04T07:36:52.000Z" itemprop="datePublished">2016-06-04</time>
 </a>
     </div>
   
@@ -305,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript赋值时的传值与传址
+      canvas学习（二）
     </h1>
   
 
@@ -314,7 +305,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
 	</div>
 
         
@@ -325,104 +316,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型</p>
-<ul>
-<li><strong>基本数据类型</strong>包含5类，分别是：Number、String、Boolean、Null、Undefined</li>
-<li><p><strong>引用数据类型</strong>包含剩下的Array、Date、Math、RegExp、Object、Function等</p>
-<a id="more"></a>
-<p>将一个值赋给变量时，解析器必须确定这个值是基本类型还是引用类型。</p>
-</li>
-<li><p>基本类型是按值直接访问的</p>
-</li>
-<li>引用类型是按引用访问的</li>
-</ul>
-<h3 id="基本数据类型赋值："><a href="#基本数据类型赋值：" class="headerlink" title="基本数据类型赋值："></a>基本数据类型赋值：</h3><pre><code>//此处是基本数据类型对的赋值
-//最后在改变了b的值得情况下，a的值不受影响
-var a = 1;
-var b = a;
-b = 10;
-
-console.log(a);  //1
-</code></pre><h5 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h5><blockquote>
-<p>如果从一个变量向另一个变量复制基本类型的值，会在变量变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上 —-《JavaScript高级程序设计》</p>
-</blockquote>
-<p>也就是说，传值得过程经历了以下几步：</p>
-<ol>
-<li>复制变量的值</li>
-<li>申请一个新的内存地址保存复制的值</li>
-<li>把复制的值的新地址赋给新的变量</li>
-</ol>
-<p>所以两个变量的值只是在数值上相等，其实在内存中是两个地址，<strong>是互相独立的存在</strong></p>
-<p>因此其中一个发生改变时并不会影响到另外一个</p>
-<h3 id="引用数据类型赋值"><a href="#引用数据类型赋值" class="headerlink" title="引用数据类型赋值"></a>引用数据类型赋值</h3><pre><code>//此处是引用数据类型的赋值
-//在arr2变化的情况下，arr1也会同步变更
-var arr1 = [1,2,3,4];
-var arr2 = arr1;
-arr2[0] = 10;
-
-console.log(arr1[0]);  //10
-</code></pre><h5 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h5><blockquote>
-<p>当从一个变量向另一个变量复制引用的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。</p>
-<p>不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。复制操作结束后，两个变量实际上引用同一个对象。</p>
-<p>—-《JavaScript高级程序设计》</p>
-</blockquote>
-<p>也就是说，传址其实就是把一个变量在内存中的地址传给另一个变量</p>
-<p>改变一个变量，就会影响另外一个变量</p>
-<h3 id="如何避免传址的缺点"><a href="#如何避免传址的缺点" class="headerlink" title="如何避免传址的缺点"></a>如何避免传址的缺点</h3><p>因为两个变量同步变更的特性是我们不想要的，所以我们需要用克隆的方法避开它</p>
-<p>克隆实现原理：</p>
-<ul>
-<li>利用字符串赋值为传值的特点，先将对象转化成字符串形式</li>
-<li>然后将字符串形式再转换成对象</li>
-</ul>
-<h5 id="第一种方法（for循环）"><a href="#第一种方法（for循环）" class="headerlink" title="第一种方法（for循环）"></a>第一种方法（for循环）</h5><p>这种方法在遇到复杂数组时比较无力，比如 <code>arr = [1,[2,3],{a:1,b:2}]</code></p>
-<pre><code>//for循环原数组，将每个参数分别赋值给空数组arr2
-//缺陷是：当数组中存放了引用类型数据时，就需要多次循环，比较复杂
-var arr1 = [1,2,3,4]
-var arr2 = []
-for (var i = 0; i&lt;arr1.length; i++){
-    arr2[i] = arr1[i]
-}
-arr2[0] = 10;
-
-console.log(arr1[0]);  //1  arr1不受影响
-</code></pre><h5 id="第二种方法（forEach）"><a href="#第二种方法（forEach）" class="headerlink" title="第二种方法（forEach）"></a>第二种方法（forEach）</h5><p>forEach是ES5新引入的数组方法，可以用来循环数组及对象</p>
-<pre><code>array.forEach(callback,[thisObject]);
-</code></pre><p>forEach有两个参数：第一个参数是回调函数，第二个参数是执行回调是this的值</p>
-<p>回调函数包含3个参数：</p>
-<ol>
-<li>当前循环值</li>
-<li>当前循环下标</li>
-<li>被循环的数组本身</li>
-</ol>
-<p>注意：ie浏览器没有forEach方法，要兼容的话需要自己用原生给原型链上加这个方法</p>
-<pre><code>var arr1 = [1,2,3,4];
-var arr2 = [];
-var str = &apos;&apos;;
-arr1.forEach(function(val){
-    console.log(val)  //1 2 3 4  这里val是循环值
-    str += val;
-});
-arr2 = str.split(&apos;&apos;)
-console.log(arr2)  //[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;] 此处arr已经是数组
-arr2[0] = 10;  //改变arr2中的参数
-
-console.log(arr1[0])  //1  arr1不受影响
-</code></pre><h5 id="第三种方法（JSON-stringify-JSON-parse-）"><a href="#第三种方法（JSON-stringify-JSON-parse-）" class="headerlink" title="第三种方法（JSON.stringify() / JSON.parse()）"></a>第三种方法（JSON.stringify() / JSON.parse()）</h5><p>JSON.stringify()：把对象转换成字符串形式的JSON格式字符串值（无法转换DOM/BOM对象）</p>
-<p>JSON.parse()：把字符串形式的标准JSON字符串转换成对象（属性名称必须有引号）</p>
-<p>用法举例：</p>
-<pre><code>var arr = [1,2,[3,4],{a:&apos;abc&apos;,b:true}];
-console.log(JSON.stringify(arr))  //&apos;[1,2,[3,4],{&quot;a&quot;:&apos;abc&apos;,&quot;b&quot;:true}]&apos;  属性会加上双引号
-
-var oDiv = document.getElementById(&apos;div1&apos;)
-console.log(JSON.stringify(oDiv))  //{}  打印一个空对象
-</code></pre><p>克隆实现方法：</p>
-<pre><code>var arr1 = [1,2,[3,4],{a: &apos;abc&apos;,b: true}];
-var arr2 = JSON.stringify(arr1);
-arr2 = JSON.parse(arr2);
-arr2[2][0] = 10;
-
-console.log(arr1[2][0])  //3  arr1不受影响
-</code></pre>
+        
       
     </div>
     
@@ -431,18 +325,18 @@ console.log(arr1[2][0])  //3  arr1不受影响
     
 <nav id="article-nav">
   
-    <a href="/2016/06/01/图片随鼠标立体转动效果/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/06/04/自适应导航条-js原生/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          图片随鼠标立体转动效果
+          自适应导航条--js原生
         
       </div>
     </a>
   
   
-    <a href="/2016/05/31/for循环与for-in循环/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript中对象的循环方法--for循环与for-in循环</div>
+    <a href="/2016/06/02/canvas学习（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">canvas学习（一）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -477,7 +371,7 @@ console.log(arr1[2][0])  //3  arr1不受影响
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="传值与传址" data-title="JavaScript赋值时的传值与传址" data-url="http://yoursite.com/2016/05/31/传值与传址/"></div>
+	<div class="ds-thread" data-thread-key="canvas学习（二）" data-title="canvas学习（二）" data-url="http://yoursite.com/2016/06/04/canvas学习（二）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

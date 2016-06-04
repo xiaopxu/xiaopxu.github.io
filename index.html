@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -279,6 +279,394 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-自适应导航条-js原生" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/04/自适应导航条-js原生/" class="article-date">
+  	<time datetime="2016-06-04T12:15:58.000Z" itemprop="datePublished">2016-06-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/04/自适应导航条-js原生/">自适应导航条--js原生</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="自适应导航条js原生版"><a href="#自适应导航条js原生版" class="headerlink" title="自适应导航条js原生版"></a>自适应导航条js原生版</h2><p>看到bootstrap等第三方库中的导航条非常简单好用，没想到自己用原生试着实现用了这么多行代码😳</p>
+<p>效果如下：<br><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4jh21d930j31110fdaaw.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4jh61sy4pj30l70fdq3g.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4jh22c80cj30f90egjs3.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4jh22qfjaj30f70bet94.jpg" alt=""></p>
+<h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><h5 id="html-css："><a href="#html-css：" class="headerlink" title="html+css："></a>html+css：</h5><ol>
+<li>最外层nav宽度100%。高给固定值</li>
+<li>中间内容部分全部用一个div包裹，宽度百分比，margin: 0 auto; 实现居中</li>
+<li>左侧的logo图片外包div，给的固定宽高</li>
+<li>中间的navbar包裹ul列表用的百分比宽度，使其宽度能够在屏幕缩放的时候随之变化</li>
+<li>右侧按钮部分隐藏</li>
+<li>媒体查询屏幕宽度&lt;768px时，将navbar定位至nav下方，高度给0，并将按钮显示</li>
+</ol>
+<h5 id="js："><a href="#js：" class="headerlink" title="js："></a>js：</h5><ol>
+<li>用布尔值作为开关控制点击状态</li>
+<li>先设置bol = true</li>
+<li>点击一次后，定时器执行navbar和nav的高度增大至预设值，关闭定时器</li>
+<li>定时器后将bol改为false，这样下次点击就会执行else中语句</li>
+<li>else中定时器控制nav及navbar高度减小至预设值，关闭定时器</li>
+<li>定时器后将bol再改为true，这样下次点击就会执行if中语句</li>
+</ol>
+<p>#####遇到的坑：<br>遇到的比较棘手的问题就是开关状态、点击事件、定时器到底该如何嵌套，不过最后还是把思路理清楚了</p>
+<ol>
+<li>先用布尔值判定是走if语句（高度++）还是else语句（高度–）</li>
+<li>再到点击按钮</li>
+<li>点击按钮后再触发定时器</li>
+<li>高度变化至设定值时关闭定时器，及改变布尔值</li>
+</ol>
+<p>还有个问题就是因为navbar定位之后失去了撑开下方区块的功能，最后只能讲父级nav的高度同步增大，不知道是不是有点绕了</p>
+<p>上代码：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;自适应导航栏&lt;/title&gt;
+    &lt;style&gt;
+        /*简单清除默认样式*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*导航宽屏时主体部分*/
+        nav {
+            width: 100%;
+            height: 50px;
+            background-color: #444;
+            overflow: hidden;
+            min-width: 320px;
+        }
+        .nav {
+            max-width: 80%;
+            margin: 0 auto;
+            height: 50px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            float: left;
+        }
+        .logo img {
+            width: 100%;
+            display: block;
+        }
+
+        .navbar {
+            width: 80%;
+            height: 50px;
+            float: right;
+        }
+        .navbar ul {
+            list-style: none;
+            height: 50px;
+            overflow: hidden;
+            float: right;
+        }
+        .navbar li {
+            height: 50px;
+            float: left;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: block;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /*媒体查询屏幕宽度小于768px时生效以下效果*/
+        @media screen and (max-width: 768px) {
+            /*
+                1、navbar定位到nav下方，宽度撑满屏幕
+                2、高度给成0
+                3、超出部分不显示
+                4、其他样式相应调整
+            */
+            .navbar {
+                float: right;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                height: 0px;
+                background-color: #444;
+                overflow: hidden;
+            }
+            .navbar ul {
+                width: 100%;
+                height: 200px;
+            }
+            .navbar li {
+                width: 80%;
+                margin: 0 auto;
+                float: none;
+            }
+            .navbar a { text-align: left; }
+        }
+
+        /*按钮部分，宽屏时是隐藏的*/
+        .btn {
+            border: 0;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: #aaa;
+            float: right;
+            display: none;
+            opacity: 0.8;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+        .btn:hover { opacity: 1; }
+        .btn span {
+            display: block;
+            width: 60%;
+            height: 5px;
+            border-radius: 5px;
+            margin: 6px 20%;
+            background-color: #fff;
+        }
+
+        /*媒体查询屏幕宽度小于768px时，按钮出现*/
+        @media screen and (max-width: 768px) {
+            .btn { display: block; }
+        }
+
+        /*内容部分*/
+        .content{
+            width: 100%;
+            height: 500px;
+            background-color: #ddd;
+            /*overflow: hidden;*/
+        }
+        .content h2{
+            width: 80%;
+            margin: 0 auto;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 60px;
+            color: #fff;
+            padding-top: 50px;
+        }
+        @media screen and (max-width: 768px) {
+            .content h2{
+                font-size: 40px;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;div class=&quot;nav&quot;&gt;
+            &lt;div class=&quot;logo&quot;&gt;&lt;img src=&quot;img/logo.png&quot; alt=&quot;logo&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;btn&quot; class=&quot;btn&quot;&gt;
+                &lt;span&gt;&lt;/span&gt;
+                &lt;span&gt;&lt;/span&gt;
+                &lt;span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div id=&quot;navbar&quot; class=&quot;navbar&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;公司简介&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;产品介绍&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;联系方式&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/div&gt;    
+    &lt;/nav&gt;
+    &lt;div id=&quot;content&quot; class=&quot;content&quot;&gt;
+        &lt;h2&gt;这是下方内容&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+
+    //获取节点
+    var btn = document.getElementById(&apos;btn&apos;);
+    var navbar = document.getElementById(&apos;navbar&apos;);
+    var nav = document.getElementsByTagName(&apos;nav&apos;)[0];
+
+    //设置布尔值作为开关
+    var bol = true;
+
+    //设置定时器
+    var timer = null;
+
+    //设定navbar(就是会移到下方的部分)
+    var t = navbar.offsetHeight;
+    var maxH = 200;
+    var minH = 0;
+
+    //设定nav(就是最外面的父级)
+    //因为navbar已经定位，所以他无法将下方内容顶开，所以需要同时变更父级的高度来顶开下方内容
+    var navT = nav.offsetHeight;
+    var navMaxH = 250;
+    var navMinH = 50;
+
+    btn.onclick = function () {
+
+        // 判定布尔值
+        if (bol){
+
+            navbar.style.borderTop = &quot;1px solid #fff&quot;;
+
+            timer = setInterval(function () {
+                t+=10;
+                navT+=10;
+
+                //父级nav上限
+                if (navT&gt;=navMaxH){
+                    navT = navMaxH;
+                }
+
+                // navbar上限
+                if (t&gt;=maxH){
+                    t = maxH;
+                    navT = navMaxH;
+                    clearInterval(timer);
+                }
+
+                navbar.style.height = t + &apos;px&apos;;
+                nav.style.height = navT + &apos;px&apos;;
+
+            }, 10)
+            //布尔值改为false，下次点击时，就会执行else中的语句
+            bol = false;
+        }else{
+
+            navbar.style.borderTop = &quot;0&quot;;
+
+            timer = setInterval(function () {
+                t-=10;
+                navT-=10;
+
+                //父级nav下限
+                if (navT&lt;=navMinH){
+                    navT = navMinH;
+                }
+
+                //navbar下限
+                if (t&lt;=minH){
+                    t = minH;
+                    navT = navMinH;
+                    clearInterval(timer);
+                }
+
+                navbar.style.height = t + &apos;px&apos;;
+                nav.style.height = navT + &apos;px&apos;;
+
+            }, 10)
+
+            //布尔值改为true，下次点击时，就会执行if中的语句
+            bol = true;
+        }
+    }
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-canvas学习（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/04/canvas学习（二）/" class="article-date">
+  	<time datetime="2016-06-04T07:36:52.000Z" itemprop="datePublished">2016-06-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/04/canvas学习（二）/">canvas学习（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-canvas学习（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -700,58 +1088,6 @@
 
 
   
-    <article id="post-面向对象学习-工厂模式与构造函数模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/" class="article-date">
-  	<time datetime="2016-05-31T08:42:57.000Z" itemprop="datePublished">2016-05-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/31/面向对象学习-工厂模式与构造函数模式/">面向对象学习--工厂模式与构造函数模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-js数据类型查看typeof方式的优化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -798,58 +1134,6 @@
         <p class="article-more-link">
           <a  href="/2016/05/31/js数据类型查看typeof方式的优化/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象学习-继承" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/31/面向对象学习-继承/" class="article-date">
-  	<time datetime="2016-05-31T08:40:49.000Z" itemprop="datePublished">2016-05-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/31/面向对象学习-继承/">面向对象学习--继承</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
       
       <div class="clearfix"></div>
     </div>
