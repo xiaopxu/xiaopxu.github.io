@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4n1iwws9fj309n09k0tc.jpg">
-<meta property="og:updated_time" content="2016-06-07T14:45:05.000Z">
+<meta property="og:updated_time" content="2016-06-07T14:47:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习（二）">
 <meta name="twitter:description" content="图像合并">
@@ -386,8 +386,7 @@ img.src = &quot;http://img3.imgtn.bdimg.com/it/u=1011179444,2282576107&amp;fm=21
 <pre><code>img.onload = function () {
     context.drawImage(img,50,50);
 }
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iuuzsaj3095096q39.jpg" alt="定位"></p>
-<p>3、绘制方式，一共9个属性，这里分三段理解</p>
+</code></pre><p>3、绘制方式，一共9个属性，这里分三段理解</p>
 <p>drawImage(img,x,y)：必选属性，第一参数为图片对象名称，后两个为绘图位置（图片左上角在画布中的坐标）</p>
 <pre><code>//画布300*300，图片200*200
 var img = new Image();
@@ -397,7 +396,7 @@ context.beginPath();
 img.onload = function () {
     context.drawImage(img,50,50);
 }
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg" alt="自定义大小"></p>
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iuuzsaj3095096q39.jpg" alt="定位"></p>
 <p>drawImage(img,x,y,w,h)：后面加两个属性是自定义图片的大小</p>
 <pre><code>//画布300*300，图片200*200
 var img = new Image();
@@ -407,7 +406,7 @@ context.beginPath();
 img.onload = function () {
     context.drawImage(img,0,0,300,300);
 }
-</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg" alt="截取"></p>
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg" alt="自定义大小"></p>
 <p>drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,x,y, width,height)：中间加入的四个属性，是表示图片截取的位置，矩形起点、终点、长、宽</p>
 <pre><code>//画布300*300，图片200*200
 var img = new Image();
@@ -417,7 +416,8 @@ context.beginPath();
 img.onload = function () {
     context.drawImage(img,100,0,200,200,75,0,300,300);
 }
-</code></pre><p>clip：类似于css3的蒙版遮罩效果，只显示clip图形内的图片</p>
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg" alt="截取"></p>
+<p>clip：类似于css3的蒙版遮罩效果，只显示clip图形内的图片</p>
 <pre><code>context.beginPath();
 context.lineWidth = 5;
 context.arc(150,150,150,0,Math.PI*2,true);
