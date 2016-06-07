@@ -4,27 +4,20 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>JavaScript赋值时的传值与传址 | 世界树</title>
+  <title>canvas实现贪吃蛇 | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+  <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript赋值时的传值与传址">
-<meta property="og:url" content="http://yoursite.com/2016/05/31/传值与传址/index.html">
+<meta property="og:title" content="canvas实现贪吃蛇">
+<meta property="og:url" content="http://yoursite.com/2016/06/07/canvas实现贪吃蛇/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
-<meta property="og:updated_time" content="2016-05-31T12:49:31.000Z">
+<meta property="og:description">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4myeyfaosj30mv0egaa4.jpg">
+<meta property="og:updated_time" content="2016-06-07T12:56:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript赋值时的传值与传址">
-<meta name="twitter:description" content="JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型
-
-基本数据类型包含5类，分别是：Number、String、Boolean、Null、Undefined
-引用数据类型包含剩下的Array、Date、Math、RegExp、Object、Function等">
+<meta name="twitter:title" content="canvas实现贪吃蛇">
+<meta name="twitter:description">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4myeyfaosj30mv0egaa4.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -288,11 +281,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-传值与传址" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-canvas实现贪吃蛇" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/31/传值与传址/" class="article-date">
-  	<time datetime="2016-05-31T08:53:52.000Z" itemprop="datePublished">2016-05-31</time>
+      <a href="/2016/06/07/canvas实现贪吃蛇/" class="article-date">
+  	<time datetime="2016-06-07T12:35:55.000Z" itemprop="datePublished">2016-06-07</time>
 </a>
     </div>
   
@@ -305,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript赋值时的传值与传址
+      canvas实现贪吃蛇
     </h1>
   
 
@@ -314,7 +307,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
 	</div>
 
         
@@ -325,103 +318,250 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript中有两种不同数据类型的值，分别是基本数据类型与引用数据类型</p>
-<ul>
-<li><strong>基本数据类型</strong>包含5类，分别是：Number、String、Boolean、Null、Undefined</li>
-<li><p><strong>引用数据类型</strong>包含剩下的Array、Date、Math、RegExp、Object、Function等</p>
-<a id="more"></a>
-<p>将一个值赋给变量时，解析器必须确定这个值是基本类型还是引用类型。</p>
-</li>
-<li><p>基本类型是按值直接访问的</p>
-</li>
-<li>引用类型是按引用访问的</li>
-</ul>
-<h3 id="基本数据类型赋值："><a href="#基本数据类型赋值：" class="headerlink" title="基本数据类型赋值："></a>基本数据类型赋值：</h3><pre><code>//此处是基本数据类型对的赋值
-//最后在改变了b的值得情况下，a的值不受影响
-var a = 1;
-var b = a;
-b = 10;
-
-console.log(a);  //1
-</code></pre><h5 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h5><blockquote>
-<p>如果从一个变量向另一个变量复制基本类型的值，会在变量变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上 —-《JavaScript高级程序设计》</p>
-</blockquote>
-<p>也就是说，传值得过程经历了以下几步：</p>
+        <p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4myeyfaosj30mv0egaa4.jpg" alt="效果图"><br><a id="more"></a></p>
+<p>###实现思路：</p>
+<h5 id="ps：这个只是思路，详细可看代码注释"><a href="#ps：这个只是思路，详细可看代码注释" class="headerlink" title="ps：这个只是思路，详细可看代码注释"></a>ps：这个只是思路，详细可看代码注释</h5><p>一、先把蛇画出来</p>
 <ol>
-<li>复制变量的值</li>
-<li>申请一个新的内存地址保存复制的值</li>
-<li>把复制的值的新地址赋给新的变量</li>
+<li>定义一下蛇的结构，用一个数组保存一堆矩形，包含蛇头（红）和蛇身（灰）。</li>
+<li>画蛇（初始状态）</li>
 </ol>
-<p>所以两个变量的值只是在数值上相等，其实在内存中是两个地址，<strong>是互相独立的存在</strong></p>
-<p>因此其中一个发生改变时并不会影响到另外一个</p>
-<h3 id="引用数据类型赋值"><a href="#引用数据类型赋值" class="headerlink" title="引用数据类型赋值"></a>引用数据类型赋值</h3><pre><code>//此处是引用数据类型的赋值
-//在arr2变化的情况下，arr1也会同步变更
-var arr1 = [1,2,3,4];
-var arr2 = arr1;
-arr2[0] = 10;
-
-console.log(arr1[0]);  //10
-</code></pre><h5 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h5><blockquote>
-<p>当从一个变量向另一个变量复制引用的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。</p>
-<p>不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。复制操作结束后，两个变量实际上引用同一个对象。</p>
-<p>—-《JavaScript高级程序设计》</p>
-</blockquote>
-<p>也就是说，传址其实就是把一个变量在内存中的地址传给另一个变量</p>
-<p>改变一个变量，就会影响另外一个变量</p>
-<h3 id="如何避免传址的缺点"><a href="#如何避免传址的缺点" class="headerlink" title="如何避免传址的缺点"></a>如何避免传址的缺点</h3><p>因为两个变量同步变更的特性是我们不想要的，所以我们需要用克隆的方法避开它</p>
-<p>克隆实现原理：</p>
-<ul>
-<li>利用字符串赋值为传值的特点，先将对象转化成字符串形式</li>
-<li>然后将字符串形式再转换成对象</li>
-</ul>
-<h5 id="第一种方法（for循环）"><a href="#第一种方法（for循环）" class="headerlink" title="第一种方法（for循环）"></a>第一种方法（for循环）</h5><p>这种方法在遇到复杂数组时比较无力，比如 <code>arr = [1,[2,3],{a:1,b:2}]</code></p>
-<pre><code>//for循环原数组，将每个参数分别赋值给空数组arr2
-//缺陷是：当数组中存放了引用类型数据时，就需要多次循环，比较复杂
-var arr1 = [1,2,3,4]
-var arr2 = []
-for (var i = 0; i&lt;arr1.length; i++){
-    arr2[i] = arr1[i]
-}
-arr2[0] = 10;
-
-console.log(arr1[0]);  //1  arr1不受影响
-</code></pre><h5 id="第二种方法（forEach）"><a href="#第二种方法（forEach）" class="headerlink" title="第二种方法（forEach）"></a>第二种方法（forEach）</h5><p>forEach是ES5新引入的数组方法，可以用来循环数组及对象</p>
-<pre><code>array.forEach(callback,[thisObject]);
-</code></pre><p>forEach有两个参数：第一个参数是回调函数，第二个参数是执行回调是this的值</p>
-<p>回调函数包含3个参数：</p>
+<p>二、蛇能动（重点）</p>
 <ol>
-<li>当前循环值</li>
-<li>当前循环下标</li>
-<li>被循环的数组本身</li>
+<li>蛇移动方式：<strong>自始至终都只有蛇头在动</strong><ul>
+<li>画一个灰色的方块，位置与蛇头重叠</li>
+<li>将这个方块插到数组中蛇头后面一个的位置<code>arrar.splice(0,1,rect)</code></li>
+<li>砍去末尾的方块<code>array.pop()</code></li>
+<li>将蛇头向设定方向移动一格</li>
+</ul>
+</li>
+<li>需要一个保存方向的变量(direction)</li>
+<li>根据方向进行移动，一次移动一个格</li>
+<li>根据按键改方向</li>
 </ol>
-<p>注意：ie浏览器没有forEach方法，要兼容的话需要自己用原生给原型链上加这个方法</p>
-<pre><code>var arr1 = [1,2,3,4];
-var arr2 = [];
-var str = &apos;&apos;;
-arr1.forEach(function(val){
-    console.log(val)  //1 2 3 4  这里val是循环值
-    str += val;
-});
-arr2 = str.split(&apos;&apos;)
-console.log(arr2)  //[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;] 此处arr已经是数组
-arr2[0] = 10;  //改变arr2中的参数
+<p>三、随机投放食物</p>
+<ol>
+<li>需要随机食物的位置</li>
+<li>需要判断食物在不在蛇身上。</li>
+</ol>
+<p>四、吃食物</p>
+<ol>
+<li>判断食物是否与蛇头重叠</li>
+<li>数组加一个元素（少删除一个元素就是加一个元素）</li>
+<li>生成新的食物</li>
+</ol>
+<p>五、gameover</p>
+<ol>
+<li>撞墙判定</li>
+<li>装自己判定</li>
+</ol>
+<hr>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;style&gt;
+        #canvas{
+            box-shadow: 0 5px 40px black;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;canvas&quot; width=&quot;800&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var canvas = document.getElementById(&apos;canvas&apos;);
+    var context = canvas.getContext(&apos;2d&apos;);
 
-console.log(arr1[0])  //1  arr1不受影响
-</code></pre><h5 id="第三种方法（JSON-stringify-JSON-parse-）"><a href="#第三种方法（JSON-stringify-JSON-parse-）" class="headerlink" title="第三种方法（JSON.stringify() / JSON.parse()）"></a>第三种方法（JSON.stringify() / JSON.parse()）</h5><p>JSON.stringify()：把对象转换成字符串形式的JSON格式字符串值（无法转换DOM/BOM对象）</p>
-<p>JSON.parse()：把字符串形式的标准JSON字符串转换成对象（属性名称必须有引号）</p>
-<p>用法举例：</p>
-<pre><code>var arr = [1,2,[3,4],{a:&apos;abc&apos;,b:true}];
-console.log(JSON.stringify(arr))  //&apos;[1,2,[3,4],{&quot;a&quot;:&apos;abc&apos;,&quot;b&quot;:true}]&apos;  属性会加上双引号
+    //构造对象方块
+    function Rect (x,y,w,h,color) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+    }
+    //画方块的方法
+    Rect.prototype.draw = function () {
+        context.beginPath();
+        context.fillStyle = this.color;
+        context.rect(this.x,this.y,this.w,this.h);
+        context.fill();
+        context.stroke();
+    }
 
-var oDiv = document.getElementById(&apos;div1&apos;)
-console.log(JSON.stringify(oDiv))  //{}  打印一个空对象
-</code></pre><p>克隆实现方法：</p>
-<pre><code>var arr1 = [1,2,[3,4],{a: &apos;abc&apos;,b: true}];
-var arr2 = JSON.stringify(arr1);
-arr2 = JSON.parse(arr2);
-arr2[2][0] = 10;
+    //构造对象蛇
+    function Snake () {
 
-console.log(arr1[2][0])  //3  arr1不受影响
+        //定义一个空数组存放组成整蛇的方块对象
+        var snakeArray = [];
+
+        //画出4个方块，设置成灰色
+        for (var i = 0; i &lt; 4; i++) {
+            var rect = new Rect(i*20,0,20,20,&quot;gray&quot;);
+            //之所以用splice（往前加）而不是用push（往后加），是为了让蛇头出现在数组第一个位置
+            snakeArray.splice(0,0,rect);     
+        }
+
+        //把数组第一个作为蛇头，蛇头设成红色
+        var head = snakeArray[0];
+        head.color = &quot;red&quot;;
+
+        //此处将两个后面常用的东西定为属性，方便后面调用
+        this.head = snakeArray[0];  //蛇头
+        this.snakeArray = snakeArray;  //整蛇数组
+
+        //给定初始位置向右(同keyCode右箭头)
+        this.direction = 39;
+    }
+    //画蛇的方法
+    Snake.prototype.draw = function () {
+        for (var i = 0; i &lt; this.snakeArray.length; i++) {
+            this.snakeArray[i].draw();
+        } 
+    }
+    //蛇移动的方法
+    Snake.prototype.move = function () {
+
+        //此处是核心部分，蛇的 移动方式
+        //1、画一个灰色的方块，位置与蛇头重叠
+        //2、将这个方块插到数组中蛇头后面一个的位置
+        //3、砍去末尾的方块
+        //4、将蛇头向设定方向移动一格
+        var rect = new Rect(this.head.x,this.head.y,this.head.w,this.head.h,&quot;gray&quot;);
+        this.snakeArray.splice(1,0,rect);
+
+        //判断是否吃到食物，isEat判定函数写在最后了
+        //吃到则食物重新给位置，不砍去最后一节，即蛇变长
+        //没吃到则末尾砍掉一节，即蛇长度不变
+        if (isEat()){
+            food = new getRandomFood();
+        }else{
+            this.snakeArray.pop();
+        }
+
+        //设置蛇头的运动方向，37 左，38 上，39 右，40 下
+        switch (this.direction) {
+            case 37:
+                this.head.x -= this.head.w
+                break;
+            case 38:
+                this.head.y -= this.head.h
+                break;
+            case 39:
+                this.head.x += this.head.w
+                break;
+            case 40:
+                this.head.y += this.head.h
+                break;
+            default:    
+                break;
+        }
+
+        // gameover判定
+        // 撞墙
+        if (this.head.x &gt; canvas.width || this.head.x &lt; 0 || this.head.y &gt; canvas.height || this.head.y &lt; 0){
+            clearInterval(timer);
+        }
+
+        // 撞自己，循环从1开始，避开蛇头与蛇头比较的情况
+        for (var i = 1; i &lt; this.snakeArray.length; i++) {
+            if (this.snakeArray[i].x == this.head.x &amp;&amp; this.snakeArray[i].y == this.head.y){
+                clearInterval(timer);
+            }
+        }
+    }
+
+    //画出初始的蛇
+    var snake = new Snake()
+    snake.draw();
+
+    //画出初始的食物
+    var food = new getRandomFood()
+
+    //定时器
+    var timer = setInterval(function () {
+        context.clearRect(0,0,canvas.width,canvas.height);
+        food.draw();
+        snake.move();
+        snake.draw();
+    }, 100)
+
+    //键盘事件，其中的if判定是为了让蛇不能直接掉头
+    document.onkeydown = function (e) {
+        var ev = e||window.event;
+        switch(ev.keyCode){
+            case 37:{
+                if (snake.direction !== 39){
+                    snake.direction = 37;
+                }
+                break;
+            }
+            case 38:{
+                if (snake.direction !== 40){
+                    snake.direction = 38;
+                }
+                break;
+            }
+            case 39:{
+                if (snake.direction !== 37){
+                    snake.direction = 39;
+                }
+                break;
+            }
+            case 40:{
+                if (snake.direction !== 38){
+                    snake.direction = 40;
+                }
+                break;
+            }    
+        }
+        ev.preventDefault();
+    }
+
+    //随机函数，获得[min,max]范围的值
+    function getNumberInRange (min,max) {
+        var range = max-min; 
+        var r = Math.random();
+        return Math.round(r*range+min)
+    }
+
+    //构建食物对象
+    function getRandomFood () {
+
+        //判定食物是否出现在蛇身上，如果是重合，则重新生成一遍
+        var isOnSnake = true;
+
+        //设置食物出现的随机位置
+        while(isOnSnake){
+            //执行后先将判定条件设置为false，如果判定不重合，则不会再执行下列语句
+            isOnSnake = false;
+            var indexX = getNumberInRange(0,canvas.width/20-1);
+            var indexY = getNumberInRange(0,canvas.height/20-1);
+            var rect = new Rect(indexX*20, indexY*20, 20, 20, &quot;green&quot;);
+            for (var i = 0; i &lt; snake.snakeArray.length; i++) {
+                if(snake.snakeArray[i].x == rect.x &amp;&amp; snake.snakeArray[i].y == rect.y){
+                    //如果判定重合，将其设置为true，使随机数重给
+                    isOnSnake = true;
+                    break;
+                }
+            }
+        }
+        //返回rect，使得实例化对象food有draw的方法
+        return rect;
+    }
+
+    //判定吃到食物，即蛇头坐标与食物坐标重合
+    function isEat () {
+        if (snake.head.x == food.x &amp;&amp; snake.head.y == food.y){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+&lt;/script&gt;
+&lt;/html&gt;
 </code></pre>
       
     </div>
@@ -431,18 +571,9 @@ console.log(arr1[2][0])  //3  arr1不受影响
     
 <nav id="article-nav">
   
-    <a href="/2016/06/01/图片随鼠标立体转动效果/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          图片随鼠标立体转动效果
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/31/for循环与for-in循环/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript中对象的循环方法--for循环与for-in循环</div>
+    <a href="/2016/06/07/canvas学习（三）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">canvas学习（三）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -477,7 +608,7 @@ console.log(arr1[2][0])  //3  arr1不受影响
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="传值与传址" data-title="JavaScript赋值时的传值与传址" data-url="http://yoursite.com/2016/05/31/传值与传址/"></div>
+	<div class="ds-thread" data-thread-key="canvas实现贪吃蛇" data-title="canvas实现贪吃蛇" data-url="http://yoursite.com/2016/06/07/canvas实现贪吃蛇/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
