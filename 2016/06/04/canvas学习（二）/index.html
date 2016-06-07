@@ -6,16 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>canvas学习（二） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
+  <meta name="description" content="图像合并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas学习（二）">
 <meta property="og:url" content="http://yoursite.com/2016/06/04/canvas学习（二）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="记录学习历程">
-<meta property="og:updated_time" content="2016-06-04T07:37:15.000Z">
+<meta property="og:description" content="图像合并">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4n1itrmpij314609k3zs.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4n1iug1s4j314h0a2mz0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4n1iuuk3vj30uc0ab3z8.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iuuzsaj3095096q39.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4n1iwws9fj309n09k0tc.jpg">
+<meta property="og:updated_time" content="2016-06-07T14:45:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习（二）">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:description" content="图像合并">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4n1itrmpij314609k3zs.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -316,7 +324,112 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="图像合并"><a href="#图像合并" class="headerlink" title="图像合并"></a>图像合并</h3><a id="more"></a>
+<h5 id="两个重要概念"><a href="#两个重要概念" class="headerlink" title="两个重要概念"></a>两个重要概念</h5><p>目标图像：已有图形</p>
+<p>源图像：即将绘制的图形</p>
+<h5 id="一行重要代码"><a href="#一行重要代码" class="headerlink" title="一行重要代码"></a>一行重要代码</h5><pre><code>context.globalCompositeOperation = &quot;&quot;
+</code></pre><p>此行代码之后的是源图像，之前的是目标图像</p>
+<h5 id="源图像操作："><a href="#源图像操作：" class="headerlink" title="源图像操作："></a>源图像操作：</h5><p>source-over：源图形显示在目标图像之上，且全部显示</p>
+<p>source-atop：源图形显示在目标图形的上方，超出目标图像部分不显示</p>
+<p>source-in：只显示源图形在目标图形中的部分</p>
+<p>source-out：只显示源图形在目标图形外的部分</p>
+<p>实例：</p>
+<pre><code>//目标图像（蓝色）
+context.beginPath();
+context.fillStyle = &apos;skyblue&apos;;
+context.fillRect(50,50,100,100);
+
+context.globalCompositeOperation = &quot;source-xxx&quot;
+
+//源图像（粉色）
+context.fillStyle = &apos;pink&apos;;
+context.arc(150,150,50,0,Math.PI * 2,true)
+context.fill();
+</code></pre><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4n1itrmpij314609k3zs.jpg" alt="源图像操作"></p>
+<h5 id="源图像操作：-1"><a href="#源图像操作：-1" class="headerlink" title="源图像操作："></a>源图像操作：</h5><p>destination-over：目标图形显示在源图像之上，且全部显示</p>
+<p>destination-atop：目标图形显示在源图形的上方，超出源图形部分不显示</p>
+<p>destination-in：只显示目标图形在源图形中的部分</p>
+<p>destination-out：只显示目标图形在源图形外的部分</p>
+<p>实例：</p>
+<pre><code>//目标图像（蓝色）
+context.beginPath();
+context.fillStyle = &apos;skyblue&apos;;
+context.fillRect(50,50,100,100);
+
+context.globalCompositeOperation = &quot;destination-xxx&quot;
+
+//源图像（粉色）
+context.fillStyle = &apos;pink&apos;;
+context.arc(150,150,50,0,Math.PI * 2,true)
+context.fill();
+</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4n1iug1s4j314h0a2mz0.jpg" alt="目标像操作"></p>
+<h5 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h5><p>lighter：重叠部分，颜色的rgb混合处理；数值相加，超出255以255处理</p>
+<p>copy：只显示源图形，不显示目标图形</p>
+<p>xor：不显示重合部分</p>
+<p>实例：</p>
+<pre><code>//目标图像（蓝色）
+context.beginPath();
+context.fillStyle = &apos;skyblue&apos;;
+context.fillRect(50,50,100,100);
+
+context.globalCompositeOperation = &quot;xxx&quot;
+
+//源图像（粉色）
+context.fillStyle = &apos;pink&apos;;
+context.arc(150,150,50,0,Math.PI * 2,true)
+context.fill();
+</code></pre><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4n1iuuk3vj30uc0ab3z8.jpg" alt="其他操作"></p>
+<h3 id="图片绘制"><a href="#图片绘制" class="headerlink" title="图片绘制"></a>图片绘制</h3><p>1、新建图片对象，并将其src属性设置为图片路径</p>
+<pre><code>var img = new Image();
+img.src = &quot;http://img3.imgtn.bdimg.com/it/u=1011179444,2282576107&amp;fm=21&amp;gp=0.jpg&quot;;
+</code></pre><p>2、将绘制代码放在img.onload中，让绘制在图片加载完后执行</p>
+<pre><code>img.onload = function () {
+    context.drawImage(img,50,50);
+}
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iuuzsaj3095096q39.jpg" alt="定位"></p>
+<p>3、绘制方式，一共9个属性，这里分三段理解</p>
+<p>drawImage(img,x,y)：必选属性，第一参数为图片对象名称，后两个为绘图位置（图片左上角在画布中的坐标）</p>
+<pre><code>//画布300*300，图片200*200
+var img = new Image();
+img.src = &quot;http://img3.imgtn.bdimg.com/it/u=1011179444,2282576107&amp;fm=21&amp;gp=0.jpg&quot;;
+
+context.beginPath();
+img.onload = function () {
+    context.drawImage(img,50,50);
+}
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg" alt="自定义大小"></p>
+<p>drawImage(img,x,y,w,h)：后面加两个属性是自定义图片的大小</p>
+<pre><code>//画布300*300，图片200*200
+var img = new Image();
+img.src = &quot;http://img3.imgtn.bdimg.com/it/u=1011179444,2282576107&amp;fm=21&amp;gp=0.jpg&quot;;
+
+context.beginPath();
+img.onload = function () {
+    context.drawImage(img,0,0,300,300);
+}
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg" alt="截取"></p>
+<p>drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,x,y, width,height)：中间加入的四个属性，是表示图片截取的位置，矩形起点、终点、长、宽</p>
+<pre><code>//画布300*300，图片200*200
+var img = new Image();
+img.src = &quot;http://img3.imgtn.bdimg.com/it/u=1011179444,2282576107&amp;fm=21&amp;gp=0.jpg&quot;;
+
+context.beginPath();
+img.onload = function () {
+    context.drawImage(img,100,0,200,200,75,0,300,300);
+}
+</code></pre><p>clip：类似于css3的蒙版遮罩效果，只显示clip图形内的图片</p>
+<pre><code>context.beginPath();
+context.lineWidth = 5;
+context.arc(150,150,150,0,Math.PI*2,true);
+context.stroke();
+context.clip()
+
+context.beginPath();
+img4.onload = function () {
+    context.drawImage(img,0,0,300,300);
+}
+</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4n1iwws9fj309n09k0tc.jpg" alt="遮罩"></p>
+
       
     </div>
     
