@@ -19,7 +19,15 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1ivexodj309909ajrw.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4n1iw1hd1j309j09qq39.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4n1iwws9fj309n09k0tc.jpg">
-<meta property="og:updated_time" content="2016-06-07T14:47:57.000Z">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4o3v1hmuxj30bk01xmxm.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v2qqwzj30bl0avt9v.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v3etp7j30bd0asdh5.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4o3v42bm2j30br0bw0v6.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4o3v13iv4j31240b6ade.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4o3v0foh9j30j10ao771.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v4xjq5j308y00tt8o.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4o3v4m0kxj30y900s754.jpg">
+<meta property="og:updated_time" content="2016-06-08T12:52:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习（二）">
 <meta name="twitter:description" content="图像合并">
@@ -86,7 +94,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -429,6 +437,148 @@ img4.onload = function () {
     context.drawImage(img,0,0,300,300);
 }
 </code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4n1iwws9fj309n09k0tc.jpg" alt="遮罩"></p>
+<h3 id="图片像素处理"><a href="#图片像素处理" class="headerlink" title="图片像素处理"></a>图片像素处理</h3><h6 id="PS1-此处注意，sumlime编辑器是无法获取图片像素信息的，好像是牵涉到跨域的问题，会出现以下报警；用Hbuilder就可以正常使用（改到127开头的内部服务器）"><a href="#PS1-此处注意，sumlime编辑器是无法获取图片像素信息的，好像是牵涉到跨域的问题，会出现以下报警；用Hbuilder就可以正常使用（改到127开头的内部服务器）" class="headerlink" title="PS1: 此处注意，sumlime编辑器是无法获取图片像素信息的，好像是牵涉到跨域的问题，会出现以下报警；用Hbuilder就可以正常使用（改到127开头的内部服务器）"></a>PS1: 此处注意，sumlime编辑器是无法获取图片像素信息的，好像是牵涉到跨域的问题，会出现以下报警；用Hbuilder就可以正常使用（改到127开头的内部服务器）</h6><h6 id="PS2：图片请使用本地连接，用网络图片也是以下报警"><a href="#PS2：图片请使用本地连接，用网络图片也是以下报警" class="headerlink" title="PS2：图片请使用本地连接，用网络图片也是以下报警"></a>PS2：图片请使用本地连接，用网络图片也是以下报警</h6><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4o3v1hmuxj30bk01xmxm.jpg" alt="sumlime报警"></p>
+<h5 id="获取图片信息getImageData-x-y-w-h"><a href="#获取图片信息getImageData-x-y-w-h" class="headerlink" title="获取图片信息getImageData(x,y,w,h)"></a>获取图片信息<code>getImageData(x,y,w,h)</code></h5><p>getImageData(x,y,w,h)：x,y是起始坐标，w,h是获取的长宽</p>
+<ol>
+<li>获取出来的信息是一个包含各像素rgba值的数组CanvasPixeArray</li>
+<li>因为每个像素包含rgba这4个值，所以每个像素占据数组中的4个位置，也就是<code>[r1,g1,b1,a1,r2,g2,b2,a2,r3,g3,b3,a3...]</code>这样一直排列下去</li>
+<li>所以数组的长度<code>length = w * h * 4</code></li>
+<li>在循环数组获取每个元素的时候，一般是要让i+=4这样获取每个像素</li>
+</ol>
+<p>下面是一个实例，用的图片是200*200大小</p>
+<pre><code>//引用图片
+context.beginPath()
+var image = new Image();
+image.src = &quot;123.jpg&quot;;
+image.onload = function () {
+    context.drawImage(image,0,0);
+}
+
+//获取图片信息
+var imageData = context.getImageData(0,0,200,200);
+</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v2qqwzj30bl0avt9v.jpg" alt="数组展开1"></p>
+<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v3etp7j30bd0asdh5.jpg" alt="数组展开2"></p>
+<h5 id="将修改完的像素重新绘制putImageData-x-y-w-h"><a href="#将修改完的像素重新绘制putImageData-x-y-w-h" class="headerlink" title="将修改完的像素重新绘制putImageData(x,y,w,h)"></a>将修改完的像素重新绘制<code>putImageData(x,y,w,h)</code></h5><p>putImageData(x,y,w,h)：x,y是起始坐标，w,h是获取的长宽</p>
+<h6 id="PS：其中如果重绘区域与原图片重叠，会将原图片部分覆盖"><a href="#PS：其中如果重绘区域与原图片重叠，会将原图片部分覆盖" class="headerlink" title="PS：其中如果重绘区域与原图片重叠，会将原图片部分覆盖"></a>PS：其中如果重绘区域与原图片重叠，会将原图片部分覆盖</h6><h5 id="灰度效果"><a href="#灰度效果" class="headerlink" title="灰度效果"></a>灰度效果</h5><ol>
+<li>在rgba表示中，rgb值相同就一定是灰色</li>
+<li>获取每个像素的rgba值并将rgb值改为 <code>gray = (r+g+b)/3</code></li>
+<li>重绘像素</li>
+</ol>
+<hr>
+<pre><code>//灰度处理
+var imageData = context.getImageData(0,0,200,200);
+var data = imageData.data;
+for (var i = 0; i&lt;200*200*4; i+=4){
+    var r = data[i];
+    var g = data[i+1];
+    var b = data[i+2];
+    var gray = (r+g+b)/3;
+    data[i] = gray;     //r值
+    data[i+1] = gray;    //g值
+    data[i+2] = gray;    //b值
+}
+context.putImageData(imageData,200,0)
+</code></pre><h5 id="反色效果"><a href="#反色效果" class="headerlink" title="反色效果"></a>反色效果</h5><ol>
+<li>在rgba表示中，rgb反色就是用255减去相应的数值</li>
+<li>获取每个像素的rgba值并将rgb值改为 <code>data[i] = 255-data[i]</code></li>
+<li>重绘像素</li>
+</ol>
+<hr>
+<pre><code>//反色处理
+var imageData = context.getImageData(0,0,200,200);
+var data = imageData.data;
+for (var j = 0; j&lt;200*200*4; j+=4){
+    data[j] = 255-data[j];
+    data[j+1] = 255-data[j+1];
+    data[j+2] = 255-data[j+2];
+}
+context.putImageData(imageData,0,200);
+</code></pre><h5 id="切割效果"><a href="#切割效果" class="headerlink" title="切割效果"></a>切割效果</h5><ol>
+<li>像素的a值改为0就会成为透明，即显示底部白色</li>
+<li>获取每个像素的rgba值</li>
+<li>循环获取相应行列的像素</li>
+<li>将这些像素的a值改为0</li>
+<li>重绘像素</li>
+</ol>
+<hr>
+<pre><code>var imageData = context.getImageData(0,0,200,200);
+var data = imageData.data;
+var w = 200;
+var space = Math.ceil(200/3);
+console.log(space);
+for (var i1 = space; i1&lt;w; i1+=space){
+    for (var i2 = 0; i2&lt;w; i2++) {
+        var n1 = i2*w+i1
+        data[4*n1+3] = 0;
+    }
+}
+for (var j1 = space; j1&lt;w; j1+=space){
+    for (var j2 = 0; j2&lt;w; j2++) {
+        var n2 = j1*w+j2
+        data[4*n2+3] = 0;
+    }
+}
+context.putImageData(imageData,200,200);
+</code></pre><p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4o3v42bm2j30br0bw0v6.jpg" alt="效果展示"></p>
+<h3 id="视频绘制"><a href="#视频绘制" class="headerlink" title="视频绘制"></a>视频绘制</h3><h5 id="使用方法：drawImage-video-x-y-w-h"><a href="#使用方法：drawImage-video-x-y-w-h" class="headerlink" title="使用方法：drawImage(video,x,y,w,h)"></a>使用方法：<code>drawImage(video,x,y,w,h)</code></h5><p>使用的方法其实与图片绘制相同，就是将image对象换成vidoe</p>
+<ol>
+<li>创建一个<code>&lt;video src=&quot;&quot; autoplay=&quot;auto&quot;&gt;&lt;/video&gt;</code>标签，并加上src属性</li>
+<li>将canvas大小设置为与视频相同</li>
+<li>用<code>drawImage(video,x,y,w,h)</code>将视频绘制到画布</li>
+<li>让video标签消失，只剩下canvas</li>
+<li>设置定时器播放动画（高于26帧基本就看不到卡顿了）</li>
+</ol>
+<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4o3v13iv4j31240b6ade.jpg" alt="视频1"></p>
+<p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f4o3v0foh9j30j10ao771.jpg" alt="视频2"></p>
+<p>下面是实例演示</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;视频&lt;/title&gt;
+        &lt;style&gt;
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            box-shadow: 0 5px 20px black;
+        }
+        //让video标签消失
+        video{
+            display: none;
+        }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;video id=&quot;video&quot; src=&quot;html.mp4&quot; autoplay=&quot;auto&quot;&gt;&lt;/video&gt;
+        &lt;canvas id=&quot;canvas&quot; width=&quot;672&quot; height=&quot;378&quot;&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;script&gt;
+        var canvas = document.getElementById(&apos;canvas&apos;);
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var video = document.getElementById(&apos;video&apos;);
+        function drawFrame () {
+            context.drawImage(video,0,0,canvas.width,canvas.height);
+        }
+        var timer = setInterval(function(){
+            drawFrame();
+        }, 50)
+
+    &lt;/script&gt;
+&lt;/html&gt;
+</code></pre><h3 id="图形输出"><a href="#图形输出" class="headerlink" title="图形输出"></a>图形输出</h3><h6 id="ps：也是要用Hbuilder打开的，图片用本地连接"><a href="#ps：也是要用Hbuilder打开的，图片用本地连接" class="headerlink" title="ps：也是要用Hbuilder打开的，图片用本地连接"></a>ps：也是要用Hbuilder打开的，图片用本地连接</h6><p>输出：<code>toDateURL()</code></p>
+<pre><code>var url = canvas.toDateURL()
+</code></pre><p>显示：</p>
+<pre><code>//这是打开网页直接显示
+window.location.herf = url
+
+//当然也可以这样，点击a标签后图片就会以图片形式展现而非网页形式
+var a = document.getElementById(&apos;a1&apos;);
+a.href = url;
+</code></pre><p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4o3v4xjq5j308y00tt8o.jpg" alt="图形输出1"></p>
+<p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f4o3v4m0kxj30y900s754.jpg" alt="图形输出2"></p>
 
       
     </div>
