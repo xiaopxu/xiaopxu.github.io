@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -118,7 +118,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 13.33px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a> <a href="/tags/效果Demo/" style="font-size: 10px;">效果Demo</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 13.33px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a> <a href="/tags/效果Demo/" style="font-size: 10px;">效果Demo</a>
 					</div>
 				</section>
 				
@@ -279,6 +279,81 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-前端模板引擎jade" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/17/前端模板引擎jade/" class="article-date">
+  	<time datetime="2016-05-17T12:27:37.000Z" itemprop="datePublished">2016-05-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/17/前端模板引擎jade/">前端模板引擎jade学习（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>$ npm install gulp-jade --save
+</code></pre><h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><ol>
+<li>在gulpfile.js中调用</li>
+</ol>
+<pre><code>var jade = require(&apos;gulp-jade&apos;)
+</code></pre><ol>
+<li>新建jade任务</li>
+</ol>
+<pre><code>gulp.task(&apos;jade&apos;,function){
+    gulp.src(&apos;view/*.jade&apos;)  //导入外部jade文件
+    .pipe(jade())            //执行jade()方法
+    .pipe(gulp.dest(&apos;desk/html/&apos;))    //导出在新文件夹中
+}
+</code></pre><ol>
+<li><p>终端执行编译，生成html文件（压缩形式）</p>
+<p> $ gulp jade</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jade/">jade</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/17/前端模板引擎jade/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-gulp使用初解" class="article article-type-post" itemscope itemprop="blogPost">
   

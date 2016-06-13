@@ -4,18 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>JavaScript中对象的循环方法--for循环与for-in循环 | 世界树</title>
+  <title>PHP学习（一） | 世界树</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
+  <meta name="description" content="环境搭建（MAC OS系统）XAMPP：集成了Apache+MySQL+PHP+Perl
+Apache：服务器软件，可以运行在几乎所有计算机平台，最流行的服务器软件之一
+MySQL：关系型数据库管理系统，体积小，速度快，开源">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中对象的循环方法--for循环与for-in循环">
-<meta property="og:url" content="http://yoursite.com/2016/05/31/for循环与for-in循环/index.html">
+<meta property="og:title" content="PHP学习（一）">
+<meta property="og:url" content="http://yoursite.com/2016/06/13/PHP学习（一）/index.html">
 <meta property="og:site_name" content="世界树">
-<meta property="og:description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
-<meta property="og:updated_time" content="2016-05-31T12:50:30.000Z">
+<meta property="og:description" content="环境搭建（MAC OS系统）XAMPP：集成了Apache+MySQL+PHP+Perl
+Apache：服务器软件，可以运行在几乎所有计算机平台，最流行的服务器软件之一
+MySQL：关系型数据库管理系统，体积小，速度快，开源">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4tyrpd4a3j30is0dbmzb.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4tyrodd66j30ir0d6wga.jpg">
+<meta property="og:updated_time" content="2016-06-13T14:28:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中对象的循环方法--for循环与for-in循环">
-<meta name="twitter:description" content="在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别">
+<meta name="twitter:title" content="PHP学习（一）">
+<meta name="twitter:description" content="环境搭建（MAC OS系统）XAMPP：集成了Apache+MySQL+PHP+Perl
+Apache：服务器软件，可以运行在几乎所有计算机平台，最流行的服务器软件之一
+MySQL：关系型数据库管理系统，体积小，速度快，开源">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4tyrpd4a3j30is0dbmzb.jpg">
   
     <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
   
@@ -279,11 +288,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-for循环与for-in循环" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-PHP学习（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/31/for循环与for-in循环/" class="article-date">
-  	<time datetime="2016-05-31T08:45:14.000Z" itemprop="datePublished">2016-05-31</time>
+      <a href="/2016/06/13/PHP学习（一）/" class="article-date">
+  	<time datetime="2016-06-13T11:37:05.000Z" itemprop="datePublished">2016-06-13</time>
 </a>
     </div>
   
@@ -296,7 +305,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript中对象的循环方法--for循环与for-in循环
+      PHP学习（一）
     </h1>
   
 
@@ -305,7 +314,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 	</div>
 
         
@@ -316,72 +325,192 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在JavaScript中如果想要对一个对象进行循环，可以使用for或者for-in两种语句；让我们来看看这两种语句在对象循环上有些什么区别<br><a id="more"></a></p>
-<h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><p>for语句对于数组的循环比较适用</p>
-<pre><code>//基本的数组可以循环
-var arr = [1,2,3,4]
-for (var i = 0; i&lt;arr.length; i++){
-    console.log(arr[i]);    //1 2 3 4  
-}
+        <h2 id="环境搭建（MAC-OS系统）"><a href="#环境搭建（MAC-OS系统）" class="headerlink" title="环境搭建（MAC OS系统）"></a>环境搭建（MAC OS系统）</h2><h3 id="XAMPP："><a href="#XAMPP：" class="headerlink" title="XAMPP："></a>XAMPP：</h3><p>集成了Apache+MySQL+PHP+Perl</p>
+<h3 id="Apache："><a href="#Apache：" class="headerlink" title="Apache："></a>Apache：</h3><p>服务器软件，可以运行在几乎所有计算机平台，最流行的服务器软件之一</p>
+<h3 id="MySQL："><a href="#MySQL：" class="headerlink" title="MySQL："></a>MySQL：</h3><p>关系型数据库管理系统，体积小，速度快，开源<br><a id="more"></a></p>
+<h3 id="安装完毕后需要手动开启服务"><a href="#安装完毕后需要手动开启服务" class="headerlink" title="安装完毕后需要手动开启服务"></a>安装完毕后需要手动开启服务</h3><p>可能会遇到以下问题（这个没有测试过，因为我开的时候没问题）</p>
+<h5 id="Apache无法开启："><a href="#Apache无法开启：" class="headerlink" title="Apache无法开启："></a>Apache无法开启：</h5><p>原因：之前已经将系统自带的Apache开启，需要手动关闭</p>
+<pre><code>sudo apachectl stop
+</code></pre><h5 id="MySQL无法开启："><a href="#MySQL无法开启：" class="headerlink" title="MySQL无法开启："></a>MySQL无法开启：</h5><p>原因：之前已经安装过MySQL并默认开启，需手动关闭</p>
+<pre><code>sudo/Library/Startupltems/MySQLCOM/MySQLCOM stop
+</code></pre><p>使用ps-eflgrep mysql查找进程，用kill杀掉进程</p>
+<p><img src="http://ww4.sinaimg.cn/mw690/006rncsWgw1f4tyrpd4a3j30is0dbmzb.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/mw690/006rncsWgw1f4tyrodd66j30ir0d6wga.jpg" alt=""></p>
+<h2 id="php标记"><a href="#php标记" class="headerlink" title="php标记"></a>php标记</h2><p>新建后缀是php的文件</p>
+<pre><code>&lt;?php 
 
-//复杂的数组也可以循环
-var arr = [1,2,[3,4],{a:&apos;abc&apos;,b:true}]
-for (var i = 0; i&lt;arr.length; i++){
-    console.log(arr[i])    //1 2 [3,4] {a:&apos;abc&apos;,b:true}  
-}
-</code></pre><p>如果是对一个对象循环就会出现问题</p>
-<pre><code>//但是，如果是一个对象，就会出现问题
-var obj = {a:123, b:&apos;abc&apos;, c:true}
-for (var i = 0; i&lt;obj.length; i++){
-    console.log(obj[i]);    //在chrome浏览器下调试，不出现任何东西，也没有报警
-}
-</code></pre><h5 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h5><ul>
-<li><p>问题出在语句的判断条件<code>i &lt; obj.length</code>，<code>obj.length</code>是<code>undefined</code></p>
-</li>
-<li><p>所以现在就是在判断<code>i &lt; undefined</code>，也就是判断<code>i &lt; NAN</code>，所以结果一定是<code>false</code></p>
-</li>
-<li><p>因此语句根本不会被执行，所以不会有任何东西被打印出来</p>
-</li>
+//这里写php代码
+
+?&gt;
+</code></pre><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>多行注释</p>
+<pre><code>/*
+    注释的内容
+    注释的内容
+*/
+</code></pre><p>单行注释</p>
+<pre><code>//注释的内容
+</code></pre><p>文档注释</p>
+<pre><code>/**
+*注释的文档
+*注释的文档
+*/
+</code></pre><h2 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h2><pre><code>echo
+print()
+print_r()  //打印数组用
+</code></pre><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li>常量是指在程序执行中无法修改的值。如 PI (3.1415926); </li>
+<li>在脚本执行期间该值不能改变; </li>
+<li>常量对大小写敏感,通常常量名总是大写; </li>
+<li>常量是全局的,可以在脚本的任何地方引用; </li>
+<li>常量分为内置常量和自定义常量; </li>
+<li>常量使用define()函数定义;</li>
 </ul>
-<h5 id="但是对象的情况下也有特例："><a href="#但是对象的情况下也有特例：" class="headerlink" title="但是对象的情况下也有特例："></a>但是对象的情况下也有特例：</h5><pre><code>var obj = {
-    &apos;0&apos; = 123,
-    &apos;1&apos; = &apos;abc&apos;,
-    &apos;2&apos; = true,
-    length = 3
-};
-for (var i = 0; i&lt;obj.length; i++){
-    console.log(i)    //0 1 2
-    console.log(obj[i]);    //123 &apos;abc&apos; true
-}
-</code></pre><p>给obj定义一个长度，并给每个元素定义一个位置下标（而不是使用abc，寻找不到的位置下标会打印undefined），就可以正常使用for语句</p>
-<pre><code>var obj = {
-    &apos;a&apos; = 123,
-    &apos;1&apos; = &apos;abc&apos;,
-    &apos;2&apos; = true,
-    length = 3
-};
-for (var i = 0; i&lt;obj.length; i++){
-    console.log(i)    //0 1 2  可以看到第一个位置还是用0坐标去获取的
-    console.log(obj[i]);    //undefined &apos;abc&apos; true  第一个的位置下标不是0，导致打印undefined
-}
-</code></pre><h3 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a>for-in语句</h3><p>for-in语句可以用来枚举对象属性，每次循环时，都会将obj中存在的一个属性名赋值给变量i，直到属性全部被枚举一遍</p>
-<pre><code>var obj = {a:123,b:&apos;abc&apos;,c:true};
-for (var i in obj){
-    console.log(i)    //a b c
-    console.log(obj[i]);    //123 &apos;abc&apos; true
-}
-</code></pre><p>for-in语句还可以枚举出document等对象的所有属性</p>
-<pre><code>var n = 0;
-for (var i in document){
-    n++
-    console.log(document[i])  //一大堆属性
-}
-console.log(n);  //在chrome下232（这个数可能每个浏览器会有差别）
-</code></pre><p>以下这点需要特别注意一下</p>
-<blockquote>
-<p>ECMAScript对象的属性没有顺序，因此通过for-in循环输出的属性名顺序是不可测的。具体来讲，所有属性都会被返回一次，但返回的先后次序可能会因浏览器而异 —-《JavaScript高级程序设计》</p>
-</blockquote>
+<h3 id="内置常量"><a href="#内置常量" class="headerlink" title="内置常量"></a>内置常量</h3><p>PHP_OS php所在操作系统的名称</p>
+<p>PHP_VERSION 当前php版本号</p>
+<h3 id="魔术常量"><a href="#魔术常量" class="headerlink" title="魔术常量"></a>魔术常量</h3><pre><code>__LINE__ 文件中当前行号
+__FILE__ 文件完整的路径
+__FUNCTION__ 函数的名称
+__CLASS__ 类的名称
+__METHOD__ 类的方法名
+</code></pre><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="声明：-name"><a href="#声明：-name" class="headerlink" title="声明：$+name"></a>声明：$+name</h3><ul>
+<li>以$开头，后面跟变量名</li>
+<li>区分大小写</li>
+<li>变量名只能是：字母/数字/下划线，数字不能作为开头</li>
+</ul>
+<hr>
+<pre><code>$name = &quot;miles&quot;;
+$age = 18;
+$gender = &quot;male&quot;;
+</code></pre><h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><h5 id="值赋值"><a href="#值赋值" class="headerlink" title="值赋值"></a>值赋值</h5><pre><code>$age = 18;
+$age2 = $age;
+echo $age2; //18
 
+//此时将$age2的赋值改变，age不会变化
+//因为传值是复制一份重新存一个内存地址传给新的变量，所以是指向两个内存地址
+$age2 = 20;
+echo $age2; //18
+</code></pre><h5 id="引用赋值"><a href="#引用赋值" class="headerlink" title="引用赋值"></a>引用赋值</h5><pre><code>//&amp;引用传值符，变为传址，把一个变量的引用赋给另一个变量
+$age = 18;
+$age2 = &amp;$age;  
+
+//传址情况下，$age与$age2是指向的同一个内存地址
+//所以改动一个，另一个会跟着变动
+$age2 = 20;
+echo $age; //20
+</code></pre><h3 id="变量的变量"><a href="#变量的变量" class="headerlink" title="变量的变量"></a>变量的变量</h3><pre><code>//变量的变量：把某一变量的值，作为了一个新的变量名
+//这么做的好处是能够批量产生变量
+$var = &quot;hello&quot;;
+$$var = &quot;world&quot;;
+echo $hello;  //world
+</code></pre><h3 id="超全局变量"><a href="#超全局变量" class="headerlink" title="超全局变量"></a>超全局变量</h3><p>$_GET：包含使用GET方式传递的参数的信息，是一个数组</p>
+<pre><code>//html部分
+&lt;form action=&quot;03-regist.php&quot; method=&quot;get&quot;&gt;
+    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;miles&quot; /&gt;&lt;br&gt;
+    密码：&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;123456&quot; /&gt;&lt;br&gt;
+    手机号：&lt;input type=&quot;text&quot; name=&quot;phone&quot; value=&quot;13112345678&quot; /&gt;&lt;br&gt;
+    邮箱：&lt;input type=&quot;text&quot; name=&quot;email&quot; value=&quot;miles_xjn@163.com&quot; /&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;注册&quot; /&gt;
+&lt;/form&gt;
+
+//php部分
+print_r($_GET);  //会打印出一个数组，以键值对形式保存
+$username = $_GET[&quot;username&quot;];
+echo $username; //miles
+</code></pre><p>$_POST：包含使用POST方式传递的参数的信息</p>
+<pre><code>//html部分
+&lt;form action=&quot;03-regist.php&quot; method=&quot;post&quot;&gt;
+    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;miles&quot; /&gt;&lt;br&gt;
+    密码：&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;123456&quot; /&gt;&lt;br&gt;
+    手机号：&lt;input type=&quot;text&quot; name=&quot;phone&quot; value=&quot;13112345678&quot; /&gt;&lt;br&gt;
+    邮箱：&lt;input type=&quot;text&quot; name=&quot;email&quot; value=&quot;miles_xjn@163.com&quot; /&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;注册&quot; /&gt;
+&lt;/form&gt;
+
+//php部分
+print_r($_POST);  //会打印出一个数组，以键值对形式保存
+$username = $_POST[&quot;username&quot;];
+echo $username; //miles
+</code></pre><p>$_REQUEST：包含通过输入方法传递给脚本的变量，这个不要使用，速度慢且不安全</p>
+<p>$_SERVER：服务器变量，包含服务器、客户端及请求环境信息</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="标量类型"><a href="#标量类型" class="headerlink" title="标量类型"></a>标量类型</h3><h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>单引号：出现的变量不会被其值替代</p>
+<pre><code>$name = &quot;zhangsan&quot;;
+$str = &apos;姓名：&apos;;
+//字符串连接用&quot;.&quot;
+echo $str.$name;  //姓名：zhangsan
+
+//变量$name不会被其值替换
+$name = &quot;zhangsan&quot;;
+$str = &apos;姓名：$name&apos;;
+echo $str;  //姓名：$name
+</code></pre><p>双引号：出现的变量会被其值替代</p>
+<pre><code>//变量$name被其值替代
+$name = &quot;zhangsan&quot;;
+$str = &quot;姓名：$name&quot;;
+echo $str;  //姓名：zhangsan
+</code></pre><p>PS1：引号中的变量是否解析看最外层的引号类型决定</p>
+<pre><code>//变量能否被解析，取决于最外层是否双引号
+//如果是双引号，能解析；如果不是双引号，不能解析
+
+//最外层是双引号，所以解析
+$name = &quot;zhangsan&quot;;
+$str = &quot;姓名：&apos;$name&apos;&quot;;
+echo $str;  //姓名：&apos;zhangsan&apos;
+
+//最外层是单引号，所以不解析
+$name = &quot;zhangsan&quot;;
+$str = &apos;姓名：&quot;$name&quot;&apos;;
+echo $str;  //姓名：&quot;$name&quot;
+
+//最外层是双引号，所以解析
+$name = &quot;zhangsan&quot;;
+$str = &quot;姓名：&apos;$name is a boy&apos;&quot;;
+echo $str;  //姓名：&apos;zhangsan is a boy&apos;
+</code></pre><p>PS2：变量后的内容需要空格分开，不然会有undefined报错，可用{}隔断</p>
+<pre><code>$name = &quot;zhangsan&quot;;
+$str = &quot;姓名：&apos;$nameis a boy&apos;&quot;;
+echo $str;  //报错nameis未定义
+
+//花括号，阻断
+// $name = &quot;zhangsan&quot;;
+// $str = &quot;姓名：&apos;{$name}is a boy&apos;&quot;;
+// echo $str;  //姓名：&apos;zhangsanis a boy&apos;
+</code></pre><p>定界符（heredoc）：&lt;&lt;&lt;</p>
+<pre><code>//界定符：区间内容原样输出
+    $artical = &lt;&lt;&lt;EOD
+
+    123
+    456
+    789
+EOD;
+    echo $artical;  //123 456 789
+</code></pre><p>PS1：定界符中的特殊字符不需要转义</p>
+<p>PS2：界定符中的变量会被其值替代</p>
+<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><pre><code>$age = 25;
+</code></pre><h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><pre><code>$num = 5.39;
+</code></pre><h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><pre><code>$bo = true;
+$bo = false;
+</code></pre><h3 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h3><h5 id="数组（下一篇会细讲）"><a href="#数组（下一篇会细讲）" class="headerlink" title="数组（下一篇会细讲）"></a>数组（下一篇会细讲）</h5><h5 id="对象（下一篇会细讲）"><a href="#对象（下一篇会细讲）" class="headerlink" title="对象（下一篇会细讲）"></a>对象（下一篇会细讲）</h5><h3 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h3><h5 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h5><pre><code>$fh = fopen(&quot;test.txt&quot;,&quot;r&quot;);
+</code></pre><h5 id="null"><a href="#null" class="headerlink" title="null"></a>null</h5><p>以下被认为是null：</p>
+<ul>
+<li>没有设置任何预定义的变量</li>
+<li>没有明确赋值</li>
+<li>使用unset()清除</li>
+</ul>
+<h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><p>php对于类型定义非常松散，所以会根据引用变量的环境，将变量自动转换为最合适的类型</p>
+<pre><code>$a = 10;
+$b = true;
+$c = &quot;23abc&quot;;
+$d = 1.2;
+$e = &quot;abc123&quot;;
+echo $a + $b + $c + $d + $e; //10+1+23+1.2  35.2
+</code></pre><h3 id="类型相关函数"><a href="#类型相关函数" class="headerlink" title="类型相关函数"></a>类型相关函数</h3><h5 id="gettype"><a href="#gettype" class="headerlink" title="gettype()"></a>gettype()</h5><pre><code>//gettype获取变量类型
+echo gettype($b); //boolean
+</code></pre><h5 id="is-xxx"><a href="#is-xxx" class="headerlink" title="is_xxx()"></a>is_xxx()</h5><pre><code>//is_xxx 判断变量是否为某类型
+echo is_int($d);  //无输出
+echo is_float($d);  //1
+</code></pre><h5 id="var-dump"><a href="#var-dump" class="headerlink" title="var dump()"></a>var dump()</h5><pre><code>//输出变量详细信息，包括类型、值、长度
+var_dump($c);  //string(5) &quot;23abc&quot;
+</code></pre>
       
     </div>
     
@@ -390,18 +519,9 @@ console.log(n);  //在chrome下232（这个数可能每个浏览器会有差别�
     
 <nav id="article-nav">
   
-    <a href="/2016/05/31/传值与传址/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JavaScript赋值时的传值与传址
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/31/js数据类型查看typeof方式的优化/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js数据类型查看typeof方式的优化</div>
+    <a href="/2016/06/07/canvas实现贪吃蛇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">canvas实现贪吃蛇</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -436,7 +556,7 @@ console.log(n);  //在chrome下232（这个数可能每个浏览器会有差别�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="for循环与for-in循环" data-title="JavaScript中对象的循环方法--for循环与for-in循环" data-url="http://yoursite.com/2016/05/31/for循环与for-in循环/"></div>
+	<div class="ds-thread" data-thread-key="PHP学习（一）" data-title="PHP学习（一）" data-url="http://yoursite.com/2016/06/13/PHP学习（一）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
