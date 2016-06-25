@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ajax使用学习 | 世界树</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、简介1、ajax是Asynchronous Javascript and XML的缩写，意思是执行异步的网络请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax使用学习">
+<meta property="og:url" content="http://yoursite.com/2016/06/25/ajax基础使用学习/index.html">
+<meta property="og:site_name" content="世界树">
+<meta property="og:description" content="一、简介1、ajax是Asynchronous Javascript and XML的缩写，意思是执行异步的网络请求">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f57rf6b5nbj30n407u3zo.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/006rncsWgw1f57rf7h27gj30nz0aqaax.jpg">
+<meta property="og:updated_time" content="2016-06-25T13:01:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax使用学习">
+<meta name="twitter:description" content="一、简介1、ajax是Asynchronous Javascript and XML的缩写，意思是执行异步的网络请求">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/006rncsWgw1f57rf6b5nbj30n407u3zo.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="世界树" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3synn3k61j30640643yg.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Miles Xu</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/xiaopxu.github.io" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/5901287530/profile?topnav=1&wvr=6&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiaopxu" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/miles_xjn@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interview/" style="font-size: 13.33px;">interview</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a> <a href="/tags/效果Demo/" style="font-size: 10px;">效果Demo</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wangzuoqiang.github.io">王作强</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://mogugit.github.io">孙帅兵</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://yyty.github.io">孙哲</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://changxinle.github.io">常新乐</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://maiime.github.io">马文杰</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wuxiao1021.github.io">吴肖</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://qingxinxuan11.github.io">潘杰</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://lanfeng-lgp.github.io">李国平</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://crackerme.github.io">孙平</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://CXY-WZQ.github.io">王振强</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://kangyuf.github.io">康玉峰</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tianyu3137.github.io">张天宇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://xiehan126.github.io">解晗</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wzq120203.github.io">吴兆强</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://liushengguang.github.io">刘圣光</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://mabeyol.github.io">郭衍超</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jerytao.github.io">陶金</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://taojunrui.lol">陶俊瑞</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://xiaopxu.github.io">徐嘉农</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://skyzuofeng.github.io">左峰</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://ker95.github.io">龚克</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zouqianghtml.github.io">邹强</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://lcsoul.github.io">刘畅</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://41152419901017.github.io">赵德状</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jazzh5.github.io">曹玉</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wangbin5614.github.io">王彬</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://aojiaodexiaopinguo.github.io">许伟</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://liuyang10.github.io">刘洋</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://qlhtml.github.io">钱磊</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://trustzuo.github.io">左友卫</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://yangbiaobiao.github.io">赵理想</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wangjing991.github.io">王菁</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://ahz549467483.github.io">陈晨</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zhjdeitiny.github.io">张浩京</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://xiaoxier.github.io">韩盼盼</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wudahui.github.io">伍达辉</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gaoke700.github.io">田高科</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://githubfffffff.github.io">孙登朝</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://suncomehere.github.io">孙丽芳</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gongmingzhi.github.io">龚明智</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wz19910410.github.io">王拯</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://genhaodegenhao.github.io">王松</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://chencunming1234@github.io">陈存明</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Miles Xu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f3synn3k61j30640643yg.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Miles Xu</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/xiaopxu.github.io" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/5901287530/profile?topnav=1&wvr=6&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiaopxu" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/miles_xjn@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ajax基础使用学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/25/ajax基础使用学习/" class="article-date">
+  	<time datetime="2016-06-25T02:12:04.000Z" itemprop="datePublished">2016-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ajax使用学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>1、ajax是Asynchronous Javascript and XML的缩写，意思是执行异步的网络请求<br><a id="more"></a><br>2、我们会发现使用form表单submit按钮提交表单的时候，网页会有执行刷新操作，在新页面告知操作结果<br>而ajax技术可以使得向服务器请求数据的时候无需卸载页面，得到更好的体验</p>
+<p>3、<strong>ajax的核心是XMLHttpRequest对象</strong>，它实现了<strong>异步方式</strong>从服务器获取数据，也就是用XHR对象获取到服务器的数据，再使用DOM将数据更新到页面中</p>
+<p>4、虽然ajax名字中包含了XML，但是他只是一种通信手段，与具体数据格式没有关系，因为当时主流使用XML作为前后台通信数据的格式，所以名字中使用了XML；而现在主要使用的都是JSON格式的字符串</p>
+<h2 id="二、XMLHttpRequest对象"><a href="#二、XMLHttpRequest对象" class="headerlink" title="二、XMLHttpRequest对象"></a>二、XMLHttpRequest对象</h2><h3 id="ajax的实现流程如下："><a href="#ajax的实现流程如下：" class="headerlink" title="ajax的实现流程如下："></a>ajax的实现流程如下：</h3><ol>
+<li>创建XHR对象</li>
+<li>调用open()方法，创建请求</li>
+<li>调用send()方法，发送请求</li>
+<li>捕获请求状态，判断请求结果</li>
+<li>获取数据库返回的数据</li>
+</ol>
+<h3 id="1、创建XHR对象"><a href="#1、创建XHR对象" class="headerlink" title="1、创建XHR对象"></a>1、创建XHR对象</h3><p>XHR对象首次实现是在ie5上，当时使用的是<code>ActiveX</code>对象，所以XHR下ie上有两个版本的实现方式，ie7以下的<code>ActiveX</code>对象与ie7及以上的XHR对象，其余浏览器统一都是使用的XHR对象</p>
+<p>所以创建对象的时候需要有兼容性写法</p>
+<pre><code>if(window.XMLHttpRequest){
+    var request = new XMLHttpRequest();
+}else{
+    //这是ie7以下的写法
+    var request = new ActiveXObject(&quot;Microsoft.XMLHttp&quot;);
+}
+</code></pre><p></p>
+<h3 id="2、调用open-方法"><a href="#2、调用open-方法" class="headerlink" title="2、调用open()方法"></a>2、调用open()方法</h3><pre><code>request.open(method,url,boolean);
+</code></pre><h5 id="open-方法接收3个参数"><a href="#open-方法接收3个参数" class="headerlink" title="open()方法接收3个参数"></a>open()方法接收3个参数</h5><ul>
+<li>method：数据提交方式，字符串形式，可以使用”get”或”post”</li>
+<li>url：请求对象地址，字符串表示（get方式与post方式有差异）</li>
+<li>boolean：true（默认）表示异步请求，false表示同步请求（相信使用ajax都是为了异步的，所以这里就用true，或者不填写）</li>
+</ul>
+<h5 id="get方式请求"><a href="#get方式请求" class="headerlink" title="get方式请求"></a>get方式请求</h5><p>使用get方式提交数据时需要将提交内容以固定的格式附加在URL后面，格式如下：<br><code>url = &quot;地址 ? name1=value1 &amp; name2=value2&quot;;</code></p>
+<pre><code>//获取到用户名及密码的输入框
+var username = document.getElementById(&quot;username&quot;);
+var passwd = document.getElementById(&quot;passwd&quot;);
+//将输入内容附加在URL后面
+var url = &quot;php/get.php?username=&quot;+username.value+&quot;&amp;passwd=&quot;+passwd.value;
+//调用open()方法
+request.open(&quot;get&quot;,url,true);
+</code></pre><h5 id="post方式请求"><a href="#post方式请求" class="headerlink" title="post方式请求"></a>post方式请求</h5><p>使用post方式提交数据，提交内容是作为send()方法的参数提交的，所以URL后面无需附加参数</p>
+<pre><code>//获取到用户名及密码的输入框
+var username = document.getElementById(&quot;username&quot;);
+var passwd = document.getElementById(&quot;passwd&quot;);
+//将输入内容附加在URL后面
+var url = &quot;php/post.php&quot;;
+//调用open()方法
+request.open(&quot;post&quot;,url,true);
+</code></pre><p><strong>注意：因为已经不再使用form表单，所以后台无法再使用name属性获取数据，之前定义在name属性中的内容现在就是在<code>name1=value1</code>中的<code>name1</code>中，相应的，post方式就是下文中的postbody中的<code>name1</code></strong></p>
+<h3 id="3、调用send-方法"><a href="#3、调用send-方法" class="headerlink" title="3、调用send()方法"></a>3、调用send()方法</h3><pre><code>request.send(postbody);
+</code></pre><h5 id="send-方法接收1个参数"><a href="#send-方法接收1个参数" class="headerlink" title="send()方法接收1个参数"></a>send()方法接收1个参数</h5><ul>
+<li>postbody：字符串形式，填入需要提交的数据；如果没有提交的数据，可以填入<code>null</code></li>
+</ul>
+<h5 id="get方式请求-1"><a href="#get方式请求-1" class="headerlink" title="get方式请求"></a>get方式请求</h5><p>因为get方式下的数据已经附加在URL后面提交，所以这里一般填入<code>null</code></p>
+<h5 id="post方式请求-1"><a href="#post方式请求-1" class="headerlink" title="post方式请求"></a>post方式请求</h5><p>数据的格式如下：<br>postbody = “name1=value1 &amp; name2=value2”;</p>
+<pre><code>//获取到用户名及密码的输入框
+var username = document.getElementById(&quot;username&quot;);
+var passwd = document.getElementById(&quot;passwd&quot;);
+//将输入内容附加在URL后面
+var postbody = &quot;username=&quot;+username.value+&quot;&amp;passwd=&quot;+passwd.value;
+//调用send()方法
+request.send(postbody);
+</code></pre><p><strong>注意1：此处用post方式提交数据与用form表单提交毕竟有所不同，服务器会需要程序来读取并解析原始数据，所以我们需要使用XHR来模仿表单提交：</strong></p>
+<pre><code>//将Content的头部信息重新设置    
+//定义表单提交时的内容类型，并以适当类型创建一个字符串    request.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www/form-unencoded&quot;);
+</code></pre><p><strong>注意2：这个方法只能加在open()方法之后，send()方法之前</strong></p>
+<pre><code>//实际使用方法
+var username = document.getElementById(&quot;username&quot;);
+var passwd = document.getElementById(&quot;passwd&quot;);
+
+var url = &quot;php/post.php&quot;;    
+request.open(&quot;post&quot;,url,true);
+
+//放置的位置一定在这里
+request.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www/form-unencoded&quot;);
+
+var postbody = &quot;username=&quot;+username.value+&quot;&amp;passwd=&quot;+passwd.value;
+request.send(postbody);
+</code></pre><h3 id="4、捕获请求状态，判断结果"><a href="#4、捕获请求状态，判断结果" class="headerlink" title="4、捕获请求状态，判断结果"></a>4、捕获请求状态，判断结果</h3><p>send()方法调用后，请求就会被提交到服务器；多数情况下，我们会发送异步请求先检查请求过程当前的活动阶段，再判断请求是否返回成功</p>
+<h5 id="XHR对象相关属性："><a href="#XHR对象相关属性：" class="headerlink" title="XHR对象相关属性："></a>XHR对象相关属性：</h5><ul>
+<li>readyState：请求 /相应过程的当前活动阶段</li>
+<li>responseText：作为响应主体被返回的文本</li>
+<li>responseXML：如果相应的内容类型是text/xml或者application这个属性中将保存着响应数据的XMLDOM文档</li>
+<li>status：相应的HTTP状态</li>
+<li>statusText：HTTP状态说明</li>
+</ul>
+<h5 id="我们利用原生的onreadystatechange事件来监听readyState变化"><a href="#我们利用原生的onreadystatechange事件来监听readyState变化" class="headerlink" title="我们利用原生的onreadystatechange事件来监听readyState变化"></a>我们利用原生的onreadystatechange事件来监听readyState变化</h5><h5 id="readyState返回值如下："><a href="#readyState返回值如下：" class="headerlink" title="readyState返回值如下："></a>readyState返回值如下：</h5><p><img src="http://ww1.sinaimg.cn/mw690/006rncsWgw1f57rf6b5nbj30n407u3zo.jpg" alt="readyState返回值"><br>只要readyState的值有一个值变为另一个值，就会触发一次<code>onreadystatechange</code>事件，可以利用此事件来返回监听到的请求/响应过程状态值</p>
+<p>我们关心的是readyState值为4的情况，因为这是代表所有数据已经准备就绪；同时如果<strong>status返回的是200</strong>，那么可以确定该次去请求/响应过程全部完成</p>
+<h5 id="status返回值如下："><a href="#status返回值如下：" class="headerlink" title="status返回值如下："></a>status返回值如下：</h5><p><img src="http://ww2.sinaimg.cn/mw690/006rncsWgw1f57rf7h27gj30nz0aqaax.jpg" alt="status返回值"><br><strong>注意：这里不要使用statusText去判断，因为该值在跨浏览器时不可靠</strong></p>
+<p>最后的返回结果，不管是什么类型内容，都会被保存在responseText中</p>
+<h5 id="监听代码如下："><a href="#监听代码如下：" class="headerlink" title="监听代码如下："></a>监听代码如下：</h5><pre><code>//监听readyState状态与status返回值
+request.onreadystatechange = function () {
+    if(request.readyState == 4 &amp;&amp; request.status == 200){
+        alert(request.responseText);
+    }
+}
+</code></pre><p>综上所述的内容，就是整个ajax请求的全部流程，我们在js中最后拿到的就是后台返回的responseText，只里面保存的一般来说是<strong>JSON格式的字符串</strong>，我们可以将其<strong>转换成数组或者对象</strong>后提取其中的键值对</p>
+<h2 id="三、封装使用"><a href="#三、封装使用" class="headerlink" title="三、封装使用"></a>三、封装使用</h2><p>以下代码是将上述的过程进行的封装，使得使用时只要调用函数并在回调函数中实现功能就可以了</p>
+<pre><code>/*
+ * method是请求方式
+ * url是网络请求的地址
+ * postboidy是post方式请求时的提交数据
+ * successCallback是请求失败的函数
+ * errorCallback是请求失败的函数
+*/
+
+function request (method,url,postbody,successCallback,errorCallback) {
+    //创建一个请求对象
+    if(window.XMLHttpRequest){
+        var request = new XMLHttpRequest();
+    }else{
+        var request = new ActiveXObject(&quot;Microsoft.XMLHttp&quot;);
+    }
+
+    if(arguments[0]==&quot;POST&quot;){
+        //创建请求
+        request.open(method,url,true);
+        //设置上传类型
+        request.setRequestHeader(&quot;content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+    }else if(arguments[0]==&quot;GET&quot;){
+        request.open(method,url,true);
+    }
+    //发送请求
+    request.send(postbody);
+    //状态监听
+    request.onreadystatechange = function () {
+        if(request.readyState ==4 &amp;&amp; request.status == 200){
+            //请求成功的回调函数
+            if(successCallback){
+                successCallback(request.responseText);
+            }
+        } else if (request.readyState == 4 &amp;&amp; request.status != 200) {
+            //请求失败的回调函数
+            if(errorCallback){
+                errorCallback(request.statusText);
+            }
+        }
+    }
+}
+</code></pre><p>使用方法举例：<br>下面定义了一个简单的表单提交用户名和密码，使用回调函数拿到后台返回的JSON串后，转换成对象再取出其中的信息，告知用户是登陆成功还是失败</p>
+<pre><code>//html部分
+//调用封装好的函数
+&lt;script src=&quot;request.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;form&quot;&gt;
+    &lt;input type=&quot;text&quot; id=&quot;username&quot;&gt;
+    &lt;input type=&quot;password&quot; id=&quot;passwd&quot;&gt;
+    &lt;button id=&quot;loginBtn&quot;&gt;登录&lt;/button&gt;
+&lt;/div&gt;
+
+//js部分
+var username = document.getElementById(&quot;username&quot;);
+var passwd = document.getElementById(&quot;passwd&quot;);
+var loginBtn = document.getElementById(&quot;loginBtn&quot;)
+loginBtn.onclick = function () {
+    var url = &quot;login.php&quot;;
+    var postbody = &quot;username=&quot;+username.value+&quot;&amp;passwd=&quot;+passwd.value;
+    //使用回调函数实现功能
+    request(&quot;POST&quot;,url,postbody,function (resText) {
+        //把json格式的字符串转换成对象
+        var obj = JSON.parse(resText);
+        alert(obj.msg);
+    });
+}
+
+//php部分login.php
+&lt;?php 
+    //从请求中获取用户名和密码
+    $username = $_POST[&quot;username&quot;];
+    $passwd = $_POST[&quot;passwd&quot;];
+    //连接服务器
+    @$mysqli = new mysqli(&quot;localhost&quot;,&quot;root&quot;,&quot;&quot;,&quot;user&quot;);
+    $mysqli-&gt;query(&quot;set names utf8&quot;);
+    //查询语句
+    $sql = &quot;SELECT * FROM user WHERE username=&apos;$username&apos; AND passwd=&apos;$passwd&apos;&quot;;
+    //数据库执行查询
+    $result = $mysqli-&gt;query($sql);
+    //判断查询结果是否有值，并定义返回字符串
+    //echo出来的就是返回前端的数据
+    if($result-&gt;num_rows &gt; 0){
+        echo &apos;{&quot;errorcode&quot;:0,&quot;msg&quot;:&quot;登陆成功&quot;}&apos;;
+    }else{
+        echo &apos;{&quot;errorcode&quot;:1,&quot;msg&quot;:&quot;用户名或密码错误&quot;}&apos;;
+    }
+    //关闭服务器
+    $mysqli-&gt;close();
+?&gt;
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/13/PHP学习（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP学习（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ajax基础使用学习" data-title="ajax使用学习" data-url="http://yoursite.com/2016/06/25/ajax基础使用学习/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Miles Xu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
